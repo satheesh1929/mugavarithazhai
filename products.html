@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mugavari Thazhai — Products</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#0E2C18', // Deep Emerald Green
+            secondary: '#E0F2E9', // Soft Greenish White
+            accent: '#D32F2F', // Vibrant Red
+            earth: '#8D6E63', // Earthy Brown
+          },
+          fontFamily: {
+            sans: ['Poppins', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    .glass-nav {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .hover-lift {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .hover-lift:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Blob Animation */
+    @keyframes blob {
+      0% {
+        transform: translate(0px, 0px) scale(1);
+      }
+
+      33% {
+        transform: translate(30px, -50px) scale(1.1);
+      }
+
+      66% {
+        transform: translate(-20px, 20px) scale(0.9);
+      }
+
+      100% {
+        transform: translate(0px, 0px) scale(1);
+      }
+    }
+
+    .animate-blob {
+      animation: blob 7s infinite;
+    }
+
+    .animation-delay-2000 {
+      animation-delay: 2s;
+    }
+
+    .animation-delay-4000 {
+      animation-delay: 4s;
+    }
+  </style>
+</head>
+
+<body class="font-sans text-gray-800 antialiased bg-slate-50">
+
+  <!-- Navbar -->
+  <nav class="fixed w-full z-50 glass-nav transition-all duration-300 shadow-sm" id="navbar">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-20">
+        <!-- Logo -->
+        <div class="flex-shrink-0 flex items-center gap-3">
+          <a href="index.html" class="block">
+            <img src="images/mugavari thazhai logo.jpg"
+              onerror="this.onerror=null;this.src='https://placehold.co/125x125/E0F2E9/0E2C18?text=Logo'"
+              class="h-12 w-12 rounded-full border-2 border-primary shadow-sm" alt="Logo">
+          </a>
+          <h1 class="text-xl md:text-2xl font-bold text-primary tracking-tight">Mugavari Thazhai</h1>
+        </div>
+
+        <!-- Desktop Menu -->
+        <div class="hidden md:flex items-center space-x-8">
+          <a href="index.html" class="text-gray-700 hover:text-primary font-medium transition">Home</a>
+          <a href="products.html" class="text-primary font-bold transition">Products</a>
+          <a href="#footer" class="text-gray-700 hover:text-primary font-medium transition">Contact</a>
+
+          <!-- Cart Icon -->
+          <a href="#cart" class="relative group">
+            <i class="fa fa-shopping-cart text-2xl text-gray-700 group-hover:text-primary transition"></i>
+            <span id="cart-count"
+              class="absolute -top-2 -right-2 bg-accent text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full hidden">0</span>
+          </a>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <div class="md:hidden flex items-center gap-4">
+          <a href="#cart" class="relative">
+            <i class="fa fa-shopping-cart text-2xl text-gray-700"></i>
+            <span id="mobile-cart-count"
+              class="absolute -top-2 -right-2 bg-accent text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full hidden">0</span>
+          </a>
+          <button id="mobile-menu-btn" class="text-gray-700 focus:outline-none">
+            <i class="fa fa-bars text-2xl"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu"
+      class="md:hidden hidden bg-white border-t border-gray-100 absolute w-full left-0 top-20 shadow-lg">
+      <div class="px-4 pt-2 pb-6 space-y-2">
+        <a href="index.html"
+          class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50">Home</a>
+        <a href="products.html"
+          class="block px-3 py-2 rounded-md text-base font-medium text-primary bg-green-50">Products</a>
+        <a href="#footer"
+          class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Header / Breadcrumb -->
+  <div class="pt-32 pb-12 bg-gradient-to-b from-secondary to-slate-50 px-4 relative overflow-hidden">
+    <!-- Blobs (Subtle) -->
+    <div
+      class="absolute top-0 -left-10 w-64 h-64 bg-green-200 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-blob">
+    </div>
+    <div
+      class="absolute bottom-0 -right-10 w-64 h-64 bg-yellow-200 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-blob animation-delay-2000">
+    </div>
+
+    <div class="max-w-7xl mx-auto text-center relative z-10">
+      <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4 drop-shadow-sm">Our Products</h1>
+      <p class="text-gray-600 text-lg max-w-2xl mx-auto">Discover the purity of Pollachi. From cold-pressed oils to
+        handcrafted coconut shell art.</p>
+    </div>
+  </div>
+
+  <!-- Products Grid -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20" id="products">
+    <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+
+      <!-- Product Card 1 -->
+      <div
+        class="bg-white rounded-2xl shadow-sm hover:shadow-xl transition duration-300 overflow-hidden border border-gray-100 group"
+        data-name="Pure Coconut Oil" data-price="250">
+        <div class="relative overflow-hidden h-64 bg-gray-100">
+          <img src="images/coconut oil.jpg"
+            onerror="this.onerror=null;this.src='https://placehold.co/600x400/E0F2E9/0E2C18?text=Coconut+Oil'"
+            class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+          <div
+            class="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-xs font-bold text-primary shadow-sm">
+            Best Seller</div>
+        </div>
+        <div class="p-6">
+          <h4 class="text-xl font-bold text-gray-900 mb-2">Pure Coconut Oil</h4>
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-2xl font-bold text-green-700">₹250 <span class="text-sm font-normal text-gray-500">/
+                Litre</span></span>
+            <div class="flex items-center border rounded-lg">
+              <button class="px-3 py-1 hover:bg-gray-100" onclick="this.nextElementSibling.stepDown()">-</button>
+              <input type="number" class="qty-input w-12 text-center border-x py-1 focus:outline-none" min="1" value="1"
+                readonly>
+              <button class="px-3 py-1 hover:bg-gray-100" onclick="this.previousElementSibling.stepUp()">+</button>
+            </div>
+          </div>
+          <button
+            class="add-btn w-full py-3 bg-primary text-white font-medium rounded-xl hover:bg-green-800 transition shadow-lg shadow-green-900/20 active:scale-95">
+            Add to Cart <i class="fas fa-shopping-cart ml-2"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Product Card 2 -->
+      <div
+        class="bg-white rounded-2xl shadow-sm hover:shadow-xl transition duration-300 overflow-hidden border border-gray-100 group"
+        data-name="Groundnut Oil" data-price="220">
+        <div class="relative overflow-hidden h-64 bg-gray-100">
+          <img src="images/groundnut oil.jpg"
+            onerror="this.onerror=null;this.src='https://placehold.co/600x400/E0F2E9/0E2C18?text=Groundnut+Oil'"
+            class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+        </div>
+        <div class="p-6">
+          <h4 class="text-xl font-bold text-gray-900 mb-2">Groundnut Oil</h4>
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-2xl font-bold text-green-700">₹220 <span class="text-sm font-normal text-gray-500">/
+                Litre</span></span>
+            <div class="flex items-center border rounded-lg">
+              <button class="px-3 py-1 hover:bg-gray-100" onclick="this.nextElementSibling.stepDown()">-</button>
+              <input type="number" class="qty-input w-12 text-center border-x py-1 focus:outline-none" min="1" value="1"
+                readonly>
+              <button class="px-3 py-1 hover:bg-gray-100" onclick="this.previousElementSibling.stepUp()">+</button>
+            </div>
+          </div>
+          <button
+            class="add-btn w-full py-3 bg-primary text-white font-medium rounded-xl hover:bg-green-800 transition shadow-lg shadow-green-900/20 active:scale-95">
+            Add to Cart <i class="fas fa-shopping-cart ml-2"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Product Card 3 -->
+      <div
+        class="bg-white rounded-2xl shadow-sm hover:shadow-xl transition duration-300 overflow-hidden border border-gray-100 group"
+        data-name="Handcrafts" data-price="300">
+        <div class="relative overflow-hidden h-64 bg-gray-100">
+          <img src="images/handCraft.jpg"
+            onerror="this.onerror=null;this.src='https://placehold.co/600x400/E0F2E9/0E2C18?text=Hand+Crafts'"
+            class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+          <div
+            class="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-xs font-bold text-earth shadow-sm">
+            Handmade</div>
+        </div>
+        <div class="p-6">
+          <h4 class="text-xl font-bold text-gray-900 mb-2">Coconut Shell Handcrafts</h4>
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-2xl font-bold text-green-700">₹300 <span class="text-sm font-normal text-gray-500">/
+                Piece</span></span>
+            <div class="flex items-center border rounded-lg">
+              <button class="px-3 py-1 hover:bg-gray-100" onclick="this.nextElementSibling.stepDown()">-</button>
+              <input type="number" class="qty-input w-12 text-center border-x py-1 focus:outline-none" min="1" value="1"
+                readonly>
+              <button class="px-3 py-1 hover:bg-gray-100" onclick="this.previousElementSibling.stepUp()">+</button>
+            </div>
+          </div>
+          <button
+            class="add-btn w-full py-3 bg-primary text-white font-medium rounded-xl hover:bg-green-800 transition shadow-lg shadow-green-900/20 active:scale-95">
+            Add to Cart <i class="fas fa-shopping-cart ml-2"></i>
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+
+  <!-- Cart Section -->
+  <section id="cart" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+    <div class="bg-white rounded-3xl shadow-xl p-8 border border-gray-100">
+      <div class="flex items-center justify-between mb-8">
+        <h2 class="text-2xl font-bold text-gray-900 flex items-center gap-3">
+          <i class="fas fa-shopping-bag text-primary"></i> Your Cart
+        </h2>
+        <button onclick="localStorage.removeItem('cart'); updateCartUI();"
+          class="text-sm text-red-500 hover:text-red-700 underline">Clear Cart</button>
+      </div>
+
+      <div id="cart-items" class="overflow-x-auto min-h-[100px]">
+        <p class="text-gray-500 text-center py-8">Your cart is currently empty. Start adding some products!</p>
+      </div>
+
+      <div class="flex flex-col md:flex-row justify-between items-center mt-8 pt-8 border-t border-gray-100 hidden"
+        id="cart-footer">
+        <div class="mb-6 md:mb-0 text-center md:text-left">
+          <p class="text-gray-500 text-sm mb-1">Total Amount</p>
+          <h3 class="text-3xl font-bold text-gray-900">₹<span id="cart-total">0</span></h3>
+        </div>
+        <button id="whatsappOrderBtn"
+          class="w-full md:w-auto px-8 py-4 bg-green-500 text-white font-bold rounded-xl hover:bg-green-600 transition shadow-lg flex items-center justify-center gap-2">
+          <i class="fab fa-whatsapp text-xl"></i> Proceed to Order on WhatsApp
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer (Consistent with index.html) -->
+  <footer id="footer" class="bg-gray-900 text-gray-300 py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center">
+        <img src="images/mugavari thazhai logo.jpg"
+          onerror="this.onerror=null;this.src='https://placehold.co/100x100/E0F2E9/0E2C18?text=Logo'"
+          class="w-24 h-24 rounded-full mx-auto mb-6 border-2 border-gray-700" alt="Logo">
+        <p class="text-xl font-medium text-white mb-8">Pure & Authentic Products from Pollachi with Love ❤️</p>
+
+        <div class="flex justify-center gap-8 mb-12">
+          <a href="https://wa.me/919842535962" target="_blank" class="group">
+            <div class="bg-white p-3 rounded-full group-hover:bg-[#25D366] transition duration-300">
+              <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/whatsapp.svg"
+                class="w-6 h-6 group-hover:invert transition" alt="WhatsApp">
+            </div>
+          </a>
+          <a href="https://www.instagram.com/jackcity_official" target="_blank" class="group">
+            <div class="bg-white p-3 rounded-full group-hover:bg-[#E1306C] transition duration-300">
+              <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg"
+                class="w-6 h-6 group-hover:invert transition" alt="Instagram">
+            </div>
+          </a>
+          <a href="https://www.youtube.com/@JACKCITYVlog" target="_blank" class="group">
+            <div class="bg-white p-3 rounded-full group-hover:bg-[#FF0000] transition duration-300">
+              <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/youtube.svg"
+                class="w-6 h-6 group-hover:invert transition" alt="YouTube">
+            </div>
+          </a>
+        </div>
+
+        <div class="flex flex-col items-center gap-4 border-t border-gray-800 pt-8">
+          <p class="text-sm text-gray-500">© 2025 - SK | Mugavari Thazhai</p>
+
+          <!-- Buy Me a Coffee Button -->
+          <a href="https://www.buymeacoffee.com/satheeshkumar" target="_blank"
+            class="inline-flex items-center gap-2 px-4 py-2 bg-yellow-400 text-gray-900 rounded-full text-sm font-bold hover:bg-yellow-300 transition hover:scale-105 shadow-lg">
+            <i class="fas fa-coffee"></i> Buy me a coffee
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- WhatsApp Order Modal -->
+  <div id="orderModal"
+    class="fixed inset-0 bg-black/60 backdrop-blur-sm hidden items-center justify-center p-4 z-[100]">
+    <div class="bg-white rounded-2xl shadow-2xl w-full max-w-lg p-8 animate-fadeIn transform scale-100 transition-all">
+      <div class="text-center mb-6">
+        <h3 class="text-2xl font-bold text-gray-900">Place Your Order</h3>
+        <p class="text-gray-500">We'll send your cart details directly to WhatsApp.</p>
+      </div>
+      <form id="orderForm" class="space-y-4">
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">Your Name</label>
+          <input type="text" id="name" placeholder="Ex: Arun Kumar"
+            class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition"
+            required>
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
+          <input type="tel" id="phone" placeholder="Ex: 9876543210"
+            class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition"
+            required>
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">Delivery Address</label>
+          <textarea id="address" placeholder="Full address with Pincode"
+            class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition h-24"
+            required></textarea>
+        </div>
+        <div class="flex gap-4 pt-2">
+          <button type="button" id="closeModalBtn"
+            class="flex-1 py-3 bg-gray-100 text-gray-700 font-medium rounded-xl hover:bg-gray-200 transition">Cancel</button>
+          <button type="submit"
+            class="flex-1 py-3 bg-green-500 text-white font-bold rounded-xl hover:bg-green-600 transition flex items-center justify-center gap-2">
+            Send <i class="fab fa-whatsapp"></i>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    const whatsappBusinessNumber = "919842535962";
+
+    // Mobile Menu
+    const btn = document.getElementById('mobile-menu-btn');
+    const menu = document.getElementById('mobile-menu');
+    btn.addEventListener('click', () => {
+      menu.classList.toggle('hidden');
+    });
+
+    function getCart() { return JSON.parse(localStorage.getItem("cart")) || []; }
+    function setCart(cart) { localStorage.setItem("cart", JSON.stringify(cart)); }
+
+    function updateCartUI() {
+      const cart = getCart(), items = document.getElementById("cart-items"), footer = document.getElementById("cart-footer"), badge = document.getElementById("cart-count"), mobileBadge = document.getElementById("mobile-cart-count");
+
+      // Update badges
+      const totalCount = cart.reduce((s, it) => s + it.qty, 0);
+      if (totalCount > 0) {
+        badge.classList.remove("hidden"); badge.textContent = totalCount;
+        mobileBadge.classList.remove("hidden"); mobileBadge.textContent = totalCount;
+      } else {
+        badge.classList.add("hidden");
+        mobileBadge.classList.add("hidden");
+      }
+
+      items.innerHTML = ""; let total = 0;
+      if (cart.length === 0) {
+        items.innerHTML = "<div class='text-center py-12'><i class='fas fa-shopping-basket text-4xl text-gray-200 mb-4'></i><p class='text-gray-500'>Your cart is empty.</p></div>";
+        footer.classList.add("hidden");
+        return;
+      }
+
+      let table = `<table class="w-full text-left">
+        <thead class="text-xs text-gray-500 uppercase bg-gray-50 border-b">
+          <tr>
+            <th class="px-4 py-3 rounded-tl-lg">Product</th>
+            <th class="px-4 py-3">Price</th>
+            <th class="px-4 py-3 text-center">Qty</th>
+            <th class="px-4 py-3">Subtotal</th>
+            <th class="px-4 py-3 rounded-tr-lg"></th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-100">`;
+      cart.forEach((it, i) => {
+        total += it.price * it.qty;
+        table += `<tr class="hover:bg-gray-50 transition">
+          <td class="px-4 py-3 font-medium text-gray-900">${it.name}</td>
+          <td class="px-4 py-3 text-gray-600">₹${it.price}</td>
+          <td class="px-4 py-3 text-center">
+              <span class="inline-block bg-gray-100 px-2 py-1 rounded text-sm font-bold">${it.qty}</span>
+          </td>
+          <td class="px-4 py-3 font-bold text-gray-900">₹${it.price * it.qty}</td>
+          <td class="px-4 py-3 text-right"><button onclick="removeItem(${i})" class="text-red-400 hover:text-red-600 transition"><i class="fas fa-trash-alt"></i></button></td>
+        </tr>`;
+      });
+      table += `</tbody></table>`;
+      items.innerHTML = table;
+
+      document.getElementById("cart-total").textContent = total;
+      footer.classList.remove("hidden");
+    }
+
+    function removeItem(i) { const cart = getCart(); cart.splice(i, 1); setCart(cart); updateCartUI(); }
+
+    document.addEventListener("click", e => {
+      if (e.target.closest(".add-btn")) {
+        const card = e.target.closest("[data-name]");
+        const name = card.dataset.name, price = +card.dataset.price, qty = +card.querySelector(".qty-input").value;
+        const cart = getCart(); const ex = cart.find(i => i.name === name);
+        if (ex) ex.qty += qty; else cart.push({ name, price, qty });
+        setCart(cart); updateCartUI();
+
+        // Visual feedback
+        const btn = e.target.closest(".add-btn");
+        const originalText = btn.innerHTML;
+        btn.innerHTML = `<i class="fas fa-check"></i> Added`;
+        btn.classList.add("bg-green-700");
+        setTimeout(() => {
+          btn.innerHTML = originalText;
+          btn.classList.remove("bg-green-700");
+        }, 2000);
+      }
+    });
+
+    document.getElementById("whatsappOrderBtn").addEventListener("click", () => {
+      document.getElementById("orderModal").classList.remove("hidden");
+      document.getElementById("orderModal").classList.add("flex");
+    });
+
+    document.getElementById("closeModalBtn").addEventListener("click", () => {
+      document.getElementById("orderModal").classList.add("hidden");
+      document.getElementById("orderModal").classList.remove("flex");
+    });
+
+    document.getElementById("orderForm").addEventListener("submit", e => {
+      e.preventDefault();
+      const name = document.getElementById("name").value, phone = document.getElementById("phone").value, address = document.getElementById("address").value, cart = getCart();
+      let msg = `*New Order from Mugavari Thazhai*\n\n`;
+      cart.forEach(i => msg += `📦 ${i.name} x ${i.qty} - ₹${i.price * i.qty}\n`);
+      let total = cart.reduce((s, it) => s + (it.price * it.qty), 0);
+      msg += `\n💰 *Total Amount: ₹${total}*\n`;
+      msg += `\n👤 Name: ${name}\n📞 Phone: ${phone}\n📍 Address: ${address}\n\nThank You!`;
+
+      window.open(`https://wa.me/${whatsappBusinessNumber}?text=${encodeURIComponent(msg)}`, "_blank");
+
+      localStorage.removeItem("cart");
+      updateCartUI();
+      document.getElementById("orderModal").classList.add("hidden");
+      document.getElementById("orderModal").classList.remove("flex");
+    });
+
+    document.addEventListener("DOMContentLoaded", updateCartUI);
+  </script>
+</body>
+
+</html>

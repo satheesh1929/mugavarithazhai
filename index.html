@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mugavari Thazhai | Authentic Pollachi Products</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0E2C18', // Deep Emerald Green
+                        secondary: '#E0F2E9', // Soft Greenish White
+                        accent: '#D32F2F', // Vibrant Red
+                        earth: '#8D6E63', // Earthy Brown
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .hero-gradient {
+            background: linear-gradient(135deg, #E0F2E9 0%, #FFFFFF 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hover-lift {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .hover-lift:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Blob Animation */
+        @keyframes blob {
+            0% {
+                transform: translate(0px, 0px) scale(1);
+            }
+
+            33% {
+                transform: translate(30px, -50px) scale(1.1);
+            }
+
+            66% {
+                transform: translate(-20px, 20px) scale(0.9);
+            }
+
+            100% {
+                transform: translate(0px, 0px) scale(1);
+            }
+        }
+
+        .animate-blob {
+            animation: blob 7s infinite;
+        }
+
+        .animation-delay-2000 {
+            animation-delay: 2s;
+        }
+
+        .animation-delay-4000 {
+            animation-delay: 4s;
+        }
+    </style>
+</head>
+
+<body class="font-sans text-gray-800 antialiased bg-slate-50">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 glass-nav transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center gap-3">
+                    <a href="index.html" class="block">
+                        <img src="images/mugavari thazhai logo.jpg"
+                            onerror="this.onerror=null;this.src='https://placehold.co/125x125/E0F2E9/0E2C18?text=Logo'"
+                            class="h-12 w-12 rounded-full border-2 border-primary shadow-sm" alt="Logo">
+                    </a>
+                    <h1 class="text-xl md:text-2xl font-bold text-primary tracking-tight">Mugavari Thazhai</h1>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-gray-700 hover:text-primary font-medium transition">Home</a>
+                    <a href="products.html" class="text-gray-700 hover:text-primary font-medium transition">Products</a>
+                    <a href="#footer" class="text-gray-700 hover:text-primary font-medium transition">Contact</a>
+
+                    <!-- Cart Icon -->
+                    <a href="products.html" class="relative group">
+                        <i class="fa fa-shopping-cart text-2xl text-gray-700 group-hover:text-primary transition"></i>
+                        <span id="cart-count"
+                            class="absolute -top-2 -right-2 bg-accent text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full hidden">0</span>
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center gap-4">
+                    <a href="products.html" class="relative">
+                        <i class="fa fa-shopping-cart text-2xl text-gray-700"></i>
+                        <span id="mobile-cart-count"
+                            class="absolute -top-2 -right-2 bg-accent text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full hidden">0</span>
+                    </a>
+                    <button id="mobile-menu-btn" class="text-gray-700 focus:outline-none">
+                        <i class="fa fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu"
+            class="md:hidden hidden bg-white border-t border-gray-100 absolute w-full left-0 top-20 shadow-lg">
+            <div class="px-4 pt-2 pb-6 space-y-2">
+                <a href="index.html"
+                    class="block px-3 py-2 rounded-md text-base font-medium text-primary bg-green-50">Home</a>
+                <a href="products.html"
+                    class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50">Products</a>
+                <a href="#footer"
+                    class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <!-- Hero Section -->
+    <header class="hero-gradient pt-32 pb-20 lg:pt-40 lg:pb-32 overflow-hidden relative">
+        <!-- Blobs -->
+        <div
+            class="absolute top-0 -left-4 w-72 h-72 bg-green-300 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-blob">
+        </div>
+        <div
+            class="absolute top-0 -right-4 w-72 h-72 bg-yellow-300 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-blob animation-delay-2000">
+        </div>
+        <div
+            class="absolute -bottom-8 left-20 w-72 h-72 bg-pink-300 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-blob animation-delay-4000">
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="lg:grid lg:grid-cols-12 lg:gap-16 items-center">
+
+                <!-- Text Content -->
+                <div class="lg:col-span-6 text-center lg:text-left mb-12 lg:mb-0 relative z-10">
+                    <span
+                        class="inline-block py-1 px-3 rounded-full bg-green-100 text-green-800 text-sm font-semibold mb-4 tracking-wide uppercase">From
+                        Pollachi with Love</span>
+                    <h1
+                        class="text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 leading-tight mb-6 drop-shadow-sm">
+                        Pure & Authentic <br>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-green-600">Nature's
+                            Best</span>
+                    </h1>
+                    <p class="text-lg text-gray-600 mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                        Rooted in Pollachi. Trusted by hearts. Delivered to your door. Experience the goodness of
+                        cold-pressed oils and sustainable handcrafts.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                        <a href="products.html"
+                            class="px-8 py-4 bg-primary text-white font-semibold rounded-full shadow-lg hover:bg-green-900 transition hover:-translate-y-1">
+                            Explore Products <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                        <a href="#footer"
+                            class="px-8 py-4 bg-white text-primary font-semibold rounded-full shadow-md border border-gray-100 hover:bg-gray-50 transition hover:-translate-y-1">
+                            Contact Us
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Hero Image -->
+                <div class="lg:col-span-6 relative">
+                    <div
+                        class="relative rounded-2xl overflow-hidden shadow-2xl transform hover:scale-[1.02] transition duration-500">
+                        <img src="images/home image.jpg"
+                            onerror="this.onerror=null;this.src='https://placehold.co/600x800/E0F2E9/0E2C18?text=Authentic+Products'"
+                            class="w-full h-auto object-cover" alt="Hero Image">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                    </div>
+                    <!-- Floating Badge -->
+                    <div
+                        class="absolute -bottom-6 -left-6 bg-white p-4 rounded-xl shadow-xl hidden md:block animate-bounce z-20">
+                        <div class="flex items-center gap-3">
+                            <div class="bg-green-100 p-2 rounded-full text-green-600">
+                                <i class="fas fa-leaf text-xl"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm font-bold text-gray-900">100% Organic</p>
+                                <p class="text-xs text-gray-500">Certified Products</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </header>
+
+    <!-- Categories Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Curated Categories</h2>
+                <div class="h-1 w-20 bg-primary mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Category 1 -->
+                <div class="group relative overflow-hidden rounded-2xl shadow-lg cursor-pointer">
+                    <img src="images/coconut oil.jpg"
+                        onerror="this.onerror=null;this.src='https://placehold.co/400x300/E0F2E9/0E2C18?text=Coconut+Oil'"
+                        class="w-full h-80 object-cover group-hover:scale-110 transition duration-700"
+                        alt="Coconut Oil">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent flex items-end p-8">
+                        <div>
+                            <h3 class="text-2xl font-bold text-white mb-2">Coconut Oil</h3>
+                            <a href="products.html"
+                                class="text-white/90 hover:text-white text-sm font-medium inline-flex items-center">Shop
+                                Now <i class="fas fa-chevron-right ml-1 text-xs"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Category 2 -->
+                <div class="group relative overflow-hidden rounded-2xl shadow-lg cursor-pointer">
+                    <img src="images/groundnut oil.jpg"
+                        onerror="this.onerror=null;this.src='https://placehold.co/400x300/E0F2E9/0E2C18?text=Groundnut+Oil'"
+                        class="w-full h-80 object-cover group-hover:scale-110 transition duration-700"
+                        alt="Groundnut Oil">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent flex items-end p-8">
+                        <div>
+                            <h3 class="text-2xl font-bold text-white mb-2">Groundnut Oil</h3>
+                            <a href="products.html"
+                                class="text-white/90 hover:text-white text-sm font-medium inline-flex items-center">Shop
+                                Now <i class="fas fa-chevron-right ml-1 text-xs"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Category 3 -->
+                <div class="group relative overflow-hidden rounded-2xl shadow-lg cursor-pointer">
+                    <img src="images/hand craft.jpg"
+                        onerror="this.onerror=null;this.src='https://placehold.co/400x300/E0F2E9/0E2C18?text=Hand+Craft'"
+                        class="w-full h-80 object-cover group-hover:scale-110 transition duration-700" alt="Hand Craft">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent flex items-end p-8">
+                        <div>
+                            <h3 class="text-2xl font-bold text-white mb-2">Eco Crafts</h3>
+                            <a href="products.html"
+                                class="text-white/90 hover:text-white text-sm font-medium inline-flex items-center">Shop
+                                Now <i class="fas fa-chevron-right ml-1 text-xs"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Offer Section -->
+    <section class="py-20 bg-secondary relative overflow-hidden">
+        <div
+            class="absolute top-0 left-0 w-64 h-64 bg-primary/5 rounded-full -translate-x-1/2 -translate-y-1/2 blur-3xl">
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="bg-white rounded-3xl p-8 md:p-12 shadow-xl flex flex-col md:flex-row items-center gap-12">
+                <div class="md:w-1/3">
+                    <img src="images/mugavari thazhai logo.jpg"
+                        onerror="this.onerror=null;this.src='https://placehold.co/300x300/E0F2E9/0E2C18?text=Offer'"
+                        class="w-full max-w-[250px] mx-auto rounded-full border-4 border-green-50 shadow-lg"
+                        alt="Offer">
+                </div>
+                <div class="md:w-2/3 text-center md:text-left">
+                    <h2 class="text-3xl font-bold text-primary mb-4">🌴 Authentic South Indian Essence</h2>
+                    <ul class="space-y-3 mb-8 text-gray-600 text-lg">
+                        <li class="flex items-center gap-3 justify-center md:justify-start">
+                            <i class="fas fa-check-circle text-green-500"></i> Pure Cold-pressed Coconut Oil
+                        </li>
+                        <li class="flex items-center gap-3 justify-center md:justify-start">
+                            <i class="fas fa-check-circle text-green-500"></i> Customizable Coconut Shell Crafts
+                        </li>
+                        <li class="flex items-center gap-3 justify-center md:justify-start">
+                            <i class="fas fa-check-circle text-green-500"></i> Wood-pressed Groundnut Oil
+                        </li>
+                    </ul>
+                    <a href="products.html"
+                        class="inline-block px-8 py-3 bg-accent text-white font-semibold rounded-full shadow-lg hover:bg-red-700 transition hover:-translate-y-1">
+                        Order Now
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonial Section -->
+    <section class="py-20 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">What Our Customers Say</h2>
+                <div class="h-1 w-20 bg-primary mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Review 1 -->
+                <div
+                    class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition duration-300 relative border border-gray-100">
+                    <i class="fas fa-quote-left text-4xl text-green-100 absolute top-6 left-6 -z-0"></i>
+                    <p class="text-gray-600 italic mb-6 relative z-10">"I ordered just to ‘try once’… but now even my
+                        mom reminds me to check Mugavari Thazhai before shopping anywhere else. Guess who lost his
+                        bargaining rights at home? Me!"</p>
+                    <div class="flex items-center gap-4">
+                        <img src="images/user1.jpg"
+                            onerror="this.onerror=null;this.src='https://placehold.co/50x50/E0F2E9/0E2C18?text=A'"
+                            class="w-12 h-12 rounded-full object-cover" alt="User">
+                        <div>
+                            <h4 class="font-bold text-gray-900">Arun.K</h4>
+                            <p class="text-xs text-gray-500">Coimbatore</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 2 -->
+                <div
+                    class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition duration-300 relative border border-gray-100">
+                    <i class="fas fa-quote-left text-4xl text-green-100 absolute top-6 left-6 -z-0"></i>
+                    <p class="text-gray-600 italic mb-6 relative z-10">"Good products, fast delivery. Honestly, the only
+                        time I got this excited for a parcel was when my online food order came with extra sambar.
+                        Respect!"</p>
+                    <div class="flex items-center gap-4">
+                        <img src="images/user2.jpg"
+                            onerror="this.onerror=null;this.src='https://placehold.co/50x50/E0F2E9/0E2C18?text=R'"
+                            class="w-12 h-12 rounded-full object-cover" alt="User">
+                        <div>
+                            <h4 class="font-bold text-gray-900">Ramesh.V</h4>
+                            <p class="text-xs text-gray-500">Madurai</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 3 -->
+                <div
+                    class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition duration-300 relative border border-gray-100">
+                    <i class="fas fa-quote-left text-4xl text-green-100 absolute top-6 left-6 -z-0"></i>
+                    <p class="text-gray-600 italic mb-6 relative z-10">"Usually, I’m the lazy guy who never writes
+                        reviews. But this time, Mugavari Thazhai – you people are the reason my friends think I suddenly
+                        became ‘responsible’."</p>
+                    <div class="flex items-center gap-4">
+                        <img src="images/user3.jpg"
+                            onerror="this.onerror=null;this.src='https://placehold.co/50x50/E0F2E9/0E2C18?text=S'"
+                            class="w-12 h-12 rounded-full object-cover" alt="User">
+                        <div>
+                            <h4 class="font-bold text-gray-900">Saravanan.S</h4>
+                            <p class="text-xs text-gray-500">Chennai</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Brands Section -->
+    <section class="py-12 bg-white border-t border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 flex justify-center grayscale hover:grayscale-0 transition duration-500">
+            <a href="https://www.fssai.gov.in/" target="_blank">
+                <img src="images/Fssai-Logo-Vector.png"
+                    onerror="this.onerror=null;this.src='https://placehold.co/150x80/ffffff/555555?text=FSSAI'"
+                    alt="FSSAI" class="h-16 w-auto opacity-70 hover:opacity-100">
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="footer" class="bg-gray-900 text-gray-300 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <img src="images/mugavari thazhai logo.jpg"
+                    onerror="this.onerror=null;this.src='https://placehold.co/100x100/E0F2E9/0E2C18?text=Logo'"
+                    class="w-24 h-24 rounded-full mx-auto mb-6 border-2 border-gray-700" alt="Logo">
+                <p class="text-xl font-medium text-white mb-8">Pure & Authentic Products from Pollachi with Love ❤️</p>
+
+                <div class="flex justify-center gap-8 mb-12">
+                    <a href="https://wa.me/919842535962" target="_blank" class="group">
+                        <div class="bg-white p-3 rounded-full group-hover:bg-[#25D366] transition duration-300">
+                            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/whatsapp.svg"
+                                class="w-6 h-6 group-hover:invert transition" alt="WhatsApp">
+                        </div>
+                    </a>
+                    <a href="https://www.instagram.com/jackcity_official" target="_blank" class="group">
+                        <div class="bg-white p-3 rounded-full group-hover:bg-[#E1306C] transition duration-300">
+                            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg"
+                                class="w-6 h-6 group-hover:invert transition" alt="Instagram">
+                        </div>
+                    </a>
+                    <a href="https://www.youtube.com/@JACKCITYVlog" target="_blank" class="group">
+                        <div class="bg-white p-3 rounded-full group-hover:bg-[#FF0000] transition duration-300">
+                            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/youtube.svg"
+                                class="w-6 h-6 group-hover:invert transition" alt="YouTube">
+                        </div>
+                    </a>
+                </div>
+
+                <div class="flex flex-col items-center gap-4 border-t border-gray-800 pt-8">
+                    <p class="text-sm text-gray-500">© 2025 - SK | Mugavari Thazhai</p>
+
+                    <!-- Buy Me a Coffee Button -->
+                    <a href="https://www.buymeacoffee.com/satheeshkumar" target="_blank"
+                        class="inline-flex items-center gap-2 px-4 py-2 bg-yellow-400 text-gray-900 rounded-full text-sm font-bold hover:bg-yellow-300 transition hover:scale-105 shadow-lg">
+                        <i class="fas fa-coffee"></i> Buy me a coffee
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top -->
+    <button id="back-to-top"
+        class="fixed bottom-6 right-6 bg-primary text-white p-3 rounded-full shadow-lg opacity-0 invisible transition-all duration-300 hover:bg-green-800 z-50">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Mobile Menu Toggle
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        // Cart Count Logic
+        function updateCartCount() {
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+            let totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
+            const badge = document.getElementById("cart-count");
+            const mobileBadge = document.getElementById("mobile-cart-count");
+
+            if (totalItems > 0) {
+                badge.style.display = "block";
+                badge.textContent = totalItems;
+                mobileBadge.style.display = "block";
+                mobileBadge.textContent = totalItems;
+            } else {
+                badge.style.display = "none";
+                mobileBadge.style.display = "none";
+            }
+        }
+        document.addEventListener("DOMContentLoaded", updateCartCount);
+
+        // Back to Top & Navbar Scroll Effect
+        const backToTopBtn = document.getElementById('back-to-top');
+        const navbar = document.getElementById('navbar');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopBtn.classList.remove('opacity-0', 'invisible');
+                backToTopBtn.classList.add('opacity-100', 'visible');
+            } else {
+                backToTopBtn.classList.add('opacity-0', 'invisible');
+                backToTopBtn.classList.remove('opacity-100', 'visible');
+            }
+
+            if (window.scrollY > 50) {
+                navbar.classList.add('shadow-md');
+            } else {
+                navbar.classList.remove('shadow-md');
+            }
+        });
+
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+</body>
+
+</html>
