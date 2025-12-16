@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Mugavari Thazhai - E-commerce Website
 
 This is a static e-commerce website for Mugavari Thazhai, featuring authentic products from Pollachi.
@@ -31,4 +30,3 @@ Since this is a static website using HTML and Tailwind CSS (via CDN), you do **n
 # Mugavari Thazhai
  <h4>Click here to check the website</h4>
 <h2>https://satheesh1929.github.io/MugavariThazhai/</h2>
->>>>>>> 64cdd4edce0ed73360e9cae9b35e42531af2d370
