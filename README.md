@@ -29,4 +29,4 @@ Since this is a static website using HTML and Tailwind CSS (via CDN), you do **n
 =======
 # Mugavari Thazhai
  <h4>Click here to check the website</h4>
-<h2>https://satheesh1929.github.io/MugavariThazhai/</h2>
+<h2>https://satheesh1929.github.io/mugavarithazhai/</h2>
