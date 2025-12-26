@@ -80,6 +80,81 @@
         .animation-delay-4000 {
             animation-delay: 4s;
         }
+
+        /* Hand Craft Gallery Styles */
+        .handcraft-wrapper {
+            -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+            mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+        }
+
+        .marquee-track {
+            display: flex;
+            gap: 2rem;
+            width: max-content;
+            animation: scroll 60s linear infinite;
+            padding: 2rem 0;
+        }
+
+        .marquee-track:hover {
+            animation-play-state: paused;
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .craft-card {
+            width: 280px;
+            height: 280px;
+            flex-shrink: 0;
+            border-radius: 1.5rem;
+            overflow: hidden;
+            position: relative;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        /* Float Animation */
+        .float-anim {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .float-anim:nth-child(2n) {
+            animation-delay: 1s;
+        }
+
+        .float-anim:nth-child(3n) {
+            animation-delay: 2s;
+        }
+
+        .float-anim:nth-child(5n) {
+            animation-delay: 3s;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+
+        .craft-card:hover {
+            transform: scale(1.05) translateY(-5px) !important;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            z-index: 10;
+            animation-play-state: paused;
+        }
     </style>
 </head>
 
@@ -310,6 +385,32 @@
         </div>
     </section>
 
+    <!-- Hand Craft Gallery Section -->
+    <section class="py-24 bg-stone-50 relative overflow-hidden">
+        <!-- Decorative Elements -->
+        <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent">
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16 text-center">
+            <span
+                class="inline-block py-1 px-3 rounded-full bg-orange-100 text-orange-800 text-xs font-bold tracking-wider uppercase mb-4">Exclusive
+                Collection</span>
+            <h2 class="text-3xl md:text-5xl font-bold text-primary mb-6">Hand Craft Treasures</h2>
+            <p class="text-gray-600 max-w-2xl mx-auto text-lg leading-relaxed">
+                Adorn your home with the rustic elegance of Pollachi. Each piece is meticulously handcrafted from
+                natural
+                coconut shells, blending tradition with modern artistry.
+            </p>
+        </div>
+
+        <!-- Marquee Slider -->
+        <div class="handcraft-wrapper w-full overflow-hidden">
+            <div class="marquee-track" id="handcraftMarquee">
+                <!-- JavaScript will populate this -->
+            </div>
+        </div>
+    </section>
+
     <!-- Testimonial Section -->
     <section class="py-20 bg-slate-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -462,7 +563,47 @@
                 mobileBadge.style.display = "none";
             }
         }
-        document.addEventListener("DOMContentLoaded", updateCartCount);
+        document.addEventListener("DOMContentLoaded", () => {
+            updateCartCount();
+            initHandCraftGallery();
+        });
+
+        function initHandCraftGallery() {
+            const marqueeTrack = document.getElementById('handcraftMarquee');
+            if (!marqueeTrack) return;
+
+            // 31 Images
+            const imageCount = 31;
+            const images = Array.from({
+                length: imageCount
+            }, (_, i) => `i${i + 1}.jpeg`);
+
+            // Create card generator
+            const createCard = (imgName) => {
+                const div = document.createElement('div');
+                div.className = 'craft-card float-anim group bg-white cursor-pointer';
+                div.innerHTML = `
+            <img src="Hand Craft Images/${imgName}" 
+                 class="w-full h-full object-cover transition duration-700 group-hover:scale-110" 
+                 alt="Hand Craft Art"
+                 loading="lazy">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                <div>
+                   <span class="block text-white font-bold text-lg transform translate-y-4 group-hover:translate-y-0 transition duration-300 delay-75">Handcrafted Art</span>
+                   <span class="block text-white/80 text-sm transform translate-y-4 group-hover:translate-y-0 transition duration-300 delay-100">Pure Coconut Shell</span>
+                </div>
+            </div>
+        `;
+                return div;
+            };
+
+            // Populate Marquee (Double for infinite loop effect)
+            const allImages = [...images, ...images];
+
+            allImages.forEach(img => {
+                marqueeTrack.appendChild(createCard(img));
+            });
+        }
 
         // Back to Top & Navbar Scroll Effect
         const backToTopBtn = document.getElementById('back-to-top');
