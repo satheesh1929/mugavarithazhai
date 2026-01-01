@@ -24,7 +24,7 @@ Since this is a static website using HTML and Tailwind CSS (via CDN), you do **n
 -   Product Listing with Cart functionality.
 -   WhatsApp Ordering System.
 -   Premium "Nature" Aesthetic.
-=======
+  
 # Mugavari Thazhai
  <h4>Click here to check the website</h4>
 <h2>https://mugavarithazhai.in/</h2>
