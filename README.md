@@ -24,9 +24,7 @@ Since this is a static website using HTML and Tailwind CSS (via CDN), you do **n
 -   Product Listing with Cart functionality.
 -   WhatsApp Ordering System.
 -   Premium "Nature" Aesthetic.
-
-> **Note**: If you want to use a local development server, you can install the "Live Server" extension in VS Code.
 =======
 # Mugavari Thazhai
  <h4>Click here to check the website</h4>
-<h2>https://satheesh1929.github.io/mugavarithazhai/</h2>
+<h2>https://mugavarithazhai.in/</h2>
