@@ -5,6 +5,17 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Mugavari Thazhai — Products</title>
+  <meta name="description"
+    content="Explore our range of authentic Pollachi products including cold-pressed coconut oil, groundnut oil, and handcrafted coconut shell art. Pure, organic, and delivered with love.">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Mugavari Thazhai Products",
+    "description": "Authentic Pollachi products: Cold-pressed oils and Handcrafts.",
+    "url": "https://mugavarithazhai.com/products.html"
+  }
+  </script>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
@@ -106,7 +117,7 @@
                 onerror="this.onerror=null;this.src='https://placehold.co/125x125/E0F2E9/0E2C18?text=Logo'"
                 class="h-12 w-12 rounded-full border-2 border-primary shadow-sm" alt="Logo">
             </a>
-            <h1 class="text-xl md:text-2xl font-bold text-primary tracking-tight">Mugavari Thazhai</h1>
+            <div class="text-xl md:text-2xl font-bold text-primary tracking-tight">Mugavari Thazhai</div>
           </div>
 
           <!-- Desktop Menu -->
@@ -152,7 +163,7 @@
     </nav>
 
     <!-- Header / Breadcrumb -->
-    <div class="pt-32 pb-12 bg-gradient-to-b from-secondary to-slate-50 px-4 relative overflow-hidden">
+    <div class="pt-24 lg:pt-32 pb-12 bg-gradient-to-b from-secondary to-slate-50 px-4 relative overflow-hidden">
       <!-- Blobs (Subtle) -->
       <div
         class="absolute top-0 -left-10 w-64 h-64 bg-green-200 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-blob">
@@ -174,7 +185,7 @@
 
         <!-- Product Card 1 -->
         <div
-          class="bg-white rounded-2xl shadow-sm hover:shadow-xl transition duration-300 overflow-hidden border border-gray-100 group"
+          class="bg-white rounded-2xl shadow-sm hover:shadow-2xl hover:-translate-y-2 transition duration-500 overflow-hidden border border-gray-100 group"
           data-name="Pure Coconut Oil" data-price="250">
           <div class="relative overflow-hidden h-64 bg-gray-100">
             <img src="images/coconut oil.jpg"
@@ -205,7 +216,7 @@
 
         <!-- Product Card 2 -->
         <div
-          class="bg-white rounded-2xl shadow-sm hover:shadow-xl transition duration-300 overflow-hidden border border-gray-100 group"
+          class="bg-white rounded-2xl shadow-sm hover:shadow-2xl hover:-translate-y-2 transition duration-500 overflow-hidden border border-gray-100 group"
           data-name="Groundnut Oil" data-price="220">
           <div class="relative overflow-hidden h-64 bg-gray-100">
             <img src="images/groundnut oil.jpg"
@@ -233,7 +244,7 @@
 
         <!-- Product Card 3 -->
         <div
-          class="bg-white rounded-2xl shadow-sm hover:shadow-xl transition duration-300 overflow-hidden border border-gray-100 group"
+          class="bg-white rounded-2xl shadow-sm hover:shadow-2xl hover:-translate-y-2 transition duration-500 overflow-hidden border border-gray-100 group"
           data-name="Handcrafts" data-price="300">
           <div class="relative overflow-hidden h-64 bg-gray-100">
             <img src="images/handCraft.jpg"
@@ -288,7 +299,7 @@
           </div>
           <button id="whatsappOrderBtn"
             class="w-full md:w-auto px-8 py-4 bg-green-500 text-white font-bold rounded-xl hover:bg-green-600 transition shadow-lg flex items-center justify-center gap-2">
-            <i class="fab fa-whatsapp text-xl"></i> Proceed to Order on WhatsApp
+            <i class="fab fa-whatsapp text-xl"></i> Order on WhatsApp
           </button>
         </div>
       </div>
@@ -510,11 +521,11 @@
     document.getElementById("orderForm").addEventListener("submit", e => {
       e.preventDefault();
       const name = document.getElementById("name").value, phone = document.getElementById("phone").value, address = document.getElementById("address").value, cart = getCart();
-      let msg = `*New Order from Mugavari Thazhai*\n\n`;
+      let msg = `*New Order – Mugavari Thazhai*\n\n`;
       cart.forEach(i => msg += `📦 ${i.name} x ${i.qty} - ₹${i.price * i.qty}\n`);
       let total = cart.reduce((s, it) => s + (it.price * it.qty), 0);
       msg += `\n💰 *Total Amount: ₹${total}*\n`;
-      msg += `\n👤 Name: ${name}\n📞 Phone: ${phone}\n📍 Address: ${address}\n\nThank You!`;
+      msg += `\n👤 Name: ${name}\n📞 Phone: ${phone}\n📍 Address: ${address}\n\nThank you for choosing Mugavari Thazhai `;
 
       window.open(`https://wa.me/${whatsappBusinessNumber}?text=${encodeURIComponent(msg)}`, "_blank");
 
