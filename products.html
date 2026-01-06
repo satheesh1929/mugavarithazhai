@@ -39,13 +39,6 @@
   <script>
     tailwind.config = {
       theme: {
-        screens: {
-          'sm': '1px',
-          'md': '2px',
-          'lg': '3px',
-          'xl': '4px',
-          '2xl': '5px',
-        },
         extend: {
           colors: {
             primary: '#0E2C18', // Deep Emerald Green
@@ -61,10 +54,21 @@
     }
   </script>
   <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      width: 100%;
+      overflow-x: hidden;
+    }
+
     #scale-wrapper {
-      width: 1440px;
-      transform-origin: top left;
-      max-width: none;
+      width: 100%;
+      max-width: 100%;
+      transform: none !important;
     }
 
     body {
@@ -125,23 +129,23 @@
   <div id="scale-wrapper">
     <!-- Navbar -->
     <nav class="fixed w-full z-50 glass-nav transition-all duration-300 shadow-sm" id="navbar">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between items-center h-20">
+      <div class="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16 sm:h-20">
           <!-- Logo -->
-          <div class="flex-shrink-0 flex items-center gap-3">
+          <div class="flex-shrink-0 flex items-center gap-2 sm:gap-3">
             <a href="index.html" class="block">
               <img src="images/mugavari thazhai logo.jpg"
                 onerror="this.onerror=null;this.src='https://placehold.co/125x125/E0F2E9/0E2C18?text=Logo'"
-                class="h-12 w-12 rounded-full border-2 border-primary shadow-sm" alt="Logo">
+                class="h-10 sm:h-12 w-10 sm:w-12 rounded-full border-2 border-primary shadow-sm" alt="Logo">
             </a>
-            <div class="text-xl md:text-2xl font-bold text-primary tracking-tight">Mugavari Thazhai</div>
+            <div class="text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-primary tracking-tight line-clamp-1">Mugavari Thazhai</div>
           </div>
 
           <!-- Desktop Menu -->
           <div class="hidden md:flex items-center space-x-8">
-            <a href="index.html" class="text-gray-700 hover:text-primary font-medium transition">Home</a>
-            <a href="products.html" class="text-primary font-bold transition">Products</a>
-            <a href="#footer" class="text-gray-700 hover:text-primary font-medium transition">Contact</a>
+            <a href="index.html" class="text-gray-700 hover:text-primary font-medium transition text-sm">Home</a>
+            <a href="products.html" class="text-primary font-bold transition text-sm">Products</a>
+            <a href="#footer" class="text-gray-700 hover:text-primary font-medium transition text-sm">Contact</a>
 
             <!-- Cart Icon -->
             <a href="#cart" class="relative group">
@@ -152,14 +156,14 @@
           </div>
 
           <!-- Mobile Menu Button -->
-          <div class="md:hidden flex items-center gap-4">
+          <div class="md:hidden flex items-center gap-3 sm:gap-4">
             <a href="#cart" class="relative">
-              <i class="fa fa-shopping-cart text-2xl text-gray-700"></i>
+              <i class="fa fa-shopping-cart text-xl sm:text-2xl text-gray-700"></i>
               <span id="mobile-cart-count"
                 class="absolute -top-2 -right-2 bg-accent text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full hidden">0</span>
             </a>
             <button id="mobile-menu-btn" class="text-gray-700 focus:outline-none">
-              <i class="fa fa-bars text-2xl"></i>
+              <i class="fa fa-bars text-xl sm:text-2xl"></i>
             </button>
           </div>
         </div>
@@ -167,20 +171,20 @@
 
       <!-- Mobile Menu -->
       <div id="mobile-menu"
-        class="md:hidden hidden bg-white border-t border-gray-100 absolute w-full left-0 top-20 shadow-lg">
-        <div class="px-4 pt-2 pb-6 space-y-2">
+        class="md:hidden hidden bg-white border-t border-gray-100 absolute w-full left-0 top-16 sm:top-20 shadow-lg">
+        <div class="px-3 sm:px-4 pt-2 pb-4 sm:pb-6 space-y-2">
           <a href="index.html"
-            class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50">Home</a>
+            class="block px-3 py-2 rounded-md text-sm sm:text-base font-medium text-gray-700 hover:bg-gray-50">Home</a>
           <a href="products.html"
-            class="block px-3 py-2 rounded-md text-base font-medium text-primary bg-green-50">Products</a>
+            class="block px-3 py-2 rounded-md text-sm sm:text-base font-medium text-primary bg-green-50">Products</a>
           <a href="#footer"
-            class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50">Contact</a>
+            class="block px-3 py-2 rounded-md text-sm sm:text-base font-medium text-gray-700 hover:bg-gray-50">Contact</a>
         </div>
       </div>
     </nav>
 
     <!-- Header / Breadcrumb -->
-    <div class="pt-24 lg:pt-32 pb-12 bg-gradient-to-b from-secondary to-slate-50 px-4 relative overflow-hidden">
+    <div class="pt-20 sm:pt-24 lg:pt-32 pb-8 sm:pb-12 bg-gradient-to-b from-secondary to-slate-50 px-3 sm:px-4 md:px-6 relative overflow-hidden">
       <!-- Blobs (Subtle) -->
       <div
         class="absolute top-0 -left-10 w-64 h-64 bg-green-200 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-blob">
@@ -190,30 +194,28 @@
       </div>
 
       <div class="max-w-7xl mx-auto text-center relative z-10">
-        <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4 drop-shadow-sm">Our Products</h1>
-        <p class="text-gray-600 text-lg max-w-2xl mx-auto">Discover the purity of Pollachi. From cold-pressed oils to
-          handcrafted coconut shell art.</p>
+        <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-2 sm:mb-4 drop-shadow-sm">Our Products</h1>
+        <p class="text-gray-600 text-sm sm:text-base md:text-lg max-w-2xl mx-auto">Discover the purity of Pollachi. From cold-pressed oils to handcrafted coconut shell art.</p>
       </div>
     </div>
 
     <!-- Products Grid -->
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20" id="products">
-      <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+    <main class="w-full max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 py-8 pb-20" id="products">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
 
-        <!-- Product Card 1 -->
-        <div
-          class="bg-white rounded-2xl shadow-sm hover:shadow-2xl hover:-translate-y-2 transition duration-500 overflow-hidden border border-gray-100 group"
-          data-name="Pure Coconut Oil" data-price="250">
-          <div class="relative overflow-hidden h-64 bg-gray-100">
+        <!-- Product Card 1: Pure Coconut Oil with Variants -->
+        <div class="bg-white rounded-xl sm:rounded-2xl shadow-md hover:shadow-xl transition duration-300 overflow-hidden border border-gray-100 product-card"
+          data-product-id="coconut-oil" data-product-name="Pure Coconut Oil" data-variants='[{"id":"1000ml","label":"1000ml","price":400},{"id":"500ml","label":"500ml","price":210},{"id":"200ml","label":"200ml","price":90}]' data-default-variant="1000ml">
+          <div class="relative overflow-hidden h-48 sm:h-56 md:h-64 bg-gray-100">
             <img src="images/coconut oil.jpg"
               onerror="this.onerror=null;this.src='https://placehold.co/600x400/E0F2E9/0E2C18?text=Coconut+Oil'"
-              class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
-            <div
-              class="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-xs font-bold text-primary shadow-sm">
-              Best Seller</div>
+              class="w-full h-full object-cover transition duration-700">
+            <div class="absolute top-2 sm:top-4 right-2 sm:right-4 bg-white/90 backdrop-blur px-2 sm:px-3 py-1 rounded-full text-xs font-bold text-primary shadow-sm">
+              Best Seller
+            </div>
           </div>
-          <div class="p-6">
-            <h4 class="text-xl font-bold text-gray-900 mb-1">Pure Coconut Oil</h4>
+          <div class="p-3 sm:p-4 md:p-6">
+            <h4 class="text-lg sm:text-xl font-bold text-gray-900 mb-2">Pure Coconut Oil</h4>
             <div class="flex items-center mb-3">
               <div class="text-yellow-400 text-xs gap-0.5 flex">
                 <i class="fas fa-star"></i>
@@ -222,79 +224,162 @@
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star-half-alt"></i>
               </div>
-              <span class="text-xs text-gray-500 ml-2 font-medium">4.8 (124 reviews)</span>
+              <span class="text-xs text-gray-500 ml-2 font-medium">4.8 (124)</span>
             </div>
-            <div class="flex items-center justify-between mb-4">
-              <span class="text-2xl font-bold text-green-700">₹250 <span class="text-sm font-normal text-gray-500">/
-                  Litre</span></span>
-              <div class="flex items-center border rounded-lg">
-                <button class="px-3 py-1 hover:bg-gray-100" onclick="this.nextElementSibling.stepDown()">-</button>
-                <input type="number" class="qty-input w-12 text-center border-x py-1 focus:outline-none" min="1"
-                  value="1" readonly>
-                <button class="px-3 py-1 hover:bg-gray-100" onclick="this.previousElementSibling.stepUp()">+</button>
+            
+            <!-- Variant/Size Selector as Dropdown -->
+            <div class="mb-4">
+              <label class="block text-xs sm:text-sm font-medium text-gray-700 mb-1 sm:mb-2">Select Size:</label>
+              <select class="size-dropdown w-full border border-gray-300 rounded-lg px-2 sm:px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary bg-white cursor-pointer">
+                <option value="1000ml" data-price="400" selected>1000ml - ₹400</option>
+                <option value="500ml" data-price="210">500ml - ₹210</option>
+                <option value="200ml" data-price="90">200ml - ₹90</option>
+              </select>
+            </div>
+
+            <!-- Price Display -->
+            <div class="mb-3 sm:mb-4 pb-3 sm:pb-4 border-b border-gray-200">
+              <p class="text-xs sm:text-sm text-gray-600 mb-1">Unit Price:</p>
+              <p class="text-2xl sm:text-3xl font-bold text-green-700">₹<span class="unit-price">400</span></p>
+            </div>
+
+            <!-- Quantity Control -->
+            <div class="mb-3 sm:mb-4">
+              <p class="text-xs sm:text-sm text-gray-600 mb-2">Quantity:</p>
+              <div class="flex items-center border border-gray-300 rounded-lg w-fit">
+                <button class="qty-decrease px-2 sm:px-3 py-1 sm:py-2 hover:bg-gray-100 transition text-gray-600 font-bold text-sm">−</button>
+                <input type="number" class="qty-input text-center py-1 sm:py-2 px-2 w-12 sm:w-14 border-x border-gray-300 focus:outline-none text-sm" value="1" min="1">
+                <button class="qty-increase px-2 sm:px-3 py-1 sm:py-2 hover:bg-gray-100 transition text-gray-600 font-bold text-sm">+</button>
               </div>
             </div>
-            <button
-              class="add-btn w-full py-3 bg-primary text-white font-medium rounded-xl hover:bg-green-800 transition shadow-lg shadow-green-900/20 active:scale-95">
+
+            <!-- Total Price -->
+            <div class="mb-3 sm:mb-4 pb-3 sm:pb-4 border-b border-gray-200">
+              <p class="text-xs sm:text-sm text-gray-600 mb-1">Total Price:</p>
+              <p class="text-xl sm:text-2xl font-bold text-primary">₹<span class="total-price">400</span></p>
+            </div>
+
+            <button class="add-to-cart w-full py-2 sm:py-3 bg-primary text-white font-medium text-sm sm:text-base rounded-lg sm:rounded-xl hover:bg-green-800 transition shadow-lg shadow-green-900/20 active:scale-95 touch-manipulation">
               Add to Cart <i class="fas fa-shopping-cart ml-2"></i>
             </button>
           </div>
         </div>
 
-        <!-- Product Card 2 -->
-        <div
-          class="bg-white rounded-2xl shadow-sm hover:shadow-2xl hover:-translate-y-2 transition duration-500 overflow-hidden border border-gray-100 group"
-          data-name="Groundnut Oil" data-price="220">
-          <div class="relative overflow-hidden h-64 bg-gray-100">
+        <!-- Product Card 2: Groundnut Oil -->
+        <div class="bg-white rounded-xl sm:rounded-2xl shadow-md hover:shadow-xl transition duration-300 overflow-hidden border border-gray-100 product-card"
+          data-product-id="groundnut-oil" data-product-name="Groundnut Oil" data-variants='[{"id":"1000ml","label":"1000ml","price":270}]' data-default-variant="1000ml">
+          <div class="relative overflow-hidden h-48 sm:h-56 md:h-64 bg-gray-100">
             <img src="images/groundnut oil.jpg"
-              onerror="this.onerror=null;this.src='https://placehold.co/600x400/E0F2E9/0E2C18?text=Groundnut+Oil'"
-              class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+              onerror="this.onerror=null;this.src='https://placehold.co/600x400/FDF3E7/8B6F47?text=Groundnut+Oil'"
+              class="w-full h-full object-cover transition duration-700">
+            <div class="absolute top-2 sm:top-4 right-2 sm:right-4 bg-white/90 backdrop-blur px-2 sm:px-3 py-1 rounded-full text-xs font-bold text-orange-600 shadow-sm">
+              Pure
+            </div>
           </div>
-          <div class="p-6">
-            <h4 class="text-xl font-bold text-gray-900 mb-2">Groundnut Oil</h4>
-            <div class="flex items-center justify-between mb-4">
-              <span class="text-2xl font-bold text-green-700">₹220 <span class="text-sm font-normal text-gray-500">/
-                  Litre</span></span>
-              <div class="flex items-center border rounded-lg">
-                <button class="px-3 py-1 hover:bg-gray-100" onclick="this.nextElementSibling.stepDown()">-</button>
-                <input type="number" class="qty-input w-12 text-center border-x py-1 focus:outline-none" min="1"
-                  value="1" readonly>
-                <button class="px-3 py-1 hover:bg-gray-100" onclick="this.previousElementSibling.stepUp()">+</button>
+          <div class="p-3 sm:p-4 md:p-6">
+            <h4 class="text-lg sm:text-xl font-bold text-gray-900 mb-2">Groundnut Oil</h4>
+            <div class="flex items-center mb-3">
+              <div class="text-yellow-400 text-xs gap-0.5 flex">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+              <span class="text-xs text-gray-500 ml-2 font-medium">5.0 (89)</span>
+            </div>
+            
+            <!-- Variant/Size Selector -->
+            <div class="mb-4">
+              <label class="block text-xs sm:text-sm font-medium text-gray-700 mb-1 sm:mb-2">Size:</label>
+              <select class="size-dropdown w-full border border-gray-300 rounded-lg px-2 sm:px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary bg-white cursor-pointer">
+                <option value="1000ml" data-price="270" selected>1000ml - ₹270</option>
+              </select>
+            </div>
+
+            <!-- Price Display -->
+            <div class="mb-3 sm:mb-4 pb-3 sm:pb-4 border-b border-gray-200">
+              <p class="text-xs sm:text-sm text-gray-600 mb-1">Unit Price:</p>
+              <p class="text-2xl sm:text-3xl font-bold text-green-700">₹<span class="unit-price">270</span></p>
+            </div>
+
+            <!-- Quantity Control -->
+            <div class="mb-3 sm:mb-4">
+              <p class="text-xs sm:text-sm text-gray-600 mb-2">Quantity:</p>
+              <div class="flex items-center border border-gray-300 rounded-lg w-fit">
+                <button class="qty-decrease px-2 sm:px-3 py-1 sm:py-2 hover:bg-gray-100 transition text-gray-600 font-bold text-sm">−</button>
+                <input type="number" class="qty-input text-center py-1 sm:py-2 px-2 w-12 sm:w-14 border-x border-gray-300 focus:outline-none text-sm" value="1" min="1">
+                <button class="qty-increase px-2 sm:px-3 py-1 sm:py-2 hover:bg-gray-100 transition text-gray-600 font-bold text-sm">+</button>
               </div>
             </div>
-            <button
-              class="add-btn w-full py-3 bg-primary text-white font-medium rounded-xl hover:bg-green-800 transition shadow-lg shadow-green-900/20 active:scale-95">
+
+            <!-- Total Price -->
+            <div class="mb-3 sm:mb-4 pb-3 sm:pb-4 border-b border-gray-200">
+              <p class="text-xs sm:text-sm text-gray-600 mb-1">Total Price:</p>
+              <p class="text-xl sm:text-2xl font-bold text-primary">₹<span class="total-price">270</span></p>
+            </div>
+
+            <button class="add-to-cart w-full py-2 sm:py-3 bg-primary text-white font-medium text-sm sm:text-base rounded-lg sm:rounded-xl hover:bg-green-800 transition shadow-lg shadow-green-900/20 active:scale-95 touch-manipulation">
               Add to Cart <i class="fas fa-shopping-cart ml-2"></i>
             </button>
           </div>
         </div>
 
-        <!-- Product Card 3 -->
-        <div
-          class="bg-white rounded-2xl shadow-sm hover:shadow-2xl hover:-translate-y-2 transition duration-500 overflow-hidden border border-gray-100 group"
-          data-name="Handcrafts" data-price="300">
-          <div class="relative overflow-hidden h-64 bg-gray-100">
+        <!-- Product Card 3: Coconut Shell Handcrafts -->
+        <div class="bg-white rounded-xl sm:rounded-2xl shadow-md hover:shadow-xl transition duration-300 overflow-hidden border border-gray-100 product-card"
+          data-product-id="handcraft" data-product-name="Coconut Shell Handcrafts" data-variants='[{"id":"customizable","label":"Customizable","price":150}]' data-default-variant="customizable">
+          <div class="relative overflow-hidden h-48 sm:h-56 md:h-64 bg-gray-100">
             <img src="images/handCraft.jpg"
-              onerror="this.onerror=null;this.src='https://placehold.co/600x400/E0F2E9/0E2C18?text=Hand+Crafts'"
-              class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
-            <div
-              class="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-xs font-bold text-earth shadow-sm">
-              Handmade</div>
+              onerror="this.onerror=null;this.src='https://placehold.co/600x400/D4AF96/5A4A3A?text=Hand+Crafts'"
+              class="w-full h-full object-cover transition duration-700">
+            <div class="absolute top-2 sm:top-4 right-2 sm:right-4 bg-white/90 backdrop-blur px-2 sm:px-3 py-1 rounded-full text-xs font-bold text-amber-700 shadow-sm">
+              Handmade
+            </div>
           </div>
-          <div class="p-6">
-            <h4 class="text-xl font-bold text-gray-900 mb-2">Coconut Shell Handcrafts</h4>
-            <div class="flex items-center justify-between mb-4">
-              <span class="text-2xl font-bold text-green-700">₹300 <span class="text-sm font-normal text-gray-500">/
-                  Piece</span></span>
-              <div class="flex items-center border rounded-lg">
-                <button class="px-3 py-1 hover:bg-gray-100" onclick="this.nextElementSibling.stepDown()">-</button>
-                <input type="number" class="qty-input w-12 text-center border-x py-1 focus:outline-none" min="1"
-                  value="1" readonly>
-                <button class="px-3 py-1 hover:bg-gray-100" onclick="this.previousElementSibling.stepUp()">+</button>
+          <div class="p-3 sm:p-4 md:p-6">
+            <h4 class="text-lg sm:text-xl font-bold text-gray-900 mb-2">Coconut Shell Handcrafts</h4>
+            <div class="flex items-center mb-3">
+              <div class="text-yellow-400 text-xs gap-0.5 flex">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+              </div>
+              <span class="text-xs text-gray-500 ml-2 font-medium">4.9 (156)</span>
+            </div>
+            
+            <!-- Variant/Size Selector as Dropdown -->
+            <div class="mb-4">
+              <label class="block text-xs sm:text-sm font-medium text-gray-700 mb-1 sm:mb-2">Type:</label>
+              <select class="size-dropdown w-full border border-gray-300 rounded-lg px-2 sm:px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary bg-white cursor-pointer">
+                <option value="customizable" data-price="150" selected>Customizable - ₹150</option>
+              </select>
+            </div>
+
+            <!-- Price Display -->
+            <div class="mb-3 sm:mb-4 pb-3 sm:pb-4 border-b border-gray-200">
+              <p class="text-xs sm:text-sm text-gray-600 mb-1">Unit Price:</p>
+              <p class="text-2xl sm:text-3xl font-bold text-green-700">₹<span class="unit-price">150</span></p>
+            </div>
+
+            <!-- Quantity Control -->
+            <div class="mb-3 sm:mb-4">
+              <p class="text-xs sm:text-sm text-gray-600 mb-2">Quantity:</p>
+              <div class="flex items-center border border-gray-300 rounded-lg w-fit">
+                <button class="qty-decrease px-2 sm:px-3 py-1 sm:py-2 hover:bg-gray-100 transition text-gray-600 font-bold text-sm">−</button>
+                <input type="number" class="qty-input text-center py-1 sm:py-2 px-2 w-12 sm:w-14 border-x border-gray-300 focus:outline-none text-sm" value="1" min="1">
+                <button class="qty-increase px-2 sm:px-3 py-1 sm:py-2 hover:bg-gray-100 transition text-gray-600 font-bold text-sm">+</button>
               </div>
             </div>
-            <button
-              class="add-btn w-full py-3 bg-primary text-white font-medium rounded-xl hover:bg-green-800 transition shadow-lg shadow-green-900/20 active:scale-95">
+
+            <!-- Total Price -->
+            <div class="mb-3 sm:mb-4 pb-3 sm:pb-4 border-b border-gray-200">
+              <p class="text-xs sm:text-sm text-gray-600 mb-1">Total Price:</p>
+              <p class="text-xl sm:text-2xl font-bold text-primary">₹<span class="total-price">150</span></p>
+            </div>
+
+            <button class="add-to-cart w-full py-2 sm:py-3 bg-primary text-white font-medium text-sm sm:text-base rounded-lg sm:rounded-xl hover:bg-green-800 transition shadow-lg shadow-green-900/20 active:scale-95 touch-manipulation">
               Add to Cart <i class="fas fa-shopping-cart ml-2"></i>
             </button>
           </div>
@@ -304,72 +389,72 @@
     </main>
 
     <!-- Cart Section -->
-    <section id="cart" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
-      <div class="bg-white rounded-3xl shadow-xl p-8 border border-gray-100">
-        <div class="flex items-center justify-between mb-8">
-          <h2 class="text-2xl font-bold text-gray-900 flex items-center gap-3">
+    <section id="cart" class="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 pb-20">
+      <div class="bg-white rounded-xl sm:rounded-2xl lg:rounded-3xl shadow-lg sm:shadow-xl p-4 sm:p-6 md:p-8 border border-gray-100">
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-0 mb-6 sm:mb-8">
+          <h2 class="text-xl sm:text-2xl font-bold text-gray-900 flex items-center gap-2 sm:gap-3">
             <i class="fas fa-shopping-bag text-primary"></i> Your Cart
           </h2>
           <button onclick="localStorage.removeItem('cart'); updateCartUI();"
-            class="text-sm text-red-500 hover:text-red-700 underline">Clear Cart</button>
+            class="text-xs sm:text-sm text-red-500 hover:text-red-700 underline self-start sm:self-auto">Clear Cart</button>
         </div>
 
         <div id="cart-items" class="overflow-x-auto min-h-[100px]">
-          <p class="text-gray-500 text-center py-8">Your cart is currently empty. Start adding some products!</p>
+          <p class="text-gray-500 text-center py-8 text-sm sm:text-base">Your cart is currently empty. Start adding some products!</p>
         </div>
 
-        <div class="flex flex-col md:flex-row justify-between items-center mt-8 pt-8 border-t border-gray-100 hidden"
+        <div class="flex flex-col gap-4 sm:gap-6 mt-6 sm:mt-8 pt-6 sm:pt-8 border-t border-gray-100 hidden"
           id="cart-footer">
-          <div class="mb-6 md:mb-0 text-center md:text-left">
-            <p class="text-gray-500 text-sm mb-1">Total Amount</p>
-            <h3 class="text-3xl font-bold text-gray-900">₹<span id="cart-total">0</span></h3>
+          <div class="text-center sm:text-left">
+            <p class="text-gray-500 text-xs sm:text-sm mb-1">Total Amount</p>
+            <h3 class="text-2xl sm:text-3xl font-bold text-gray-900">₹<span id="cart-total">0</span></h3>
           </div>
           <button id="whatsappOrderBtn"
-            class="w-full md:w-auto px-8 py-4 bg-green-500 text-white font-bold rounded-xl hover:bg-green-600 transition shadow-lg flex items-center justify-center gap-2">
-            <i class="fab fa-whatsapp text-xl"></i> Order on WhatsApp
+            class="w-full px-4 sm:px-8 py-3 sm:py-4 bg-green-500 text-white font-bold text-sm sm:text-base rounded-lg sm:rounded-xl hover:bg-green-600 transition shadow-lg flex items-center justify-center gap-2">
+            <i class="fab fa-whatsapp text-lg sm:text-xl"></i> Order on WhatsApp
           </button>
         </div>
       </div>
     </section>
 
     <!-- Footer (Consistent with index.html) -->
-    <footer id="footer" class="bg-gray-900 text-gray-300 py-12">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <footer id="footer" class="bg-gray-900 text-gray-300 py-8 sm:py-12">
+      <div class="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
         <div class="text-center">
           <img src="images/mugavari thazhai logo.jpg"
             onerror="this.onerror=null;this.src='https://placehold.co/100x100/E0F2E9/0E2C18?text=Logo'"
-            class="w-24 h-24 rounded-full mx-auto mb-6 border-2 border-gray-700" alt="Logo">
-          <p class="text-xl font-medium text-white mb-4">Pure & Authentic Products from Pollachi with Love ❤️</p>
-          <p class="text-sm text-gray-400 mb-8"><i class="fas fa-map-marker-alt mr-2 text-primary"></i> Location:
+            class="w-16 sm:w-20 md:w-24 h-16 sm:h-20 md:h-24 rounded-full mx-auto mb-4 sm:mb-6 border-2 border-gray-700" alt="Logo">
+          <p class="text-base sm:text-lg md:text-xl font-medium text-white mb-3 sm:mb-4">Pure & Authentic Products from Pollachi with Love ❤️</p>
+          <p class="text-xs sm:text-sm text-gray-400 mb-6 sm:mb-8"><i class="fas fa-map-marker-alt mr-2 text-primary"></i> Location:
             Pollachi, Coimbatore District, Tamil Nadu, India</p>
 
-          <div class="flex justify-center gap-8 mb-12">
+          <div class="flex justify-center gap-4 sm:gap-6 md:gap-8 mb-8 sm:mb-12">
             <a href="https://wa.me/919842535962" target="_blank" class="group">
-              <div class="bg-white p-3 rounded-full group-hover:bg-[#25D366] transition duration-300">
+              <div class="bg-white p-2 sm:p-3 rounded-full group-hover:bg-[#25D366] transition duration-300">
                 <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/whatsapp.svg"
-                  class="w-6 h-6 group-hover:invert transition" alt="WhatsApp">
+                  class="w-5 sm:w-6 h-5 sm:h-6 group-hover:invert transition" alt="WhatsApp">
               </div>
             </a>
             <a href="https://www.instagram.com/jackcity_official" target="_blank" class="group">
-              <div class="bg-white p-3 rounded-full group-hover:bg-[#E1306C] transition duration-300">
+              <div class="bg-white p-2 sm:p-3 rounded-full group-hover:bg-[#E1306C] transition duration-300">
                 <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg"
-                  class="w-6 h-6 group-hover:invert transition" alt="Instagram">
+                  class="w-5 sm:w-6 h-5 sm:h-6 group-hover:invert transition" alt="Instagram">
               </div>
             </a>
             <a href="https://www.youtube.com/@JACKCITYVlog" target="_blank" class="group">
-              <div class="bg-white p-3 rounded-full group-hover:bg-[#FF0000] transition duration-300">
+              <div class="bg-white p-2 sm:p-3 rounded-full group-hover:bg-[#FF0000] transition duration-300">
                 <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/youtube.svg"
-                  class="w-6 h-6 group-hover:invert transition" alt="YouTube">
+                  class="w-5 sm:w-6 h-5 sm:h-6 group-hover:invert transition" alt="YouTube">
               </div>
             </a>
           </div>
 
-          <div class="flex flex-col items-center gap-4 border-t border-gray-800 pt-8">
-            <p class="text-sm text-gray-500">© 2025 - SK | Mugavari Thazhai</p>
+          <div class="flex flex-col items-center gap-3 sm:gap-4 border-t border-gray-800 pt-6 sm:pt-8">
+            <p class="text-xs sm:text-sm text-gray-500">© 2025 - SK | Mugavari Thazhai</p>
 
             <!-- Buy Me a Coffee Button -->
             <a href="https://buymeachai.ezee.li/satheesh_devoloper" target="_blank"
-              class="inline-flex items-center gap-2 px-4 py-2 bg-yellow-400 text-gray-900 rounded-full text-sm font-bold hover:bg-yellow-300 transition hover:scale-105 shadow-lg">
+              class="inline-flex items-center gap-2 px-3 sm:px-4 py-2 bg-yellow-400 text-gray-900 rounded-full text-xs sm:text-sm font-bold hover:bg-yellow-300 transition hover:scale-105 shadow-lg">
               <i class="fas fa-coffee"></i> Buy me a Chai
             </a>
           </div>
@@ -380,38 +465,38 @@
 
     <!-- WhatsApp Order Modal -->
     <div id="orderModal"
-      class="fixed inset-0 bg-black/60 backdrop-blur-sm hidden items-center justify-center p-4 z-[100]">
+      class="fixed inset-0 bg-black/60 backdrop-blur-sm hidden items-center justify-center p-3 sm:p-4 z-[100]">
       <div
-        class="bg-white rounded-2xl shadow-2xl w-full max-w-lg p-8 animate-fadeIn transform scale-100 transition-all">
-        <div class="text-center mb-6">
-          <h3 class="text-2xl font-bold text-gray-900">Place Your Order</h3>
-          <p class="text-gray-500">We'll send your cart details directly to WhatsApp.</p>
+        class="bg-white rounded-lg sm:rounded-2xl shadow-2xl w-full max-w-lg p-4 sm:p-8 animate-fadeIn transform scale-100 transition-all max-h-[90vh] overflow-y-auto">
+        <div class="text-center mb-4 sm:mb-6">
+          <h3 class="text-xl sm:text-2xl font-bold text-gray-900">Place Your Order</h3>
+          <p class="text-xs sm:text-sm text-gray-500 mt-1">We'll send your cart details directly to WhatsApp.</p>
         </div>
-        <form id="orderForm" class="space-y-4">
+        <form id="orderForm" class="space-y-3 sm:space-y-4">
           <div>
-            <label class="block text-sm font-medium text-gray-700 mb-1">Your Name</label>
+            <label class="block text-xs sm:text-sm font-medium text-gray-700 mb-1">Your Name</label>
             <input type="text" id="name" placeholder="Ex: Arun Kumar"
-              class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition"
+              class="w-full px-3 sm:px-4 py-2 sm:py-3 bg-gray-50 border border-gray-200 rounded-lg sm:rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition text-sm"
               required>
           </div>
           <div>
-            <label class="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
+            <label class="block text-xs sm:text-sm font-medium text-gray-700 mb-1">Phone Number</label>
             <input type="tel" id="phone" placeholder="Ex: 9876543210"
-              class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition"
+              class="w-full px-3 sm:px-4 py-2 sm:py-3 bg-gray-50 border border-gray-200 rounded-lg sm:rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition text-sm"
               required>
           </div>
           <div>
-            <label class="block text-sm font-medium text-gray-700 mb-1">Delivery Address</label>
+            <label class="block text-xs sm:text-sm font-medium text-gray-700 mb-1">Delivery Address</label>
             <textarea id="address" placeholder="Full address with Pincode"
-              class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition h-24"
+              class="w-full px-3 sm:px-4 py-2 sm:py-3 bg-gray-50 border border-gray-200 rounded-lg sm:rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition h-20 sm:h-24 text-sm"
               required></textarea>
           </div>
-          <div class="flex gap-4 pt-2">
+          <div class="flex gap-2 sm:gap-4 pt-2">
             <button type="button" id="closeModalBtn"
-              class="flex-1 py-3 bg-gray-100 text-gray-700 font-medium rounded-xl hover:bg-gray-200 transition">Cancel</button>
+              class="flex-1 py-2 sm:py-3 bg-gray-100 text-gray-700 font-medium text-sm sm:text-base rounded-lg sm:rounded-xl hover:bg-gray-200 transition">Cancel</button>
             <button type="submit"
-              class="flex-1 py-3 bg-green-500 text-white font-bold rounded-xl hover:bg-green-600 transition flex items-center justify-center gap-2">
-              Send <i class="fab fa-whatsapp"></i>
+              class="flex-1 py-2 sm:py-3 bg-green-500 text-white font-bold text-sm sm:text-base rounded-lg sm:rounded-xl hover:bg-green-600 transition flex items-center justify-center gap-2">
+              Send <i class="fab fa-whatsapp text-sm sm:text-base"></i>
             </button>
           </div>
         </form>
@@ -421,150 +506,333 @@
 
   <script>
       (function () {
-        const BASE_WIDTH = 1440;
         const wrapper = document.getElementById('scale-wrapper');
+        if (!wrapper) return;
 
-        function updateScale() {
-          if (!wrapper) return;
-
-          const viewportWidth = window.innerWidth;
-          let scale = viewportWidth / BASE_WIDTH;
-
-          if (scale >= 1) {
-            // Desktop or larger
-            wrapper.style.transform = 'none';
-            wrapper.style.width = '100%';
-            document.body.style.height = 'auto';
-          } else {
-            // Tablet / Mobile
-            wrapper.style.width = BASE_WIDTH + 'px';
-            wrapper.style.transform = `scale(${scale})`;
-
-            // Fix scroll height
-            const scaledHeight = wrapper.getBoundingClientRect().height;
-            document.body.style.height = scaledHeight + 'px';
-          }
-        }
-
-        window.addEventListener('load', updateScale);
-        window.addEventListener('resize', updateScale);
-        window.addEventListener('DOMContentLoaded', updateScale);
+        // Remove scaling for better mobile experience
+        wrapper.style.transform = 'none';
+        wrapper.style.width = '100%';
+        document.body.style.height = 'auto';
       })();
   </script>
 
   <script>
     const whatsappBusinessNumber = "919842535962";
 
-    // Mobile Menu
-    const btn = document.getElementById('mobile-menu-btn');
-    const menu = document.getElementById('mobile-menu');
-    btn.addEventListener('click', () => {
-      menu.classList.toggle('hidden');
-    });
-
-    function getCart() { return JSON.parse(localStorage.getItem("cart")) || []; }
-    function setCart(cart) { localStorage.setItem("cart", JSON.stringify(cart)); }
-
-    function updateCartUI() {
-      const cart = getCart(), items = document.getElementById("cart-items"), footer = document.getElementById("cart-footer"), badge = document.getElementById("cart-count"), mobileBadge = document.getElementById("mobile-cart-count");
-
-      // Update badges
-      const totalCount = cart.reduce((s, it) => s + it.qty, 0);
-      if (totalCount > 0) {
-        badge.classList.remove("hidden"); badge.textContent = totalCount;
-        mobileBadge.classList.remove("hidden"); mobileBadge.textContent = totalCount;
-      } else {
-        badge.classList.add("hidden");
-        mobileBadge.classList.add("hidden");
+    // ==========================================
+    // PRODUCT CARD FUNCTIONALITY
+    // ==========================================
+    
+    class ProductCard {
+      constructor(cardElement) {
+        this.card = cardElement;
+        this.productId = cardElement.dataset.productId;
+        this.productName = cardElement.dataset.productName;
+        this.sizeDropdown = cardElement.querySelector('.size-dropdown');
+        this.qtyInput = cardElement.querySelector('.qty-input');
+        this.qtyDecreaseBtn = cardElement.querySelector('.qty-decrease');
+        this.qtyIncreaseBtn = cardElement.querySelector('.qty-increase');
+        this.unitPriceSpan = cardElement.querySelector('.unit-price');
+        this.totalPriceSpan = cardElement.querySelector('.total-price');
+        this.addToCartBtn = cardElement.querySelector('.add-to-cart');
+        
+        this.currentVariant = this.sizeDropdown.value;
+        this.currentUnitPrice = parseInt(this.sizeDropdown.options[this.sizeDropdown.selectedIndex].dataset.price);
+        
+        this.init();
       }
 
-      items.innerHTML = ""; let total = 0;
+      init() {
+        // Size dropdown listener
+        this.sizeDropdown.addEventListener('change', (e) => this.handleSizeChange(e));
+
+        // Quantity control listeners
+        this.qtyDecreaseBtn.addEventListener('click', () => this.decreaseQuantity());
+        this.qtyIncreaseBtn.addEventListener('click', () => this.increaseQuantity());
+        this.qtyInput.addEventListener('change', () => this.updateTotalPrice());
+        this.qtyInput.addEventListener('input', () => this.updateTotalPrice());
+
+        // Add to cart listener
+        this.addToCartBtn.addEventListener('click', () => this.addToCart());
+      }
+
+      handleSizeChange(e) {
+        const selectedOption = e.target.options[e.target.selectedIndex];
+        this.currentVariant = selectedOption.value;
+        this.currentUnitPrice = parseInt(selectedOption.dataset.price);
+
+        // Update unit price display
+        this.unitPriceSpan.textContent = this.currentUnitPrice;
+        
+        // Update total price
+        this.updateTotalPrice();
+      }
+
+      increaseQuantity() {
+        const currentQty = parseInt(this.qtyInput.value);
+        this.qtyInput.value = currentQty + 1;
+        this.updateTotalPrice();
+      }
+
+      decreaseQuantity() {
+        const currentQty = parseInt(this.qtyInput.value);
+        if (currentQty > 1) {
+          this.qtyInput.value = currentQty - 1;
+          this.updateTotalPrice();
+        }
+      }
+
+      updateTotalPrice() {
+        const quantity = parseInt(this.qtyInput.value) || 1;
+        const totalPrice = this.currentUnitPrice * quantity;
+        this.totalPriceSpan.textContent = totalPrice;
+      }
+
+      addToCart() {
+        const quantity = parseInt(this.qtyInput.value) || 1;
+        const totalPrice = this.currentUnitPrice * quantity;
+        
+        const cartItem = {
+          productId: this.productId,
+          productName: this.productName,
+          variant: this.currentVariant,
+          unitPrice: this.currentUnitPrice,
+          quantity: quantity,
+          totalPrice: totalPrice,
+          timestamp: Date.now()
+        };
+
+        // Add to cart storage
+        const cart = getCart();
+        
+        // Check if exact same item exists
+        const existingItem = cart.find(item => 
+          item.productId === cartItem.productId && item.variant === cartItem.variant
+        );
+
+        if (existingItem) {
+          existingItem.quantity += quantity;
+          existingItem.totalPrice = existingItem.unitPrice * existingItem.quantity;
+        } else {
+          cart.push(cartItem);
+        }
+
+        setCart(cart);
+        updateCartUI();
+
+        // Visual feedback
+        const originalText = this.addToCartBtn.innerHTML;
+        this.addToCartBtn.innerHTML = '<i class="fas fa-check"></i> Added to Cart';
+        this.addToCartBtn.classList.add('bg-green-700');
+        
+        setTimeout(() => {
+          this.addToCartBtn.innerHTML = originalText;
+          this.addToCartBtn.classList.remove('bg-green-700');
+        }, 2000);
+
+        // Reset quantity to 1
+        this.qtyInput.value = 1;
+        this.updateTotalPrice();
+      }
+    }
+
+    // Initialize all product cards
+    document.querySelectorAll('.product-card').forEach(card => {
+      new ProductCard(card);
+    });
+
+    // ==========================================
+    // CART FUNCTIONALITY
+    // ==========================================
+
+    function getCart() {
+      return JSON.parse(localStorage.getItem('cart')) || [];
+    }
+
+    function setCart(cart) {
+      localStorage.setItem('cart', JSON.stringify(cart));
+    }
+
+    function updateCartUI() {
+      const cart = getCart();
+      const cartItemsContainer = document.getElementById('cart-items');
+      const cartFooter = document.getElementById('cart-footer');
+      const cartCountBadge = document.getElementById('cart-count');
+      const mobileCartCountBadge = document.getElementById('mobile-cart-count');
+      const cartTotalSpan = document.getElementById('cart-total');
+
+      // Update cart count badges
+      const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+      if (totalItems > 0) {
+        cartCountBadge.classList.remove('hidden');
+        cartCountBadge.textContent = totalItems;
+        mobileCartCountBadge.classList.remove('hidden');
+        mobileCartCountBadge.textContent = totalItems;
+      } else {
+        cartCountBadge.classList.add('hidden');
+        mobileCartCountBadge.classList.add('hidden');
+      }
+
+      // Handle empty cart
       if (cart.length === 0) {
-        items.innerHTML = "<div class='text-center py-12'><i class='fas fa-shopping-basket text-4xl text-gray-200 mb-4'></i><p class='text-gray-500'>Your cart is empty.</p></div>";
-        footer.classList.add("hidden");
+        cartItemsContainer.innerHTML = `
+          <div class='text-center py-12'>
+            <i class='fas fa-shopping-basket text-4xl text-gray-200 mb-4'></i>
+            <p class='text-gray-500'>Your cart is empty. Start adding some products!</p>
+          </div>
+        `;
+        cartFooter.classList.add('hidden');
         return;
       }
 
-      let table = `<table class="w-full text-left">
-        <thead class="text-xs text-gray-500 uppercase bg-gray-50 border-b">
-          <tr>
-            <th class="px-4 py-3 rounded-tl-lg">Product</th>
-            <th class="px-4 py-3">Price</th>
-            <th class="px-4 py-3 text-center">Qty</th>
-            <th class="px-4 py-3">Subtotal</th>
-            <th class="px-4 py-3 rounded-tr-lg"></th>
-          </tr>
-        </thead>
-        <tbody class="divide-y divide-gray-100">`;
-      cart.forEach((it, i) => {
-        total += it.price * it.qty;
-        table += `<tr class="hover:bg-gray-50 transition">
-          <td class="px-4 py-3 font-medium text-gray-900">${it.name}</td>
-          <td class="px-4 py-3 text-gray-600">₹${it.price}</td>
-          <td class="px-4 py-3 text-center">
-              <span class="inline-block bg-gray-100 px-2 py-1 rounded text-sm font-bold">${it.qty}</span>
-          </td>
-          <td class="px-4 py-3 font-bold text-gray-900">₹${it.price * it.qty}</td>
-          <td class="px-4 py-3 text-right"><button onclick="removeItem(${i})" class="text-red-400 hover:text-red-600 transition"><i class="fas fa-trash-alt"></i></button></td>
-        </tr>`;
-      });
-      table += `</tbody></table>`;
-      items.innerHTML = table;
+      // Build cart table
+      let cartHTML = `
+        <table class="w-full text-left text-sm sm:text-base">
+          <thead class="text-xs text-gray-500 uppercase bg-gray-50 border-b">
+            <tr>
+              <th class="px-2 sm:px-4 py-2 sm:py-3 rounded-tl-lg">Product</th>
+              <th class="px-2 sm:px-4 py-2 sm:py-3">Unit Price</th>
+              <th class="px-2 sm:px-4 py-2 sm:py-3 text-center">Qty</th>
+              <th class="px-2 sm:px-4 py-2 sm:py-3">Subtotal</th>
+              <th class="px-2 sm:px-4 py-2 sm:py-3 rounded-tr-lg"></th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-100">
+      `;
 
-      document.getElementById("cart-total").textContent = total;
-      footer.classList.remove("hidden");
+      let cartTotal = 0;
+
+      cart.forEach((item, index) => {
+        cartTotal += item.totalPrice;
+        const displayName = item.variant 
+          ? `${item.productName} - ${item.variant}` 
+          : item.productName;
+        
+        cartHTML += `
+          <tr class="hover:bg-gray-50 transition">
+            <td class="px-2 sm:px-4 py-2 sm:py-3 font-medium text-gray-900 text-xs sm:text-base">${displayName}</td>
+            <td class="px-2 sm:px-4 py-2 sm:py-3 text-gray-600 text-xs sm:text-base">₹${item.unitPrice}</td>
+            <td class="px-2 sm:px-4 py-2 sm:py-3 text-center">
+              <span class="inline-block bg-gray-100 px-2 py-1 rounded text-xs sm:text-sm font-bold">${item.quantity}</span>
+            </td>
+            <td class="px-2 sm:px-4 py-2 sm:py-3 font-bold text-gray-900 text-xs sm:text-base">₹${item.totalPrice}</td>
+            <td class="px-2 sm:px-4 py-2 sm:py-3 text-right">
+              <button onclick="removeFromCart(${index})" class="text-red-400 hover:text-red-600 transition text-xs sm:text-base">
+                <i class="fas fa-trash-alt"></i>
+              </button>
+            </td>
+          </tr>
+        `;
+      });
+
+      cartHTML += `
+          </tbody>
+        </table>
+      `;
+
+      cartItemsContainer.innerHTML = cartHTML;
+      cartTotalSpan.textContent = cartTotal;
+      cartFooter.classList.remove('hidden');
     }
 
-    function removeItem(i) { const cart = getCart(); cart.splice(i, 1); setCart(cart); updateCartUI(); }
-
-    document.addEventListener("click", e => {
-      if (e.target.closest(".add-btn")) {
-        const card = e.target.closest("[data-name]");
-        const name = card.dataset.name, price = +card.dataset.price, qty = +card.querySelector(".qty-input").value;
-        const cart = getCart(); const ex = cart.find(i => i.name === name);
-        if (ex) ex.qty += qty; else cart.push({ name, price, qty });
-        setCart(cart); updateCartUI();
-
-        // Visual feedback
-        const btn = e.target.closest(".add-btn");
-        const originalText = btn.innerHTML;
-        btn.innerHTML = `<i class="fas fa-check"></i> Added`;
-        btn.classList.add("bg-green-700");
-        setTimeout(() => {
-          btn.innerHTML = originalText;
-          btn.classList.remove("bg-green-700");
-        }, 2000);
-      }
-    });
-
-    document.getElementById("whatsappOrderBtn").addEventListener("click", () => {
-      document.getElementById("orderModal").classList.remove("hidden");
-      document.getElementById("orderModal").classList.add("flex");
-    });
-
-    document.getElementById("closeModalBtn").addEventListener("click", () => {
-      document.getElementById("orderModal").classList.add("hidden");
-      document.getElementById("orderModal").classList.remove("flex");
-    });
-
-    document.getElementById("orderForm").addEventListener("submit", e => {
-      e.preventDefault();
-      const name = document.getElementById("name").value, phone = document.getElementById("phone").value, address = document.getElementById("address").value, cart = getCart();
-      let msg = `*New Order – Mugavari Thazhai*\n\n`;
-      cart.forEach(i => msg += `📦 ${i.name} x ${i.qty} - ₹${i.price * i.qty}\n`);
-      let total = cart.reduce((s, it) => s + (it.price * it.qty), 0);
-      msg += `\n💰 *Total Amount: ₹${total}*\n`;
-      msg += `\n👤 Name: ${name}\n📞 Phone: ${phone}\n📍 Address: ${address}\n\nThank you for choosing Mugavari Thazhai `;
-
-      window.open(`https://wa.me/${whatsappBusinessNumber}?text=${encodeURIComponent(msg)}`, "_blank");
-
-      localStorage.removeItem("cart");
+    function removeFromCart(index) {
+      const cart = getCart();
+      cart.splice(index, 1);
+      setCart(cart);
       updateCartUI();
-      document.getElementById("orderModal").classList.add("hidden");
-      document.getElementById("orderModal").classList.remove("flex");
-    });
+    }
 
-    document.addEventListener("DOMContentLoaded", updateCartUI);
+    // ==========================================
+    // MODAL & WHATSAPP FUNCTIONALITY
+    // ==========================================
+
+    // Mobile Menu Toggle
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (mobileMenuBtn) {
+      mobileMenuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+    }
+
+    // Cart Order Modal
+    const orderModal = document.getElementById('orderModal');
+    const whatsappOrderBtn = document.getElementById('whatsappOrderBtn');
+    const closeModalBtn = document.getElementById('closeModalBtn');
+    const orderForm = document.getElementById('orderForm');
+
+    if (whatsappOrderBtn) {
+      whatsappOrderBtn.addEventListener('click', () => {
+        orderModal.classList.remove('hidden');
+        orderModal.classList.add('flex');
+      });
+    }
+
+    if (closeModalBtn) {
+      closeModalBtn.addEventListener('click', () => {
+        orderModal.classList.add('hidden');
+        orderModal.classList.remove('flex');
+      });
+    }
+
+    if (orderForm) {
+      orderForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const cart = getCart();
+        if (cart.length === 0) {
+          alert('Your cart is empty!');
+          return;
+        }
+
+        const name = document.getElementById('name').value;
+        const phone = document.getElementById('phone').value;
+        const address = document.getElementById('address').value;
+
+        let orderMessage = `Hello! I would like to place an order:\n\n`;
+        orderMessage += `*Customer Details:*\n`;
+        orderMessage += `Name: ${name}\n`;
+        orderMessage += `Phone: ${phone}\n`;
+        orderMessage += `Address: ${address}\n\n`;
+        orderMessage += `*Order Summary:*\n`;
+
+        let total = 0;
+        cart.forEach((item) => {
+          const itemName = item.variant 
+            ? `${item.productName} (${item.variant})` 
+            : item.productName;
+          orderMessage += `${itemName} x${item.quantity} = ₹${item.totalPrice}\n`;
+          total += item.totalPrice;
+        });
+
+        orderMessage += `\n*Total Amount: ₹${total}*\n\n`;
+        orderMessage += `Please confirm this order and proceed with payment.`;
+
+        const encodedMessage = encodeURIComponent(orderMessage);
+        const whatsappUrl = `https://wa.me/${whatsappBusinessNumber}?text=${encodedMessage}`;
+
+        window.open(whatsappUrl, '_blank');
+
+        // Clear form and close modal
+        orderForm.reset();
+        orderModal.classList.add('hidden');
+        orderModal.classList.remove('flex');
+      });
+    }
+
+    // Clear cart button
+    const clearCartBtn = document.querySelector('button[onclick*="localStorage.removeItem"]');
+    if (clearCartBtn) {
+      clearCartBtn.onclick = () => {
+        localStorage.removeItem('cart');
+        updateCartUI();
+      };
+    }
+
+    // Initialize cart UI on page load
+    window.addEventListener('load', updateCartUI);
+  </script>
+
   </script>
 </body>
 
