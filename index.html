@@ -58,11 +58,11 @@
         tailwind.config = {
             theme: {
                 screens: {
-                    'sm': '1px',
-                    'md': '2px',
-                    'lg': '3px',
-                    'xl': '4px',
-                    '2xl': '5px',
+                    'sm': '640px',
+                    'md': '768px',
+                    'lg': '1024px',
+                    'xl': '1280px',
+                    '2xl': '1536px',
                 },
                 extend: {
                     colors: {
@@ -79,14 +79,33 @@
         }
     </script>
     <style>
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+        }
+
+        html,
+        body {
+            width: 100%;
+            overflow-x: hidden;
+        }
+
+        @media (max-width: 768px) {
+            html {
+                scroll-padding-top: 70px;
+            }
+        }
+
         #scale-wrapper {
-            width: 1440px;
-            transform-origin: top left;
-            max-width: none;
+            width: 100%;
+            max-width: 100%;
+            transform: none !important;
+            overflow-x: hidden;
         }
 
         body {
             overflow-x: hidden;
+            padding-top: 0;
         }
 
         .glass-nav {
@@ -223,43 +242,43 @@
     <!-- Wrapper -->
     <div id="scale-wrapper">
         <!-- Navbar -->
-        <nav class="fixed w-full z-50 glass-nav transition-all duration-300" id="navbar">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <nav class="fixed w-full z-50 glass-nav transition-all duration-300 shadow-sm" id="navbar">
+            <div class="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
                 <div class="flex justify-between items-center h-20">
                     <!-- Logo -->
-                    <div class="flex-shrink-0 flex items-center gap-3">
-                        <a href="index.html" class="block">
+                    <div class="flex-shrink-0 flex items-center gap-3 min-w-0">
+                        <a href="index.html" class="block flex-shrink-0">
                             <img src="images/mugavari thazhai logo.jpg"
                                 onerror="this.onerror=null;this.src='https://placehold.co/125x125/E0F2E9/0E2C18?text=Logo'"
                                 class="h-12 w-12 rounded-full border-2 border-primary shadow-sm" alt="Logo">
                         </a>
-                        <div class="text-xl md:text-2xl font-bold text-primary tracking-tight">Mugavari Thazhai</div>
+                        <div class="text-base md:text-lg lg:text-xl font-bold text-primary tracking-tight line-clamp-2">Mugavari Thazhai</div>
                     </div>
 
                     <!-- Desktop Menu -->
                     <div class="hidden md:flex items-center space-x-8">
-                        <a href="index.html" class="text-gray-700 hover:text-primary font-medium transition">Home</a>
+                        <a href="index.html" class="text-gray-700 hover:text-primary font-medium transition text-sm">Home</a>
                         <a href="products.html"
-                            class="text-gray-700 hover:text-primary font-medium transition">Products</a>
-                        <a href="#footer" class="text-gray-700 hover:text-primary font-medium transition">Contact</a>
+                            class="text-gray-700 hover:text-primary font-medium transition text-sm">Products</a>
+                        <a href="#footer" class="text-gray-700 hover:text-primary font-medium transition text-sm">Contact</a>
 
                         <!-- Cart Icon -->
-                        <a href="products.html" class="relative group">
+                        <button onclick="openCartModal()" class="relative group">
                             <i
                                 class="fa fa-shopping-cart text-2xl text-gray-700 group-hover:text-primary transition"></i>
                             <span id="cart-count"
                                 class="absolute -top-2 -right-2 bg-accent text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full hidden">0</span>
-                        </a>
+                        </button>
                     </div>
 
                     <!-- Mobile Menu Button -->
                     <div class="md:hidden flex items-center gap-4">
-                        <a href="products.html" class="relative">
+                        <button onclick="openCartModal()" class="relative">
                             <i class="fa fa-shopping-cart text-2xl text-gray-700"></i>
                             <span id="mobile-cart-count"
-                                class="absolute -top-2 -right-2 bg-accent text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full hidden">0</span>
-                        </a>
-                        <button id="mobile-menu-btn" class="text-gray-700 focus:outline-none">
+                                class="absolute -top-2 -right-2 bg-accent text-white text-xs font-bold px-1.5 py-0.5 rounded-full hidden">0</span>
+                        </button>
+                        <button id="mobile-menu-btn" class="text-gray-700 focus:outline-none p-2">
                             <i class="fa fa-bars text-2xl"></i>
                         </button>
                     </div>
@@ -268,21 +287,46 @@
 
             <!-- Mobile Menu -->
             <div id="mobile-menu"
-                class="md:hidden hidden bg-white border-t border-gray-100 absolute w-full left-0 top-20 shadow-lg">
-                <div class="px-4 pt-2 pb-6 space-y-2">
+                class="md:hidden hidden bg-white border-t border-gray-100 absolute w-full left-0 top-20 shadow-lg z-40">
+                <div class="px-4 pt-3 pb-4 space-y-2">
                     <a href="index.html"
-                        class="block px-3 py-2 rounded-md text-base font-medium text-primary bg-green-50">Home</a>
+                        class="block px-4 py-3 rounded-lg text-base font-medium text-primary bg-green-50">Home</a>
                     <a href="products.html"
-                        class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50">Products</a>
+                        class="block px-4 py-3 rounded-lg text-base font-medium text-gray-700 hover:bg-gray-50">Products</a>
                     <a href="#footer"
-                        class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50">Contact</a>
+                        class="block px-4 py-3 rounded-lg text-base font-medium text-gray-700 hover:bg-gray-50">Contact</a>
                 </div>
             </div>
         </nav>
 
+        <!-- Cart Modal -->
+        <div id="cartModal" class="hidden fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4 overflow-y-auto pt-20">
+            <div class="bg-white rounded-2xl shadow-2xl max-w-2xl w-full max-h-[80vh] overflow-y-auto">
+                <div class="sticky top-0 bg-primary text-white px-6 py-4 flex justify-between items-center rounded-t-2xl">
+                    <h2 class="text-xl font-bold flex items-center gap-2">
+                        <i class="fas fa-shopping-bag"></i> Your Cart
+                    </h2>
+                    <button onclick="closeCartModal()" class="text-white hover:text-gray-200 text-2xl">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                
+                <div id="cartModalContent" class="p-6">
+                    <div class="text-center py-12">
+                        <i class="fas fa-shopping-basket text-5xl text-gray-300 mb-4 block"></i>
+                        <p class="text-gray-600 text-lg font-semibold">Cart is Empty</p>
+                    </div>
+                </div>
+                
+                <div id="cartModalFooter" class="hidden border-t border-gray-200 p-6 bg-gray-50 rounded-b-2xl">
+                    <!-- Content will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+
         <!-- Hero Section -->
         <!-- Hero Section -->
-        <header class="hero-gradient pt-28 pb-16 lg:pt-40 lg:pb-32 overflow-hidden relative">
+        <header class="hero-gradient pt-24 pb-8 sm:pt-32 sm:pb-12 lg:pt-48 lg:pb-32 overflow-hidden relative">
             <!-- Blobs -->
             <div
                 class="absolute top-0 -left-4 w-72 h-72 bg-green-300 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-blob">
@@ -294,33 +338,33 @@
                 class="absolute -bottom-8 left-20 w-72 h-72 bg-pink-300 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-blob animation-delay-4000">
             </div>
 
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 relative z-10">
                 <div class="lg:grid lg:grid-cols-12 lg:gap-16 items-center">
 
                     <!-- Text Content -->
-                    <div class="lg:col-span-6 text-center lg:text-left mb-12 lg:mb-0 relative z-10">
+                    <div class="lg:col-span-6 text-center lg:text-left mb-6 sm:mb-8 lg:mb-0 relative z-10">
                         <span
-                            class="inline-block py-1 px-3 rounded-full bg-green-100 text-green-800 text-sm font-semibold mb-4 tracking-wide uppercase">From
+                            class="inline-block py-1 px-3 rounded-full bg-green-100 text-green-800 text-xs sm:text-sm font-semibold mb-3 sm:mb-4 tracking-wide uppercase">From
                             Pollachi with Love</span>
                         <h1
-                            class="text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 leading-tight mb-6 drop-shadow-sm">
+                            class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 leading-tight mb-3 sm:mb-4 drop-shadow-sm">
                             Pure & Authentic <br>
                             <span
                                 class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-green-600">Nature's
                                 Best</span>
                         </h1>
-                        <p class="text-lg text-gray-600 mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                        <p class="text-xs sm:text-sm md:text-base lg:text-lg text-gray-600 mb-4 sm:mb-6 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
                             Rooted in Pollachi. Trusted by hearts. Delivered to your door. Experience the goodness of
                             cold-pressed oils and sustainable handcrafts. Mugavari Thazhai provides pure cold pressed
                             coconut oil from Pollachi to customers across Coimbatore and Tamil Nadu.
                         </p>
-                        <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                        <div class="flex flex-col sm:flex-row gap-2 sm:gap-3 justify-center lg:justify-start">
                             <a href="products.html"
-                                class="px-8 py-4 bg-primary text-white font-semibold rounded-full shadow-lg hover:bg-green-900 transition hover:-translate-y-1">
+                                class="px-5 sm:px-6 py-2 sm:py-3 bg-primary text-white font-semibold rounded-full shadow-lg hover:bg-green-900 transition hover:-translate-y-1 text-xs sm:text-sm">
                                 Explore Products <i class="fas fa-arrow-right ml-2"></i>
                             </a>
                             <a href="#footer"
-                                class="px-8 py-4 bg-white text-primary font-semibold rounded-full shadow-md border border-gray-100 hover:bg-gray-50 transition hover:-translate-y-1">
+                                class="px-5 sm:px-6 py-2 sm:py-3 bg-white text-primary font-semibold rounded-full shadow-md border border-gray-100 hover:bg-gray-50 transition hover:-translate-y-1 text-xs sm:text-sm">
                                 Contact Us
                             </a>
                         </div>
@@ -337,14 +381,14 @@
                         </div>
                         <!-- Floating Badge -->
                         <div
-                            class="absolute -bottom-6 -left-6 bg-white p-4 rounded-xl shadow-xl hidden md:block animate-bounce z-20">
-                            <div class="flex items-center gap-3">
-                                <div class="bg-green-100 p-2 rounded-full text-green-600">
-                                    <i class="fas fa-leaf text-xl"></i>
+                            class="absolute -bottom-3 sm:-bottom-4 -left-3 sm:-left-4 bg-white p-2 sm:p-3 rounded-lg shadow-lg hidden md:block animate-bounce z-20">
+                            <div class="flex items-center gap-2">
+                                <div class="bg-green-100 p-1.5 rounded-full text-green-600">
+                                    <i class="fas fa-leaf text-sm sm:text-base"></i>
                                 </div>
                                 <div>
-                                    <p class="text-sm font-bold text-gray-900">100% Organic</p>
-                                    <p class="text-xs text-gray-500">Certified Products</p>
+                                    <p class="text-xs font-bold text-gray-900">100% Organic</p>
+                                    <p class="text-[9px] text-gray-500">Certified Products</p>
                                 </div>
                             </div>
                         </div>
@@ -355,64 +399,64 @@
         </header>
 
         <!-- Categories Section -->
-        <section class="py-12 md:py-20 bg-white">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-16">
-                    <h2 class="text-3xl font-bold text-gray-900 mb-4">Curated Categories</h2>
+        <section class="py-8 sm:py-12 md:py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
+                <div class="text-center mb-10 sm:mb-16">
+                    <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">Curated Categories</h2>
                     <div class="h-1 w-20 bg-primary mx-auto rounded-full"></div>
                 </div>
 
-                <div class="grid md:grid-cols-3 gap-8">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
                     <!-- Category 1 -->
                     <div
-                        class="group relative overflow-hidden rounded-2xl shadow-lg cursor-pointer hover:shadow-2xl hover:-translate-y-2 transition duration-500">
+                        class="group relative overflow-hidden rounded-xl sm:rounded-2xl shadow-lg cursor-pointer hover:shadow-2xl hover:-translate-y-2 transition duration-500">
                         <img src="images/coconut oil.jpg"
                             onerror="this.onerror=null;this.src='https://placehold.co/400x300/E0F2E9/0E2C18?text=Coconut+Oil'"
-                            class="w-full h-80 object-cover group-hover:scale-110 transition duration-700"
+                            class="w-full h-48 sm:h-64 md:h-80 object-cover group-hover:scale-110 transition duration-700"
                             alt="Coconut Oil">
                         <div
-                            class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent flex items-end p-8">
+                            class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent flex items-end p-4 sm:p-6 md:p-8">
                             <div>
-                                <h3 class="text-2xl font-bold text-white mb-2">Coconut Oil</h3>
+                                <h3 class="text-xl sm:text-2xl font-bold text-white mb-1 sm:mb-2">Coconut Oil</h3>
                                 <a href="products.html"
-                                    class="text-white/90 hover:text-white text-sm font-medium inline-flex items-center">Shop
-                                    Now <i class="fas fa-chevron-right ml-1 text-xs"></i></a>
+                                    class="text-white/90 hover:text-white text-xs sm:text-sm font-medium inline-flex items-center">Shop
+                                    Now <i class="fas fa-chevron-right ml-1 text-[10px] sm:text-xs"></i></a>
                             </div>
                         </div>
                     </div>
 
                     <!-- Category 2 -->
                     <div
-                        class="group relative overflow-hidden rounded-2xl shadow-lg cursor-pointer hover:shadow-2xl hover:-translate-y-2 transition duration-500">
+                        class="group relative overflow-hidden rounded-xl sm:rounded-2xl shadow-lg cursor-pointer hover:shadow-2xl hover:-translate-y-2 transition duration-500">
                         <img src="images/groundnut oil.jpg"
                             onerror="this.onerror=null;this.src='https://placehold.co/400x300/E0F2E9/0E2C18?text=Groundnut+Oil'"
-                            class="w-full h-80 object-cover group-hover:scale-110 transition duration-700"
+                            class="w-full h-48 sm:h-64 md:h-80 object-cover group-hover:scale-110 transition duration-700"
                             alt="Groundnut Oil">
                         <div
-                            class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent flex items-end p-8">
+                            class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent flex items-end p-4 sm:p-6 md:p-8">
                             <div>
-                                <h3 class="text-2xl font-bold text-white mb-2">Groundnut Oil</h3>
+                                <h3 class="text-xl sm:text-2xl font-bold text-white mb-1 sm:mb-2">Groundnut Oil</h3>
                                 <a href="products.html"
-                                    class="text-white/90 hover:text-white text-sm font-medium inline-flex items-center">Shop
-                                    Now <i class="fas fa-chevron-right ml-1 text-xs"></i></a>
+                                    class="text-white/90 hover:text-white text-xs sm:text-sm font-medium inline-flex items-center">Shop
+                                    Now <i class="fas fa-chevron-right ml-1 text-[10px] sm:text-xs"></i></a>
                             </div>
                         </div>
                     </div>
 
                     <!-- Category 3 -->
                     <div
-                        class="group relative overflow-hidden rounded-2xl shadow-lg cursor-pointer hover:shadow-2xl hover:-translate-y-2 transition duration-500">
+                        class="group relative overflow-hidden rounded-xl sm:rounded-2xl shadow-lg cursor-pointer hover:shadow-2xl hover:-translate-y-2 transition duration-500">
                         <img src="images/hand craft.jpg"
                             onerror="this.onerror=null;this.src='https://placehold.co/400x300/E0F2E9/0E2C18?text=Hand+Craft'"
-                            class="w-full h-80 object-cover group-hover:scale-110 transition duration-700"
+                            class="w-full h-48 sm:h-64 md:h-80 object-cover group-hover:scale-110 transition duration-700"
                             alt="Hand Craft">
                         <div
-                            class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent flex items-end p-8">
+                            class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent flex items-end p-4 sm:p-6 md:p-8">
                             <div>
-                                <h3 class="text-2xl font-bold text-white mb-2">Eco Crafts</h3>
+                                <h3 class="text-xl sm:text-2xl font-bold text-white mb-1 sm:mb-2">Eco Crafts</h3>
                                 <a href="products.html"
-                                    class="text-white/90 hover:text-white text-sm font-medium inline-flex items-center">Shop
-                                    Now <i class="fas fa-chevron-right ml-1 text-xs"></i></a>
+                                    class="text-white/90 hover:text-white text-xs sm:text-sm font-medium inline-flex items-center">Shop
+                                    Now <i class="fas fa-chevron-right ml-1 text-[10px] sm:text-xs"></i></a>
                             </div>
                         </div>
                     </div>
@@ -421,37 +465,37 @@
         </section>
 
         <!-- Offer Section -->
-        <section class="py-12 md:py-20 bg-secondary relative overflow-hidden">
+        <section class="py-8 sm:py-12 md:py-20 bg-secondary relative overflow-hidden">
             <div
                 class="absolute top-0 left-0 w-64 h-64 bg-primary/5 rounded-full -translate-x-1/2 -translate-y-1/2 blur-3xl">
             </div>
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                <div class="bg-white rounded-3xl p-8 md:p-12 shadow-xl flex flex-col md:flex-row items-center gap-12">
-                    <div class="md:w-1/3">
+            <div class="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 relative z-10">
+                <div class="bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-8 md:p-12 shadow-xl flex flex-col md:flex-row items-center gap-6 sm:gap-12">
+                    <div class="w-full md:w-1/3">
                         <img src="images/mugavari thazhai logo.jpg"
                             onerror="this.onerror=null;this.src='https://placehold.co/300x300/E0F2E9/0E2C18?text=Offer'"
                             onerror="this.onerror=null;this.src='https://placehold.co/300x300/E0F2E9/0E2C18?text=Offer'"
-                            class="w-full max-w-[250px] mx-auto rounded-full border-4 border-green-50 shadow-lg"
+                            class="w-full max-w-[200px] sm:max-w-[250px] mx-auto rounded-full border-4 border-green-50 shadow-lg"
                             alt="Mugavari Thazhai Special Offer - Pure Oils">
                     </div>
-                    <div class="md:w-2/3 text-center md:text-left">
-                        <h2 class="text-3xl font-bold text-primary mb-4">🌴 Authentic South Indian Essence</h2>
-                        <ul class="space-y-3 mb-8 text-gray-600 text-lg">
-                            <li class="flex items-center gap-3 justify-center md:justify-start">
-                                <i class="fas fa-check-circle text-green-500"></i> 100% Pollachi-Sourced Coconuts
+                    <div class="w-full md:w-2/3 text-center md:text-left">
+                        <h2 class="text-2xl sm:text-3xl font-bold text-primary mb-3 sm:mb-4">🌴 Authentic South Indian Essence</h2>
+                        <ul class="space-y-2 sm:space-y-3 mb-6 sm:mb-8 text-gray-600 text-sm sm:text-lg">
+                            <li class="flex items-center gap-2 sm:gap-3 justify-center md:justify-start">
+                                <i class="fas fa-check-circle text-green-500 text-sm sm:text-base"></i> <span class="text-xs sm:text-base">100% Pollachi-Sourced Coconuts</span>
                             </li>
-                            <li class="flex items-center gap-3 justify-center md:justify-start">
-                                <i class="fas fa-check-circle text-green-500"></i> Traditional Wood-Pressed (Chekku)
+                            <li class="flex items-center gap-2 sm:gap-3 justify-center md:justify-start">
+                                <i class="fas fa-check-circle text-green-500 text-sm sm:text-base"></i> <span class="text-xs sm:text-base">Traditional Wood-Pressed (Chekku)</span>
                             </li>
-                            <li class="flex items-center gap-3 justify-center md:justify-start">
-                                <i class="fas fa-check-circle text-green-500"></i> Chemical-Free & Unrefined
+                            <li class="flex items-center gap-2 sm:gap-3 justify-center md:justify-start">
+                                <i class="fas fa-check-circle text-green-500 text-sm sm:text-base"></i> <span class="text-xs sm:text-base">Chemical-Free & Unrefined</span>
                             </li>
-                            <li class="flex items-center gap-3 justify-center md:justify-start">
-                                <i class="fas fa-check-circle text-green-500"></i> Delivered to Coimbatore & TN
+                            <li class="flex items-center gap-2 sm:gap-3 justify-center md:justify-start">
+                                <i class="fas fa-check-circle text-green-500 text-sm sm:text-base"></i> <span class="text-xs sm:text-base">Delivered to Coimbatore & TN</span>
                             </li>
                         </ul>
                         <a href="products.html"
-                            class="inline-block px-8 py-3 bg-accent text-white font-semibold rounded-full shadow-lg hover:bg-red-700 transition hover:-translate-y-1">
+                            class="inline-block px-6 sm:px-8 py-2 sm:py-3 bg-accent text-white font-semibold rounded-full shadow-lg hover:bg-red-700 transition hover:-translate-y-1 text-sm sm:text-base">
                             Order on WhatsApp
                         </a>
                     </div>
@@ -460,18 +504,18 @@
         </section>
 
         <!-- Hand Craft Gallery Section -->
-        <section class="py-16 md:py-24 bg-stone-50 relative overflow-hidden">
+        <section class="py-12 sm:py-16 md:py-24 bg-stone-50 relative overflow-hidden">
             <!-- Decorative Elements -->
             <div
                 class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent">
             </div>
 
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16 text-center">
+            <div class="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 mb-10 sm:mb-16 text-center">
                 <span
                     class="inline-block py-1 px-3 rounded-full bg-orange-100 text-orange-800 text-xs font-bold tracking-wider uppercase mb-4">Exclusive
                     Collection</span>
-                <h2 class="text-3xl md:text-5xl font-bold text-primary mb-6">Hand Craft Treasures</h2>
-                <p class="text-gray-600 max-w-2xl mx-auto text-lg leading-relaxed">
+                <h2 class="text-2xl sm:text-3xl md:text-5xl font-bold text-primary mb-4 sm:mb-6">Hand Craft Treasures</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto text-sm sm:text-base md:text-lg leading-relaxed">
                     Adorn your home with the rustic elegance of Pollachi. Each piece is meticulously handcrafted from
                     natural
                     coconut shells, blending tradition with modern artistry.
@@ -487,14 +531,14 @@
         </section>
 
         <!-- Testimonial Section -->
-        <section class="py-12 md:py-20 bg-slate-50">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-16">
-                    <h2 class="text-3xl font-bold text-gray-900 mb-4">What Our Customers Say</h2>
+        <section class="py-8 sm:py-12 md:py-20 bg-slate-50">
+            <div class="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
+                <div class="text-center mb-10 sm:mb-16">
+                    <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">What Our Customers Say</h2>
                     <div class="h-1 w-20 bg-primary mx-auto rounded-full"></div>
                 </div>
 
-                <div class="grid md:grid-cols-3 gap-8">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
                     <!-- Review 1 -->
                     <div
                         class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition duration-300 relative border border-gray-100">
@@ -516,18 +560,18 @@
 
                     <!-- Review 2 -->
                     <div
-                        class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition duration-300 relative border border-gray-100">
-                        <i class="fas fa-quote-left text-4xl text-green-100 absolute top-6 left-6 -z-0"></i>
-                        <p class="text-gray-600 italic mb-6 relative z-10">"Good products, fast delivery. Honestly, the
+                        class="bg-white p-4 sm:p-8 rounded-xl sm:rounded-2xl shadow-sm hover:shadow-xl transition duration-300 relative border border-gray-100">
+                        <i class="fas fa-quote-left text-3xl sm:text-4xl text-green-100 absolute top-4 sm:top-6 left-4 sm:left-6 -z-0"></i>
+                        <p class="text-gray-600 italic mb-4 sm:mb-6 relative z-10 text-sm sm:text-base">"Good products, fast delivery. Honestly, the
                             only
                             time I got this excited for a parcel was when my online food order came with extra sambar.
                             Respect!"</p>
-                        <div class="flex items-center gap-4">
+                        <div class="flex items-center gap-3 sm:gap-4">
                             <img src="images/user2.jpg"
                                 onerror="this.onerror=null;this.src='https://placehold.co/50x50/E0F2E9/0E2C18?text=R'"
-                                class="w-12 h-12 rounded-full object-cover" alt="Customer Ramesh V">
+                                class="w-10 sm:w-12 h-10 sm:h-12 rounded-full object-cover" alt="Customer Ramesh V">
                             <div>
-                                <h4 class="font-bold text-gray-900">Ramesh.V</h4>
+                                <h4 class="font-bold text-gray-900 text-sm sm:text-base">Ramesh.V</h4>
                                 <p class="text-xs text-gray-500">Madurai</p>
                             </div>
                         </div>
@@ -556,133 +600,133 @@
         </section>
 
         <!-- Brands Section -->
-        <section class="py-12 bg-white border-t border-gray-100">
-            <div class="max-w-7xl mx-auto px-4 flex justify-center grayscale hover:grayscale-0 transition duration-500">
+        <section class="py-8 sm:py-12 bg-white border-t border-gray-100">
+            <div class="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 flex justify-center grayscale hover:grayscale-0 transition duration-500">
                 <a href="https://www.fssai.gov.in/" target="_blank">
                     <img src="images/Fssai-Logo-Vector.png"
                         onerror="this.onerror=null;this.src='https://placehold.co/150x80/ffffff/555555?text=FSSAI'"
-                        alt="FSSAI" class="h-16 w-auto opacity-70 hover:opacity-100">
+                        alt="FSSAI" class="h-12 sm:h-16 w-auto opacity-70 hover:opacity-100">
                 </a>
             </div>
         </section>
 
         <!-- How to Order Section -->
-        <section class="py-12 md:py-20 bg-green-50/50">
-            <div class="max-w-7xl mx-auto px-4 text-center">
-                <h2 class="text-3xl font-bold text-gray-900 mb-12">How to Order</h2>
-                <div class="grid md:grid-cols-3 gap-8">
-                    <div class="p-6 bg-white rounded-2xl shadow-sm border border-green-50 hover:shadow-md transition">
+        <section class="py-8 sm:py-12 md:py-20 bg-green-50/50">
+            <div class="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 text-center">
+                <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-8 sm:mb-12">How to Order</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
+                    <div class="p-4 sm:p-6 bg-white rounded-xl sm:rounded-2xl shadow-sm border border-green-50 hover:shadow-md transition">
                         <div
-                            class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl">
+                            class="w-14 sm:w-16 h-14 sm:h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4 text-xl sm:text-2xl">
                             🛒</div>
-                        <h3 class="font-bold text-xl mb-2 text-primary">1. Select Products</h3>
-                        <p class="text-gray-600">Browse our authentic collection and choose your favorites.</p>
+                        <h3 class="font-bold text-lg sm:text-xl mb-2 text-primary">1. Select Products</h3>
+                        <p class="text-gray-600 text-sm sm:text-base">Browse our authentic collection and choose your favorites.</p>
                     </div>
-                    <div class="p-6 bg-white rounded-2xl shadow-sm border border-green-50 hover:shadow-md transition">
+                    <div class="p-4 sm:p-6 bg-white rounded-xl sm:rounded-2xl shadow-sm border border-green-50 hover:shadow-md transition">
                         <div
-                            class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl">
+                            class="w-14 sm:w-16 h-14 sm:h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4 text-xl sm:text-2xl">
                             💬</div>
-                        <h3 class="font-bold text-xl mb-2 text-primary">2. Send to WhatsApp</h3>
-                        <p class="text-gray-600">Click "Order on WhatsApp" to send your cart details directly to us.</p>
+                        <h3 class="font-bold text-lg sm:text-xl mb-2 text-primary">2. Send to WhatsApp</h3>
+                        <p class="text-gray-600 text-sm sm:text-base">Click "Order on WhatsApp" to send your cart details directly to us.</p>
                     </div>
-                    <div class="p-6 bg-white rounded-2xl shadow-sm border border-green-50 hover:shadow-md transition">
+                    <div class="p-4 sm:p-6 bg-white rounded-xl sm:rounded-2xl shadow-sm border border-green-50 hover:shadow-md transition">
                         <div
-                            class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl">
+                            class="w-14 sm:w-16 h-14 sm:h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4 text-xl sm:text-2xl">
                             🚚</div>
-                        <h3 class="font-bold text-xl mb-2 text-primary">3. Fast Delivery</h3>
-                        <p class="text-gray-600">We verify your order and ship it swiftly to your doorstep!</p>
+                        <h3 class="font-bold text-lg sm:text-xl mb-2 text-primary">3. Fast Delivery</h3>
+                        <p class="text-gray-600 text-sm sm:text-base">We verify your order and ship it swiftly to your doorstep!</p>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- FAQ & Shipping Section -->
-        <section class="py-12 md:py-20 bg-white">
-            <div class="max-w-3xl mx-auto px-4">
-                <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">Frequently Asked Questions</h2>
-                <div class="space-y-4">
+        <section class="py-8 sm:py-12 md:py-20 bg-white">
+            <div class="max-w-3xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
+                <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-6 sm:mb-8 text-center">Frequently Asked Questions</h2>
+                <div class="space-y-3 sm:space-y-4">
                     <details
-                        class="group bg-gray-50 p-6 rounded-2xl cursor-pointer hover:bg-green-50 transition duration-300">
-                        <summary class="font-bold text-gray-900 list-none flex justify-between items-center text-lg">
+                        class="group bg-gray-50 p-4 sm:p-6 rounded-xl sm:rounded-2xl cursor-pointer hover:bg-green-50 transition duration-300">
+                        <summary class="font-bold text-gray-900 list-none flex justify-between items-center text-base sm:text-lg">
                             Do you ship all over India?
                             <span class="transition group-open:rotate-180"><i
-                                    class="fas fa-chevron-down text-primary"></i></span>
+                                    class="fas fa-chevron-down text-primary text-sm sm:text-base"></i></span>
                         </summary>
-                        <p class="text-gray-600 mt-4 leading-relaxed">Yes, we deliver our authentic Pollachi products to
+                        <p class="text-gray-600 mt-3 sm:mt-4 leading-relaxed text-sm sm:text-base">Yes, we deliver our authentic Pollachi products to
                             every corner of India using reliable courier partners. Your order reaches you safely!</p>
                     </details>
                     <details
-                        class="group bg-gray-50 p-6 rounded-2xl cursor-pointer hover:bg-green-50 transition duration-300">
-                        <summary class="font-bold text-gray-900 list-none flex justify-between items-center text-lg">
+                        class="group bg-gray-50 p-4 sm:p-6 rounded-xl sm:rounded-2xl cursor-pointer hover:bg-green-50 transition duration-300">
+                        <summary class="font-bold text-gray-900 list-none flex justify-between items-center text-base sm:text-lg">
                             Is the oil purely cold-pressed?
                             <span class="transition group-open:rotate-180"><i
-                                    class="fas fa-chevron-down text-primary"></i></span>
+                                    class="fas fa-chevron-down text-primary text-sm sm:text-base"></i></span>
                         </summary>
-                        <p class="text-gray-600 mt-4 leading-relaxed">Absolutely! We use the traditional 'Chekku'
+                        <p class="text-gray-600 mt-3 sm:mt-4 leading-relaxed text-sm sm:text-base">Absolutely! We use the traditional 'Chekku'
                             (wood-pressing) method. No heat, no chemicals—just 100% nutrient-rich natural goodness.</p>
                     </details>
                     <details
-                        class="group bg-gray-50 p-6 rounded-2xl cursor-pointer hover:bg-green-50 transition duration-300">
-                        <summary class="font-bold text-gray-900 list-none flex justify-between items-center text-lg">
+                        class="group bg-gray-50 p-4 sm:p-6 rounded-xl sm:rounded-2xl cursor-pointer hover:bg-green-50 transition duration-300">
+                        <summary class="font-bold text-gray-900 list-none flex justify-between items-center text-base sm:text-lg">
                             Can I customize the handcrafts?
                             <span class="transition group-open:rotate-180"><i
-                                    class="fas fa-chevron-down text-primary"></i></span>
+                                    class="fas fa-chevron-down text-primary text-sm sm:text-base"></i></span>
                         </summary>
-                        <p class="text-gray-600 mt-4 leading-relaxed">Yes! Since our crafts are handmade from coconut
+                        <p class="text-gray-600 mt-3 sm:mt-4 leading-relaxed text-sm sm:text-base">Yes! Since our crafts are handmade from coconut
                             shells, we can personalize them for gifts or specific designs. Contact us on WhatsApp to
                             discuss.</p>
                     </details>
                 </div>
 
-                <div class="mt-12 p-6 bg-yellow-50 rounded-xl border border-yellow-100 text-center shadow-sm">
-                    <h4 class="font-bold text-yellow-800 mb-2 flex items-center justify-center gap-2"><i
-                            class="fas fa-truck"></i> Shipping & Returns</h4>
-                    <p class="text-yellow-700 text-sm">Orders are typically processed within 24 hours. Returns accepted
+                <div class="mt-8 sm:mt-12 p-4 sm:p-6 bg-yellow-50 rounded-lg sm:rounded-xl border border-yellow-100 text-center shadow-sm">
+                    <h4 class="font-bold text-yellow-800 mb-2 flex items-center justify-center gap-2 text-sm sm:text-base"><i
+                            class="fas fa-truck text-xs sm:text-sm"></i> Shipping & Returns</h4>
+                    <p class="text-yellow-700 text-xs sm:text-sm">Orders are typically processed within 24 hours. Returns accepted
                         only for products damaged during transit.</p>
                 </div>
             </div>
         </section>
 
         <!-- Footer -->
-        <footer id="footer" class="bg-gray-900 text-gray-300 py-12">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <footer id="footer" class="bg-gray-900 text-gray-300 py-8 sm:py-12">
+            <div class="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
                 <div class="text-center">
                     <img src="images/mugavari thazhai logo.jpg"
                         onerror="this.onerror=null;this.src='https://placehold.co/100x100/E0F2E9/0E2C18?text=Logo'"
-                        class="w-24 h-24 rounded-full mx-auto mb-6 border-2 border-gray-700" alt="Logo">
-                    <p class="text-xl font-medium text-white mb-4">Pure & Authentic Products from Pollachi with Love ❤️
+                        class="w-20 sm:w-24 h-20 sm:h-24 rounded-full mx-auto mb-4 sm:mb-6 border-2 border-gray-700" alt="Logo">
+                    <p class="text-lg sm:text-xl font-medium text-white mb-3 sm:mb-4">Pure & Authentic Products from Pollachi with Love ❤️
                     </p>
-                    <p class="text-sm text-gray-400 mb-8"><i class="fas fa-map-marker-alt mr-2 text-primary"></i>
+                    <p class="text-xs sm:text-sm text-gray-400 mb-6 sm:mb-8"><i class="fas fa-map-marker-alt mr-2 text-primary"></i>
                         Location: Pollachi, Coimbatore District, Tamil Nadu, India</p>
 
-                    <div class="flex justify-center gap-8 mb-12">
+                    <div class="flex justify-center gap-4 sm:gap-8 mb-8 sm:mb-12">
                         <a href="https://wa.me/919842535962" target="_blank" class="group">
-                            <div class="bg-white p-3 rounded-full group-hover:bg-[#25D366] transition duration-300">
+                            <div class="bg-white p-2 sm:p-3 rounded-full group-hover:bg-[#25D366] transition duration-300">
                                 <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/whatsapp.svg"
-                                    class="w-6 h-6 group-hover:invert transition" alt="WhatsApp">
+                                    class="w-5 sm:w-6 h-5 sm:h-6 group-hover:invert transition" alt="WhatsApp">
                             </div>
                         </a>
                         <a href="https://www.instagram.com/jackcity_official" target="_blank" class="group">
-                            <div class="bg-white p-3 rounded-full group-hover:bg-[#E1306C] transition duration-300">
+                            <div class="bg-white p-2 sm:p-3 rounded-full group-hover:bg-[#E1306C] transition duration-300">
                                 <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg"
-                                    class="w-6 h-6 group-hover:invert transition" alt="Instagram">
+                                    class="w-5 sm:w-6 h-5 sm:h-6 group-hover:invert transition" alt="Instagram">
                             </div>
                         </a>
                         <a href="https://www.youtube.com/@JACKCITYVlog" target="_blank" class="group">
-                            <div class="bg-white p-3 rounded-full group-hover:bg-[#FF0000] transition duration-300">
+                            <div class="bg-white p-2 sm:p-3 rounded-full group-hover:bg-[#FF0000] transition duration-300">
                                 <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/youtube.svg"
-                                    class="w-6 h-6 group-hover:invert transition" alt="YouTube">
+                                    class="w-5 sm:w-6 h-5 sm:h-6 group-hover:invert transition" alt="YouTube">
                             </div>
                         </a>
                     </div>
 
-                    <div class="flex flex-col items-center gap-4 border-t border-gray-800 pt-8">
-                        <p class="text-sm text-gray-500">© 2025 - SK | Mugavari Thazhai</p>
+                    <div class="flex flex-col items-center gap-3 sm:gap-4 border-t border-gray-800 pt-6 sm:pt-8">
+                        <p class="text-xs sm:text-sm text-gray-500">© 2025 - SK | Mugavari Thazhai</p>
 
                         <!-- Buy Me a Coffee Button -->
                         <a href="https://buymeachai.ezee.li/satheesh_devoloper" target="_blank"
-                            class="inline-flex items-center gap-2 px-4 py-2 bg-yellow-400 text-gray-900 rounded-full text-sm font-bold hover:bg-yellow-300 transition hover:scale-105 shadow-lg">
-                            <i class="fas fa-coffee"></i> Buy me a Chai
+                            class="inline-flex items-center gap-2 px-3 sm:px-4 py-2 bg-yellow-400 text-gray-900 rounded-full text-xs sm:text-sm font-bold hover:bg-yellow-300 transition hover:scale-105 shadow-lg">
+                            <i class="fas fa-coffee text-xs sm:text-sm"></i> Buy me a Chai
                         </a>
                     </div>
                 </div>
@@ -698,34 +742,13 @@
 
     <script>
             (function () {
-                const BASE_WIDTH = 1440;
                 const wrapper = document.getElementById('scale-wrapper');
+                if (!wrapper) return;
 
-                function updateScale() {
-                    if (!wrapper) return;
-
-                    const viewportWidth = window.innerWidth;
-                    let scale = viewportWidth / BASE_WIDTH;
-
-                    if (scale >= 1) {
-                        // Desktop or larger
-                        wrapper.style.transform = 'none';
-                        wrapper.style.width = '100%';
-                        document.body.style.height = 'auto';
-                    } else {
-                        // Tablet / Mobile
-                        wrapper.style.width = BASE_WIDTH + 'px';
-                        wrapper.style.transform = `scale(${scale})`;
-
-                        // Fix scroll height
-                        const scaledHeight = wrapper.getBoundingClientRect().height;
-                        document.body.style.height = scaledHeight + 'px';
-                    }
-                }
-
-                window.addEventListener('load', updateScale);
-                window.addEventListener('resize', updateScale);
-                window.addEventListener('DOMContentLoaded', updateScale);
+                // Remove scaling for better mobile experience
+                wrapper.style.transform = 'none';
+                wrapper.style.width = '100%';
+                document.body.style.height = 'auto';
             })();
     </script>
 
@@ -745,19 +768,149 @@
             const badge = document.getElementById("cart-count");
             const mobileBadge = document.getElementById("mobile-cart-count");
 
+            console.log("Cart items:", totalItems);
+
             if (totalItems > 0) {
-                badge.style.display = "block";
-                badge.textContent = totalItems;
-                mobileBadge.style.display = "block";
-                mobileBadge.textContent = totalItems;
+                if (badge) {
+                    badge.classList.remove("hidden");
+                    badge.textContent = totalItems;
+                }
+                if (mobileBadge) {
+                    mobileBadge.classList.remove("hidden");
+                    mobileBadge.textContent = totalItems;
+                }
             } else {
-                badge.style.display = "none";
-                mobileBadge.style.display = "none";
+                if (badge) badge.classList.add("hidden");
+                if (mobileBadge) mobileBadge.classList.add("hidden");
             }
         }
+
+        // Cart Modal Functions
+        function openCartModal() {
+            const cart = JSON.parse(localStorage.getItem("cart")) || [];
+            const modal = document.getElementById("cartModal");
+            const content = document.getElementById("cartModalContent");
+            const footer = document.getElementById("cartModalFooter");
+
+            if (cart.length === 0) {
+                content.innerHTML = `
+                    <div class="text-center py-12">
+                        <i class="fas fa-shopping-basket text-5xl text-gray-300 mb-4 block"></i>
+                        <p class="text-gray-600 text-lg font-semibold">Cart is Empty</p>
+                    </div>
+                `;
+                footer.classList.add("hidden");
+            } else {
+                let cartHTML = `<div class="space-y-4">`;
+                let total = 0;
+                let totalQty = 0;
+
+                cart.forEach((item, index) => {
+                    // Handle both 'qty' and 'quantity' properties
+                    const qty = item.qty || item.quantity || 1;
+                    const price = item.price || item.unitPrice || 0;
+                    const subtotal = price * qty;
+                    total += subtotal;
+                    totalQty += qty;
+                    
+                    const displayName = item.variant
+                        ? `${item.productName} - ${item.variant}`
+                        : item.productName;
+
+                    cartHTML += `
+                        <div class="p-4 bg-gradient-to-r from-gray-50 to-gray-100 rounded-lg border-2 border-gray-200 hover:border-primary hover:shadow-md transition">
+                            <div class="flex items-start justify-between mb-3">
+                                <div class="flex-1">
+                                    <p class="font-bold text-gray-900 text-base">${displayName}</p>
+                                </div>
+                                <button onclick="removeFromHomeCart(${index})" class="text-red-500 hover:text-red-700 text-lg flex-shrink-0">
+                                    <i class="fas fa-times-circle"></i>
+                                </button>
+                            </div>
+                            
+                            <div class="grid grid-cols-3 gap-3 text-center">
+                                <div class="bg-white rounded p-2 border border-gray-200">
+                                    <p class="text-xs text-gray-600 mb-1">Price</p>
+                                    <p class="font-bold text-sm text-primary">₹${price}</p>
+                                </div>
+                                <div class="bg-white rounded p-2 border border-gray-200">
+                                    <p class="text-xs text-gray-600 mb-1">Qty</p>
+                                    <p class="font-bold text-sm text-gray-900">${qty}</p>
+                                </div>
+                                <div class="bg-white rounded p-2 border border-gray-200">
+                                    <p class="text-xs text-gray-600 mb-1">Subtotal</p>
+                                    <p class="font-bold text-sm text-primary">₹${subtotal}</p>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                });
+
+                cartHTML += `</div>`;
+                content.innerHTML = cartHTML;
+                
+                // Update footer with total info
+                const footerHTML = `
+                    <div class="space-y-3">
+                        <div class="grid grid-cols-2 gap-4 pb-4 border-b-2 border-gray-300">
+                            <div>
+                                <p class="text-gray-600 text-sm">Total Items</p>
+                                <h3 class="text-3xl font-bold text-primary">${totalQty}</h3>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-gray-600 text-sm">Total Amount</p>
+                                <h3 class="text-3xl font-bold text-primary">₹${total}</h3>
+                            </div>
+                        </div>
+                        <button onclick="goToProducts()" class="w-full px-4 py-3 bg-primary text-white font-bold rounded-lg hover:bg-green-800 transition">
+                            <i class="fas fa-shopping-cart mr-2"></i>Go to Products
+                        </button>
+                    </div>
+                `;
+                document.getElementById("cartModalFooter").innerHTML = footerHTML;
+                footer.classList.remove("hidden");
+            }
+
+            modal.classList.remove("hidden");
+        }
+
+        function closeCartModal() {
+            document.getElementById("cartModal").classList.add("hidden");
+        }
+
+        function removeFromHomeCart(index) {
+            const cart = JSON.parse(localStorage.getItem("cart")) || [];
+            cart.splice(index, 1);
+            localStorage.setItem("cart", JSON.stringify(cart));
+            updateCartCount();
+            openCartModal();
+        }
+
+        function goToProducts() {
+            window.location.href = "products.html";
+        }
+
+        // Listen for changes in localStorage (when cart is modified on products page)
+        window.addEventListener('storage', (event) => {
+            if (event.key === 'cart' || event.key === null) {
+                console.log("Storage changed, updating cart");
+                updateCartCount();
+            }
+        });
+
         document.addEventListener("DOMContentLoaded", () => {
             updateCartCount();
             initHandCraftGallery();
+            
+            // Also update cart count periodically to catch changes
+            setInterval(updateCartCount, 500);
+
+            // Close cart modal when clicking outside
+            document.getElementById("cartModal").addEventListener('click', function(e) {
+                if (e.target === this) {
+                    closeCartModal();
+                }
+            });
         });
 
         function initHandCraftGallery() {
