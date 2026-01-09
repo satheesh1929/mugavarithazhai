@@ -2,6 +2,15 @@
 <html lang="en" class="scroll-smooth">
 
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XFTR2EZJBQ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-XFTR2EZJBQ');
+    </script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="./images/favicon.png">
@@ -252,15 +261,18 @@
                                 onerror="this.onerror=null;this.src='https://placehold.co/125x125/E0F2E9/0E2C18?text=Logo'"
                                 class="h-12 w-12 rounded-full border-2 border-primary shadow-sm" alt="Logo">
                         </a>
-                        <div class="text-base md:text-lg lg:text-xl font-bold text-primary tracking-tight line-clamp-2">Mugavari Thazhai</div>
+                        <div class="text-base md:text-lg lg:text-xl font-bold text-primary tracking-tight line-clamp-2">
+                            Mugavari Thazhai</div>
                     </div>
 
                     <!-- Desktop Menu -->
                     <div class="hidden md:flex items-center space-x-8">
-                        <a href="index.html" class="text-gray-700 hover:text-primary font-medium transition text-sm">Home</a>
+                        <a href="index.html"
+                            class="text-gray-700 hover:text-primary font-medium transition text-sm">Home</a>
                         <a href="products.html"
                             class="text-gray-700 hover:text-primary font-medium transition text-sm">Products</a>
-                        <a href="#footer" class="text-gray-700 hover:text-primary font-medium transition text-sm">Contact</a>
+                        <a href="#footer"
+                            class="text-gray-700 hover:text-primary font-medium transition text-sm">Contact</a>
 
                         <!-- Cart Icon -->
                         <button onclick="openCartModal()" class="relative group">
@@ -300,9 +312,11 @@
         </nav>
 
         <!-- Cart Modal -->
-        <div id="cartModal" class="hidden fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4 overflow-y-auto pt-20">
+        <div id="cartModal"
+            class="hidden fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4 overflow-y-auto pt-20">
             <div class="bg-white rounded-2xl shadow-2xl max-w-2xl w-full max-h-[80vh] overflow-y-auto">
-                <div class="sticky top-0 bg-primary text-white px-6 py-4 flex justify-between items-center rounded-t-2xl">
+                <div
+                    class="sticky top-0 bg-primary text-white px-6 py-4 flex justify-between items-center rounded-t-2xl">
                     <h2 class="text-xl font-bold flex items-center gap-2">
                         <i class="fas fa-shopping-bag"></i> Your Cart
                     </h2>
@@ -310,14 +324,14 @@
                         <i class="fas fa-times"></i>
                     </button>
                 </div>
-                
+
                 <div id="cartModalContent" class="p-6">
                     <div class="text-center py-12">
                         <i class="fas fa-shopping-basket text-5xl text-gray-300 mb-4 block"></i>
                         <p class="text-gray-600 text-lg font-semibold">Cart is Empty</p>
                     </div>
                 </div>
-                
+
                 <div id="cartModalFooter" class="hidden border-t border-gray-200 p-6 bg-gray-50 rounded-b-2xl">
                     <!-- Content will be populated by JavaScript -->
                 </div>
@@ -353,7 +367,8 @@
                                 class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-green-600">Nature's
                                 Best</span>
                         </h1>
-                        <p class="text-xs sm:text-sm md:text-base lg:text-lg text-gray-600 mb-4 sm:mb-6 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                        <p
+                            class="text-xs sm:text-sm md:text-base lg:text-lg text-gray-600 mb-4 sm:mb-6 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
                             Rooted in Pollachi. Trusted by hearts. Delivered to your door. Experience the goodness of
                             cold-pressed oils and sustainable handcrafts. Mugavari Thazhai provides pure cold pressed
                             coconut oil from Pollachi to customers across Coimbatore and Tamil Nadu.
@@ -470,7 +485,8 @@
                 class="absolute top-0 left-0 w-64 h-64 bg-primary/5 rounded-full -translate-x-1/2 -translate-y-1/2 blur-3xl">
             </div>
             <div class="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 relative z-10">
-                <div class="bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-8 md:p-12 shadow-xl flex flex-col md:flex-row items-center gap-6 sm:gap-12">
+                <div
+                    class="bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-8 md:p-12 shadow-xl flex flex-col md:flex-row items-center gap-6 sm:gap-12">
                     <div class="w-full md:w-1/3">
                         <img src="images/mugavari thazhai logo.jpg"
                             onerror="this.onerror=null;this.src='https://placehold.co/300x300/E0F2E9/0E2C18?text=Offer'"
@@ -479,19 +495,24 @@
                             alt="Mugavari Thazhai Special Offer - Pure Oils">
                     </div>
                     <div class="w-full md:w-2/3 text-center md:text-left">
-                        <h2 class="text-2xl sm:text-3xl font-bold text-primary mb-3 sm:mb-4">🌴 Authentic South Indian Essence</h2>
+                        <h2 class="text-2xl sm:text-3xl font-bold text-primary mb-3 sm:mb-4">🌴 Authentic South Indian
+                            Essence</h2>
                         <ul class="space-y-2 sm:space-y-3 mb-6 sm:mb-8 text-gray-600 text-sm sm:text-lg">
                             <li class="flex items-center gap-2 sm:gap-3 justify-center md:justify-start">
-                                <i class="fas fa-check-circle text-green-500 text-sm sm:text-base"></i> <span class="text-xs sm:text-base">100% Pollachi-Sourced Coconuts</span>
+                                <i class="fas fa-check-circle text-green-500 text-sm sm:text-base"></i> <span
+                                    class="text-xs sm:text-base">100% Pollachi-Sourced Coconuts</span>
                             </li>
                             <li class="flex items-center gap-2 sm:gap-3 justify-center md:justify-start">
-                                <i class="fas fa-check-circle text-green-500 text-sm sm:text-base"></i> <span class="text-xs sm:text-base">Traditional Wood-Pressed (Chekku)</span>
+                                <i class="fas fa-check-circle text-green-500 text-sm sm:text-base"></i> <span
+                                    class="text-xs sm:text-base">Traditional Wood-Pressed (Chekku)</span>
                             </li>
                             <li class="flex items-center gap-2 sm:gap-3 justify-center md:justify-start">
-                                <i class="fas fa-check-circle text-green-500 text-sm sm:text-base"></i> <span class="text-xs sm:text-base">Chemical-Free & Unrefined</span>
+                                <i class="fas fa-check-circle text-green-500 text-sm sm:text-base"></i> <span
+                                    class="text-xs sm:text-base">Chemical-Free & Unrefined</span>
                             </li>
                             <li class="flex items-center gap-2 sm:gap-3 justify-center md:justify-start">
-                                <i class="fas fa-check-circle text-green-500 text-sm sm:text-base"></i> <span class="text-xs sm:text-base">Delivered to Coimbatore & TN</span>
+                                <i class="fas fa-check-circle text-green-500 text-sm sm:text-base"></i> <span
+                                    class="text-xs sm:text-base">Delivered to Coimbatore & TN</span>
                             </li>
                         </ul>
                         <a href="products.html"
@@ -514,7 +535,8 @@
                 <span
                     class="inline-block py-1 px-3 rounded-full bg-orange-100 text-orange-800 text-xs font-bold tracking-wider uppercase mb-4">Exclusive
                     Collection</span>
-                <h2 class="text-2xl sm:text-3xl md:text-5xl font-bold text-primary mb-4 sm:mb-6">Hand Craft Treasures</h2>
+                <h2 class="text-2xl sm:text-3xl md:text-5xl font-bold text-primary mb-4 sm:mb-6">Hand Craft Treasures
+                </h2>
                 <p class="text-gray-600 max-w-2xl mx-auto text-sm sm:text-base md:text-lg leading-relaxed">
                     Adorn your home with the rustic elegance of Pollachi. Each piece is meticulously handcrafted from
                     natural
@@ -561,8 +583,10 @@
                     <!-- Review 2 -->
                     <div
                         class="bg-white p-4 sm:p-8 rounded-xl sm:rounded-2xl shadow-sm hover:shadow-xl transition duration-300 relative border border-gray-100">
-                        <i class="fas fa-quote-left text-3xl sm:text-4xl text-green-100 absolute top-4 sm:top-6 left-4 sm:left-6 -z-0"></i>
-                        <p class="text-gray-600 italic mb-4 sm:mb-6 relative z-10 text-sm sm:text-base">"Good products, fast delivery. Honestly, the
+                        <i
+                            class="fas fa-quote-left text-3xl sm:text-4xl text-green-100 absolute top-4 sm:top-6 left-4 sm:left-6 -z-0"></i>
+                        <p class="text-gray-600 italic mb-4 sm:mb-6 relative z-10 text-sm sm:text-base">"Good products,
+                            fast delivery. Honestly, the
                             only
                             time I got this excited for a parcel was when my online food order came with extra sambar.
                             Respect!"</p>
@@ -601,7 +625,8 @@
 
         <!-- Brands Section -->
         <section class="py-8 sm:py-12 bg-white border-t border-gray-100">
-            <div class="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 flex justify-center grayscale hover:grayscale-0 transition duration-500">
+            <div
+                class="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 flex justify-center grayscale hover:grayscale-0 transition duration-500">
                 <a href="https://www.fssai.gov.in/" target="_blank">
                     <img src="images/Fssai-Logo-Vector.png"
                         onerror="this.onerror=null;this.src='https://placehold.co/150x80/ffffff/555555?text=FSSAI'"
@@ -615,26 +640,32 @@
             <div class="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 text-center">
                 <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-8 sm:mb-12">How to Order</h2>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
-                    <div class="p-4 sm:p-6 bg-white rounded-xl sm:rounded-2xl shadow-sm border border-green-50 hover:shadow-md transition">
+                    <div
+                        class="p-4 sm:p-6 bg-white rounded-xl sm:rounded-2xl shadow-sm border border-green-50 hover:shadow-md transition">
                         <div
                             class="w-14 sm:w-16 h-14 sm:h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4 text-xl sm:text-2xl">
                             🛒</div>
                         <h3 class="font-bold text-lg sm:text-xl mb-2 text-primary">1. Select Products</h3>
-                        <p class="text-gray-600 text-sm sm:text-base">Browse our authentic collection and choose your favorites.</p>
+                        <p class="text-gray-600 text-sm sm:text-base">Browse our authentic collection and choose your
+                            favorites.</p>
                     </div>
-                    <div class="p-4 sm:p-6 bg-white rounded-xl sm:rounded-2xl shadow-sm border border-green-50 hover:shadow-md transition">
+                    <div
+                        class="p-4 sm:p-6 bg-white rounded-xl sm:rounded-2xl shadow-sm border border-green-50 hover:shadow-md transition">
                         <div
                             class="w-14 sm:w-16 h-14 sm:h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4 text-xl sm:text-2xl">
                             💬</div>
                         <h3 class="font-bold text-lg sm:text-xl mb-2 text-primary">2. Send to WhatsApp</h3>
-                        <p class="text-gray-600 text-sm sm:text-base">Click "Order on WhatsApp" to send your cart details directly to us.</p>
+                        <p class="text-gray-600 text-sm sm:text-base">Click "Order on WhatsApp" to send your cart
+                            details directly to us.</p>
                     </div>
-                    <div class="p-4 sm:p-6 bg-white rounded-xl sm:rounded-2xl shadow-sm border border-green-50 hover:shadow-md transition">
+                    <div
+                        class="p-4 sm:p-6 bg-white rounded-xl sm:rounded-2xl shadow-sm border border-green-50 hover:shadow-md transition">
                         <div
                             class="w-14 sm:w-16 h-14 sm:h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4 text-xl sm:text-2xl">
                             🚚</div>
                         <h3 class="font-bold text-lg sm:text-xl mb-2 text-primary">3. Fast Delivery</h3>
-                        <p class="text-gray-600 text-sm sm:text-base">We verify your order and ship it swiftly to your doorstep!</p>
+                        <p class="text-gray-600 text-sm sm:text-base">We verify your order and ship it swiftly to your
+                            doorstep!</p>
                     </div>
                 </div>
             </div>
@@ -643,45 +674,55 @@
         <!-- FAQ & Shipping Section -->
         <section class="py-8 sm:py-12 md:py-20 bg-white">
             <div class="max-w-3xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
-                <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-6 sm:mb-8 text-center">Frequently Asked Questions</h2>
+                <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-6 sm:mb-8 text-center">Frequently Asked
+                    Questions</h2>
                 <div class="space-y-3 sm:space-y-4">
                     <details
                         class="group bg-gray-50 p-4 sm:p-6 rounded-xl sm:rounded-2xl cursor-pointer hover:bg-green-50 transition duration-300">
-                        <summary class="font-bold text-gray-900 list-none flex justify-between items-center text-base sm:text-lg">
+                        <summary
+                            class="font-bold text-gray-900 list-none flex justify-between items-center text-base sm:text-lg">
                             Do you ship all over India?
                             <span class="transition group-open:rotate-180"><i
                                     class="fas fa-chevron-down text-primary text-sm sm:text-base"></i></span>
                         </summary>
-                        <p class="text-gray-600 mt-3 sm:mt-4 leading-relaxed text-sm sm:text-base">Yes, we deliver our authentic Pollachi products to
+                        <p class="text-gray-600 mt-3 sm:mt-4 leading-relaxed text-sm sm:text-base">Yes, we deliver our
+                            authentic Pollachi products to
                             every corner of India using reliable courier partners. Your order reaches you safely!</p>
                     </details>
                     <details
                         class="group bg-gray-50 p-4 sm:p-6 rounded-xl sm:rounded-2xl cursor-pointer hover:bg-green-50 transition duration-300">
-                        <summary class="font-bold text-gray-900 list-none flex justify-between items-center text-base sm:text-lg">
+                        <summary
+                            class="font-bold text-gray-900 list-none flex justify-between items-center text-base sm:text-lg">
                             Is the oil purely cold-pressed?
                             <span class="transition group-open:rotate-180"><i
                                     class="fas fa-chevron-down text-primary text-sm sm:text-base"></i></span>
                         </summary>
-                        <p class="text-gray-600 mt-3 sm:mt-4 leading-relaxed text-sm sm:text-base">Absolutely! We use the traditional 'Chekku'
+                        <p class="text-gray-600 mt-3 sm:mt-4 leading-relaxed text-sm sm:text-base">Absolutely! We use
+                            the traditional 'Chekku'
                             (wood-pressing) method. No heat, no chemicals—just 100% nutrient-rich natural goodness.</p>
                     </details>
                     <details
                         class="group bg-gray-50 p-4 sm:p-6 rounded-xl sm:rounded-2xl cursor-pointer hover:bg-green-50 transition duration-300">
-                        <summary class="font-bold text-gray-900 list-none flex justify-between items-center text-base sm:text-lg">
+                        <summary
+                            class="font-bold text-gray-900 list-none flex justify-between items-center text-base sm:text-lg">
                             Can I customize the handcrafts?
                             <span class="transition group-open:rotate-180"><i
                                     class="fas fa-chevron-down text-primary text-sm sm:text-base"></i></span>
                         </summary>
-                        <p class="text-gray-600 mt-3 sm:mt-4 leading-relaxed text-sm sm:text-base">Yes! Since our crafts are handmade from coconut
+                        <p class="text-gray-600 mt-3 sm:mt-4 leading-relaxed text-sm sm:text-base">Yes! Since our crafts
+                            are handmade from coconut
                             shells, we can personalize them for gifts or specific designs. Contact us on WhatsApp to
                             discuss.</p>
                     </details>
                 </div>
 
-                <div class="mt-8 sm:mt-12 p-4 sm:p-6 bg-yellow-50 rounded-lg sm:rounded-xl border border-yellow-100 text-center shadow-sm">
-                    <h4 class="font-bold text-yellow-800 mb-2 flex items-center justify-center gap-2 text-sm sm:text-base"><i
-                            class="fas fa-truck text-xs sm:text-sm"></i> Shipping & Returns</h4>
-                    <p class="text-yellow-700 text-xs sm:text-sm">Orders are typically processed within 24 hours. Returns accepted
+                <div
+                    class="mt-8 sm:mt-12 p-4 sm:p-6 bg-yellow-50 rounded-lg sm:rounded-xl border border-yellow-100 text-center shadow-sm">
+                    <h4
+                        class="font-bold text-yellow-800 mb-2 flex items-center justify-center gap-2 text-sm sm:text-base">
+                        <i class="fas fa-truck text-xs sm:text-sm"></i> Shipping & Returns</h4>
+                    <p class="text-yellow-700 text-xs sm:text-sm">Orders are typically processed within 24 hours.
+                        Returns accepted
                         only for products damaged during transit.</p>
                 </div>
             </div>
@@ -693,27 +734,33 @@
                 <div class="text-center">
                     <img src="images/mugavari thazhai logo.jpg"
                         onerror="this.onerror=null;this.src='https://placehold.co/100x100/E0F2E9/0E2C18?text=Logo'"
-                        class="w-20 sm:w-24 h-20 sm:h-24 rounded-full mx-auto mb-4 sm:mb-6 border-2 border-gray-700" alt="Logo">
-                    <p class="text-lg sm:text-xl font-medium text-white mb-3 sm:mb-4">Pure & Authentic Products from Pollachi with Love ❤️
+                        class="w-20 sm:w-24 h-20 sm:h-24 rounded-full mx-auto mb-4 sm:mb-6 border-2 border-gray-700"
+                        alt="Logo">
+                    <p class="text-lg sm:text-xl font-medium text-white mb-3 sm:mb-4">Pure & Authentic Products from
+                        Pollachi with Love ❤️
                     </p>
-                    <p class="text-xs sm:text-sm text-gray-400 mb-6 sm:mb-8"><i class="fas fa-map-marker-alt mr-2 text-primary"></i>
+                    <p class="text-xs sm:text-sm text-gray-400 mb-6 sm:mb-8"><i
+                            class="fas fa-map-marker-alt mr-2 text-primary"></i>
                         Location: Pollachi, Coimbatore District, Tamil Nadu, India</p>
 
                     <div class="flex justify-center gap-4 sm:gap-8 mb-8 sm:mb-12">
                         <a href="https://wa.me/919842535962" target="_blank" class="group">
-                            <div class="bg-white p-2 sm:p-3 rounded-full group-hover:bg-[#25D366] transition duration-300">
+                            <div
+                                class="bg-white p-2 sm:p-3 rounded-full group-hover:bg-[#25D366] transition duration-300">
                                 <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/whatsapp.svg"
                                     class="w-5 sm:w-6 h-5 sm:h-6 group-hover:invert transition" alt="WhatsApp">
                             </div>
                         </a>
                         <a href="https://www.instagram.com/jackcity_official" target="_blank" class="group">
-                            <div class="bg-white p-2 sm:p-3 rounded-full group-hover:bg-[#E1306C] transition duration-300">
+                            <div
+                                class="bg-white p-2 sm:p-3 rounded-full group-hover:bg-[#E1306C] transition duration-300">
                                 <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg"
                                     class="w-5 sm:w-6 h-5 sm:h-6 group-hover:invert transition" alt="Instagram">
                             </div>
                         </a>
                         <a href="https://www.youtube.com/@JACKCITYVlog" target="_blank" class="group">
-                            <div class="bg-white p-2 sm:p-3 rounded-full group-hover:bg-[#FF0000] transition duration-300">
+                            <div
+                                class="bg-white p-2 sm:p-3 rounded-full group-hover:bg-[#FF0000] transition duration-300">
                                 <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/youtube.svg"
                                     class="w-5 sm:w-6 h-5 sm:h-6 group-hover:invert transition" alt="YouTube">
                             </div>
@@ -812,7 +859,7 @@
                     const subtotal = price * qty;
                     total += subtotal;
                     totalQty += qty;
-                    
+
                     const displayName = item.variant
                         ? `${item.productName} - ${item.variant}`
                         : item.productName;
@@ -848,7 +895,7 @@
 
                 cartHTML += `</div>`;
                 content.innerHTML = cartHTML;
-                
+
                 // Update footer with total info
                 const footerHTML = `
                     <div class="space-y-3">
@@ -901,12 +948,12 @@
         document.addEventListener("DOMContentLoaded", () => {
             updateCartCount();
             initHandCraftGallery();
-            
+
             // Also update cart count periodically to catch changes
             setInterval(updateCartCount, 500);
 
             // Close cart modal when clicking outside
-            document.getElementById("cartModal").addEventListener('click', function(e) {
+            document.getElementById("cartModal").addEventListener('click', function (e) {
                 if (e.target === this) {
                     closeCartModal();
                 }
