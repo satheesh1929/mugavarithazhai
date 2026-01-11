@@ -826,6 +826,10 @@
       });
     }
 
+    // Google Apps Script URL for storing orders
+    // TODO: Follow the instructions in 'instructions_google_sheet_setup.md' to get your specific URL.
+    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxiv8FVBRRV-BfXz4Uu7ho9aOSGTB9MtOoEaXCWf5nn_S7GybwKrEJuKsxEM4_vVKMs/exec';
+
     if (orderForm) {
       orderForm.addEventListener('submit', (e) => {
         e.preventDefault();
@@ -840,6 +844,21 @@
         const phone = document.getElementById('phone').value;
         const address = document.getElementById('address').value;
 
+        // Calculate totals and format string for WhatsApp
+        let orderDetailsArray = [];
+        let total = 0;
+
+        cart.forEach((item) => {
+          const itemName = item.variant
+            ? `${item.productName} (${item.variant})`
+            : item.productName;
+          orderDetailsArray.push(`${itemName} x${item.quantity}`);
+          total += item.totalPrice;
+        });
+
+        const orderDetailsString = orderDetailsArray.join(', ');
+
+        // Construct WhatsApp Message
         let orderMessage = `Hello! I would like to place an order:\n\n`;
         orderMessage += `*Customer Details:*\n`;
         orderMessage += `Name: ${name}\n`;
@@ -847,13 +866,11 @@
         orderMessage += `Address: ${address}\n\n`;
         orderMessage += `*Order Summary:*\n`;
 
-        let total = 0;
         cart.forEach((item) => {
           const itemName = item.variant
             ? `${item.productName} (${item.variant})`
             : item.productName;
           orderMessage += `${itemName} x${item.quantity} = ₹${item.totalPrice}\n`;
-          total += item.totalPrice;
         });
 
         orderMessage += `\n*Total Amount: ₹${total}*\n\n`;
@@ -862,12 +879,61 @@
         const encodedMessage = encodeURIComponent(orderMessage);
         const whatsappUrl = `https://wa.me/${whatsappBusinessNumber}?text=${encodedMessage}`;
 
-        window.open(whatsappUrl, '_blank');
+        // UI Feedback
+        const submitBtn = orderForm.querySelector('button[type="submit"]');
+        const originalBtnText = submitBtn.innerHTML;
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+        submitBtn.disabled = true;
 
-        // Clear form and close modal
-        orderForm.reset();
-        orderModal.classList.add('hidden');
-        orderModal.classList.remove('flex');
+        // Function to finalize (open WhatsApp and close modal)
+        const finalizeOrder = () => {
+          window.open(whatsappUrl, '_blank');
+
+          // Reset UI
+          submitBtn.innerHTML = originalBtnText;
+          submitBtn.disabled = false;
+          orderForm.reset();
+          orderModal.classList.add('hidden');
+          orderModal.classList.remove('flex');
+
+          // Clear cart to prevent duplicate orders
+          localStorage.removeItem('cart');
+          updateCartUI();
+        };
+
+        // Send to Google Sheet
+        if (GOOGLE_SCRIPT_URL && GOOGLE_SCRIPT_URL !== 'PASTE_YOUR_WEB_APP_URL_HERE') {
+          const sheetData = {
+            name: name,
+            phone: phone,
+            address: address,
+            orderDetails: orderDetailsString,
+            totalAmount: total
+          };
+
+          fetch(GOOGLE_SCRIPT_URL, {
+            method: 'POST',
+            mode: 'no-cors', // 'no-cors' is required for simple Apps Script POST requests from browser
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(sheetData)
+          })
+            .then(() => {
+              console.log('Order saved to Google Sheet');
+              finalizeOrder();
+            })
+            .catch(error => {
+              console.error('Error saving to sheet:', error);
+              // Even if sheet save fails, still open WhatsApp
+              alert('Connection error to Sheet, but proceeding to WhatsApp...');
+              finalizeOrder();
+            });
+        } else {
+          // If no URL is configured, just proceed to WhatsApp
+          console.log('Google Sheet URL not configured. Skipping sheet save.');
+          finalizeOrder();
+        }
       });
     }
 
