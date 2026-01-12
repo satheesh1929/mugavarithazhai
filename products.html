@@ -828,7 +828,7 @@
 
     // Google Apps Script URL for storing orders
     // TODO: Follow the instructions in 'instructions_google_sheet_setup.md' to get your specific URL.
-    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxiv8FVBRRV-BfXz4Uu7ho9aOSGTB9MtOoEaXCWf5nn_S7GybwKrEJuKsxEM4_vVKMs/exec';
+    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyWoFLSktIDW7n63PQdfyUTVrzcCGeGN7OzSpVroY0ncvfskv8GYfecITEal2_Dp-bq/exec';
 
     if (orderForm) {
       orderForm.addEventListener('submit', (e) => {
@@ -911,19 +911,13 @@
             totalAmount: total
           };
 
-          // Convert to URL parameters for reliable no-cors transmission
-          const params = new URLSearchParams();
-          for (const key in sheetData) {
-            params.append(key, sheetData[key]);
-          }
-
           fetch(GOOGLE_SCRIPT_URL, {
             method: 'POST',
             mode: 'no-cors',
             headers: {
-              'Content-Type': 'application/x-www-form-urlencoded',
+              'Content-Type': 'text/plain',
             },
-            body: params.toString()
+            body: JSON.stringify(sheetData)
           })
             .then(() => {
               console.log('Order saved to Google Sheet');
