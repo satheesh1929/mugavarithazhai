@@ -102,82 +102,88 @@
                                     class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition"
                                     required>
                             </div>
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
-                                <input type="tel" id="phone" placeholder="9876543210"
-                                    class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition"
-                                    required>
-                            </div>
-                            <div class="md:col-span-2">
-                                <label class="block text-sm font-medium text-gray-700 mb-1">Delivery Address</label>
-                                <textarea id="address" placeholder="House No, Street, City, Pincode"
-                                    class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition h-24"
-                                    required></textarea>
-                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
+                            <input type="tel" id="phone" placeholder="9876543210"
+                                class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition"
+                                required>
+                        </div>
+                        <div class="md:col-span-2">
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
+                            <input type="email" id="email" placeholder="john@example.com"
+                                class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition"
+                                required>
+                        </div>
+                        <div class="md:col-span-2">
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Delivery Address</label>
+                            <textarea id="address" placeholder="House No, Street, City, Pincode"
+                                class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition h-24"
+                                required></textarea>
                         </div>
                     </div>
-
-                    <!-- Payment Section -->
-                    <div class="border-t border-gray-100 pt-6">
-                        <h3 class="font-semibold text-gray-900 mb-4 text-lg flex items-center gap-2">
-                            Payment Method <span
-                                class="bg-green-100 text-green-700 text-xs px-2 py-0.5 rounded-full">UPI</span>
-                        </h3>
-
-                        <!-- Step 1: Pay -->
-                        <div class="bg-gray-50 border rounded-xl p-6 mb-4 text-center">
-                            <span class="block text-xs font-bold text-gray-400 mb-3 uppercase tracking-wide">Step 1:
-                                Scan & Pay</span>
-
-                            <div class="bg-white p-2 rounded-lg shadow-sm w-fit mx-auto mb-3 border border-gray-200">
-                                <img src="./images/UPI QR.jpeg" id="upi-qr-image"
-                                    onerror="this.onerror=null;this.src='https://placehold.co/200x200?text=QR+Error'"
-                                    alt="UPI QR Code" class="w-48 h-48 object-contain">
-                            </div>
-
-                            <p class="font-bold text-lg text-gray-900 mb-1">Total: ₹<span id="upi-btn-amount">0</span>
-                            </p>
-                            <div class="flex items-center justify-center gap-2 mb-2 mt-2">
-                                <span class="text-sm text-gray-600">UPI ID:</span>
-                                <code id="display-upi-id"
-                                    class="bg-white border border-gray-200 px-2 py-1 rounded text-sm font-mono select-all text-primary"></code>
-                                <button type="button" onclick="copyUPI()"
-                                    class="text-gray-400 hover:text-primary transition" title="Copy UPI ID">
-                                    <i class="far fa-copy"></i>
-                                </button>
-                            </div>
-                            <p class="text-xs text-gray-500">Scan QR or Copy UPI ID to Pay via GPay/PhonePe</p>
-                        </div>
-
-                        <!-- Step 2: Upload -->
-                        <div class="bg-white border rounded-xl p-4">
-                            <span class="block text-xs font-bold text-gray-400 mb-2 uppercase tracking-wide">Step 2:
-                                Upload Screenshot</span>
-                            <label class="block cursor-pointer">
-                                <div
-                                    class="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:bg-gray-50 transition group">
-                                    <i
-                                        class="fas fa-cloud-upload-alt text-3xl text-gray-300 group-hover:text-primary mb-2 transition"></i>
-                                    <p class="text-sm font-medium text-gray-700">Click to Upload Payment Screenshot</p>
-                                    <p class="text-xs text-gray-400 mt-1">Supported: JPG, PNG</p>
-                                </div>
-                                <input type="file" id="screenshot" accept="image/*" class="hidden" required
-                                    onchange="document.querySelector('.text-sm.font-medium.text-gray-700').textContent = this.files[0].name">
-                            </label>
-                        </div>
-                    </div>
-
-                    <!-- Actions -->
-                    <div class="pt-4 flex flex-col gap-3">
-                        <button type="submit"
-                            class="w-full py-4 bg-primary text-white font-bold text-lg rounded-xl hover:bg-green-800 transition shadow-lg hover:shadow-xl active:scale-[0.99] flex items-center justify-center gap-2">
-                            Confirm Order <i class="fas fa-check-circle"></i>
-                        </button>
-                        <p class="text-center text-xs text-gray-400">Your details are safe. Order confirmation will be
-                            sent to WhatsApp.</p>
-                    </div>
-                </form>
             </div>
+
+            <!-- Payment Section -->
+            <div class="border-t border-gray-100 pt-6">
+                <h3 class="font-semibold text-gray-900 mb-4 text-lg flex items-center gap-2">
+                    Payment Method <span class="bg-green-100 text-green-700 text-xs px-2 py-0.5 rounded-full">UPI</span>
+                </h3>
+
+                <!-- Step 1: Pay -->
+                <div class="bg-gray-50 border rounded-xl p-6 mb-4 text-center">
+                    <span class="block text-xs font-bold text-gray-400 mb-3 uppercase tracking-wide">Step 1:
+                        Scan & Pay</span>
+
+                    <div class="bg-white p-2 rounded-lg shadow-sm w-fit mx-auto mb-3 border border-gray-200">
+                        <img src="./images/UPI QR.jpeg" id="upi-qr-image"
+                            onerror="this.onerror=null;this.src='https://placehold.co/200x200?text=QR+Error'"
+                            alt="UPI QR Code" class="w-48 h-48 object-contain">
+                    </div>
+
+                    <p class="font-bold text-lg text-gray-900 mb-1">Total: ₹<span id="upi-btn-amount">0</span>
+                    </p>
+                    <div class="flex items-center justify-center gap-2 mb-2 mt-2">
+                        <span class="text-sm text-gray-600">UPI ID:</span>
+                        <code id="display-upi-id"
+                            class="bg-white border border-gray-200 px-2 py-1 rounded text-sm font-mono select-all text-primary"></code>
+                        <button type="button" onclick="copyUPI()" class="text-gray-400 hover:text-primary transition"
+                            title="Copy UPI ID">
+                            <i class="far fa-copy"></i>
+                        </button>
+                    </div>
+                    <p class="text-xs text-gray-500">Scan QR or Copy UPI ID to Pay via GPay/PhonePe</p>
+                </div>
+
+                <!-- Step 2: Upload -->
+                <div class="bg-white border rounded-xl p-4">
+                    <span class="block text-xs font-bold text-gray-400 mb-2 uppercase tracking-wide">Step 2:
+                        Upload Screenshot</span>
+                    <label class="block cursor-pointer">
+                        <div
+                            class="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:bg-gray-50 transition group">
+                            <i
+                                class="fas fa-cloud-upload-alt text-3xl text-gray-300 group-hover:text-primary mb-2 transition"></i>
+                            <p class="text-sm font-medium text-gray-700">Click to Upload Payment Screenshot</p>
+                            <p class="text-xs text-gray-400 mt-1">Supported: JPG, PNG</p>
+                        </div>
+                        <input type="file" id="screenshot" accept="image/*" class="hidden" required
+                            onchange="document.querySelector('.text-sm.font-medium.text-gray-700').textContent = this.files[0].name">
+                    </label>
+                </div>
+            </div>
+
+            <!-- Actions -->
+            <div class="pt-4 flex flex-col gap-3">
+                <button type="submit"
+                    class="w-full py-4 bg-primary text-white font-bold text-lg rounded-xl hover:bg-green-800 transition shadow-lg hover:shadow-xl active:scale-[0.99] flex items-center justify-center gap-2">
+                    Confirm Order <i class="fas fa-check-circle"></i>
+                </button>
+                <p class="text-center text-xs text-gray-400">Your details are safe. Order confirmation will be
+                    sent to WhatsApp.</p>
+            </div>
+            </form>
+        </div>
         </div>
     </main>
 
@@ -210,7 +216,7 @@
 
         // MERCHANT UPI CONFIGURATION
         // TODO: Replace with your actual UPI ID (VPA) and Name
-        const MERCHANT_VPA = "satheeshkumarfine@oksbi";
+        const MERCHANT_VPA = "9842535962@ybl";
         const MERCHANT_NAME = "Mugavari Thazhai";
 
         // Load Cart Data
@@ -301,6 +307,7 @@
 
             const name = document.getElementById('name').value;
             const phone = document.getElementById('phone').value;
+            const email = document.getElementById('email').value;
             const address = document.getElementById('address').value;
             const screenshotFile = document.getElementById('screenshot').files[0];
 
@@ -334,6 +341,7 @@
                 const sheetData = {
                     name: name,
                     phone: phone,
+                    email: email,
                     address: address,
                     orderDetails: orderDetailsString,
                     totalAmount: total,
@@ -352,7 +360,7 @@
 
                 // WhatsApp Message (Since we can't get the image URL back easily in no-cors, we just confirm order)
                 let orderMessage = `Hello! I placed an order and uploaded the payment screenshot.\n\n`;
-                orderMessage += `*Customer Details:*\nName: ${name}\nPhone: ${phone}\nAddress: ${address}\n\n`;
+                orderMessage += `*Customer Details:*\nName: ${name}\nPhone: ${phone}\nEmail: ${email}\nAddress: ${address}\n\n`;
                 orderMessage += `*Order Summary:*\n`;
                 cart.forEach(item => {
                     const itemName = item.variant ? `${item.productName} (${item.variant})` : item.productName;
