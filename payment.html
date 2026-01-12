@@ -240,10 +240,15 @@
             const cart = JSON.parse(localStorage.getItem('cart')) || [];
             const total = cart.reduce((sum, item) => sum + item.totalPrice, 0);
 
+            // Format amount to 2 decimal places (required by some apps)
+            const amount = total.toFixed(2);
+
             // Construct UPI Intent Link
             // tr = Transaction Ref (random to make unique), tn = Note
             const tr = "TXN" + Date.now();
-            const upiLink = `upi://pay?pa=${MERCHANT_VPA}&pn=${encodeURIComponent(MERCHANT_NAME)}&am=${total}&cu=INR&tn=Order Payment`;
+
+            // Note: We include 'tr' (Transaction Ref) which is crucial for many apps
+            const upiLink = `upi://pay?pa=${MERCHANT_VPA}&pn=${encodeURIComponent(MERCHANT_NAME)}&am=${amount}&cu=INR&tr=${tr}&tn=Order%20Payment`;
 
             // Redirect to UPI App
             window.location.href = upiLink;
