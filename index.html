@@ -15,9 +15,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="./images/favicon.png">
     <link rel="apple-touch-icon" href="./images/favicon.png">
-    <title>Mugavari Thazhai | Authentic Pollachi Products</title>
+    <title data-i18n="seo_title">Mugavari Thazhai | Authentic Pollachi Products</title>
     <meta name="description"
+        content="Mugavari Thazhai brings you the finest cold-pressed oils and sustainable coconut shell crafts from Pollachi. 100% Organic & Authentic."
+        data-i18n="seo_desc">
+    <link rel="canonical" href="https://mugavarithazhai.in/" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Mugavari Thazhai">
+    <meta property="og:url" content="https://mugavarithazhai.in/">
+    <meta property="og:title" content="Mugavari Thazhai | Authentic Pollachi Products">
+    <meta property="og:description"
         content="Mugavari Thazhai brings you the finest cold-pressed oils and sustainable coconut shell crafts from Pollachi. 100% Organic & Authentic.">
+    <meta property="og:image" content="https://mugavarithazhai.in/images/home%20image.jpg">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Mugavari Thazhai | Authentic Pollachi Products">
+    <meta name="twitter:description"
+        content="Mugavari Thazhai brings you the finest cold-pressed oils and sustainable coconut shell crafts from Pollachi.">
+    <meta name="twitter:image" content="https://mugavarithazhai.in/images/home%20image.jpg">
 
     <!-- Organization Schema for Brand Logo -->
     <script type="application/ld+json">
@@ -25,8 +43,8 @@
       "@context": "https://schema.org",
       "@type": "Organization",
       "name": "Mugavari Thazhai",
-      "url": "https://mugavarithazhai.com/",
-      "logo": "https://mugavarithazhai.com/images/favicon.png",
+      "url": "https://mugavarithazhai.in/",
+      "logo": "https://mugavarithazhai.in/images/favicon.png",
       "contactPoint": {
         "@type": "ContactPoint",
         "telephone": "+919842535962",
@@ -54,7 +72,7 @@
         "addressRegion": "Tamil Nadu",
         "addressCountry": "IN"
       },
-      "url": "https://mugavarithazhai.com/"
+      "url": "https://mugavarithazhai.in/"
     }
     </script>
     <script src="https://cdn.tailwindcss.com"></script>
@@ -87,6 +105,7 @@
             }
         }
     </script>
+    <script src="js/translations.js"></script>
     <style>
         html {
             scroll-behavior: smooth;
@@ -127,15 +146,6 @@
             background: linear-gradient(135deg, #E0F2E9 0%, #FFFFFF 100%);
             position: relative;
             overflow: hidden;
-        }
-
-        .hover-lift {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .hover-lift:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
 
         /* Blob Animation */
@@ -246,6 +256,8 @@
     </style>
 </head>
 
+
+
 <body class="font-sans text-gray-800 antialiased bg-slate-50">
 
     <!-- Wrapper -->
@@ -267,12 +279,19 @@
 
                     <!-- Desktop Menu -->
                     <div class="hidden md:flex items-center space-x-8">
-                        <a href="index.html"
-                            class="text-gray-700 hover:text-primary font-medium transition text-sm">Home</a>
-                        <a href="products.html"
-                            class="text-gray-700 hover:text-primary font-medium transition text-sm">Products</a>
-                        <a href="#footer"
-                            class="text-gray-700 hover:text-primary font-medium transition text-sm">Contact</a>
+                        <a href="index.html" class="text-gray-700 hover:text-primary font-medium transition text-sm"
+                            data-i18n="nav_home">Home</a>
+                        <a href="products.html" class="text-gray-700 hover:text-primary font-medium transition text-sm"
+                            data-i18n="nav_products">Products</a>
+                        <a href="about.html" class="text-gray-700 hover:text-primary font-medium transition text-sm"
+                            data-i18n="nav_about">About Us</a>
+                        <a href="#footer" class="text-gray-700 hover:text-primary font-medium transition text-sm"
+                            data-i18n="nav_contact">Contact</a>
+
+                        <button id="lang-toggle"
+                            class="px-3 py-1 bg-gray-100 rounded-full text-sm font-semibold text-primary border border-gray-200 hover:bg-gray-200 transition">
+                            தமிழ்
+                        </button>
 
                         <!-- Cart Icon -->
                         <button onclick="openCartModal()" class="relative group">
@@ -285,6 +304,9 @@
 
                     <!-- Mobile Menu Button -->
                     <div class="md:hidden flex items-center gap-4">
+                        <button onclick="langManager.toggleLanguage()"
+                            class="text-sm font-bold text-primary bg-green-50 px-2 py-1 rounded">Ta/En</button>
+
                         <button onclick="openCartModal()" class="relative">
                             <i class="fa fa-shopping-cart text-2xl text-gray-700"></i>
                             <span id="mobile-cart-count"
@@ -302,11 +324,18 @@
                 class="md:hidden hidden bg-white border-t border-gray-100 absolute w-full left-0 top-20 shadow-lg z-40">
                 <div class="px-4 pt-3 pb-4 space-y-2">
                     <a href="index.html"
-                        class="block px-4 py-3 rounded-lg text-base font-medium text-primary bg-green-50">Home</a>
+                        class="block px-4 py-3 rounded-lg text-base font-medium text-primary bg-green-50"
+                        data-i18n="nav_home">Home</a>
                     <a href="products.html"
-                        class="block px-4 py-3 rounded-lg text-base font-medium text-gray-700 hover:bg-gray-50">Products</a>
+                        class="block px-4 py-3 rounded-lg text-base font-medium text-gray-700 hover:bg-gray-50"
+                        data-i18n="nav_products">Products</a>
+                    <a href="about.html"
+                        class="block px-4 py-3 rounded-lg text-base font-medium text-gray-700 hover:bg-gray-50"
+                        data-i18n="nav_about">About
+                        Us</a>
                     <a href="#footer"
-                        class="block px-4 py-3 rounded-lg text-base font-medium text-gray-700 hover:bg-gray-50">Contact</a>
+                        class="block px-4 py-3 rounded-lg text-base font-medium text-gray-700 hover:bg-gray-50"
+                        data-i18n="nav_contact">Contact</a>
                 </div>
             </div>
         </nav>
@@ -369,8 +398,10 @@
                         </h1>
                         <p
                             class="text-xs sm:text-sm md:text-base lg:text-lg text-gray-600 mb-4 sm:mb-6 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
-                            Rooted in Pollachi. Trusted by hearts. Delivered to your door. Experience the goodness of
-                            cold-pressed oils and sustainable handcrafts. Mugavari Thazhai provides pure cold pressed
+                            Rooted in Pollachi. Trusted by hearts. Delivered to your door. Experience the goodness
+                            of
+                            cold-pressed oils and sustainable handcrafts. Mugavari Thazhai provides pure cold
+                            pressed
                             coconut oil from Pollachi to customers across Coimbatore and Tamil Nadu.
                         </p>
                         <div class="flex flex-col sm:flex-row gap-2 sm:gap-3 justify-center lg:justify-start">
@@ -432,10 +463,12 @@
                         <div
                             class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent flex items-end p-4 sm:p-6 md:p-8">
                             <div>
-                                <h3 class="text-xl sm:text-2xl font-bold text-white mb-1 sm:mb-2">Coconut Oil</h3>
+                                <h3 class="text-xl sm:text-2xl font-bold text-white mb-1 sm:mb-2" data-i18n="cat_oils">
+                                    Coconut Oil</h3>
                                 <a href="products.html"
-                                    class="text-white/90 hover:text-white text-xs sm:text-sm font-medium inline-flex items-center">Shop
-                                    Now <i class="fas fa-chevron-right ml-1 text-[10px] sm:text-xs"></i></a>
+                                    class="text-white/90 hover:text-white text-xs sm:text-sm font-medium inline-flex items-center"><span
+                                        data-i18n="prod_btn_shop">Shop Now</span> <i
+                                        class="fas fa-chevron-right ml-1 text-[10px] sm:text-xs"></i></a>
                             </div>
                         </div>
                     </div>
@@ -450,10 +483,12 @@
                         <div
                             class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent flex items-end p-4 sm:p-6 md:p-8">
                             <div>
-                                <h3 class="text-xl sm:text-2xl font-bold text-white mb-1 sm:mb-2">Groundnut Oil</h3>
+                                <h3 class="text-xl sm:text-2xl font-bold text-white mb-1 sm:mb-2" data-i18n="cat_oils">
+                                    Groundnut Oil</h3>
                                 <a href="products.html"
-                                    class="text-white/90 hover:text-white text-xs sm:text-sm font-medium inline-flex items-center">Shop
-                                    Now <i class="fas fa-chevron-right ml-1 text-[10px] sm:text-xs"></i></a>
+                                    class="text-white/90 hover:text-white text-xs sm:text-sm font-medium inline-flex items-center"><span
+                                        data-i18n="prod_btn_shop">Shop Now</span> <i
+                                        class="fas fa-chevron-right ml-1 text-[10px] sm:text-xs"></i></a>
                             </div>
                         </div>
                     </div>
@@ -468,10 +503,12 @@
                         <div
                             class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent flex items-end p-4 sm:p-6 md:p-8">
                             <div>
-                                <h3 class="text-xl sm:text-2xl font-bold text-white mb-1 sm:mb-2">Eco Crafts</h3>
+                                <h3 class="text-xl sm:text-2xl font-bold text-white mb-1 sm:mb-2"
+                                    data-i18n="cat_crafts">Eco Crafts</h3>
                                 <a href="products.html"
-                                    class="text-white/90 hover:text-white text-xs sm:text-sm font-medium inline-flex items-center">Shop
-                                    Now <i class="fas fa-chevron-right ml-1 text-[10px] sm:text-xs"></i></a>
+                                    class="text-white/90 hover:text-white text-xs sm:text-sm font-medium inline-flex items-center"><span
+                                        data-i18n="prod_btn_shop">Shop Now</span> <i
+                                        class="fas fa-chevron-right ml-1 text-[10px] sm:text-xs"></i></a>
                             </div>
                         </div>
                     </div>
@@ -486,39 +523,68 @@
             </div>
             <div class="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 relative z-10">
                 <div
-                    class="bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-8 md:p-12 shadow-xl flex flex-col md:flex-row items-center gap-6 sm:gap-12">
-                    <div class="w-full md:w-1/3">
-                        <img src="images/mugavari thazhai logo.jpg"
-                            onerror="this.onerror=null;this.src='https://placehold.co/300x300/E0F2E9/0E2C18?text=Offer'"
-                            onerror="this.onerror=null;this.src='https://placehold.co/300x300/E0F2E9/0E2C18?text=Offer'"
-                            class="w-full max-w-[200px] sm:max-w-[250px] mx-auto rounded-full border-4 border-green-50 shadow-lg"
-                            alt="Mugavari Thazhai Special Offer - Pure Oils">
+                    class="bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-8 md:p-12 shadow-xl flex flex-row items-center gap-4 sm:gap-12 relative overflow-hidden">
+
+                    <!-- Image Column -->
+                    <div class="w-2/5 md:w-1/3 relative flex-shrink-0">
+                        <!-- Image Composition -->
+                        <div class="relative w-full aspect-square">
+                            <!-- Ribbon -->
+                            <div class="absolute -top-2 -right-2 sm:-top-3 sm:-right-3 z-20 bg-accent text-white text-[10px] sm:text-xs font-bold px-2 sm:px-3 py-0.5 sm:py-1 rounded-full shadow-md animate-pulse"
+                                data-i18n="offer_ribbon">
+                                Limited Time!
+                            </div>
+
+                            <img src="images/coconut oil.jpg"
+                                class="w-full h-full object-cover rounded-xl sm:rounded-2xl border-2 sm:border-4 border-green-50 shadow-lg"
+                                alt="Coconut Oil">
+                            <img src="images/coconut-coir-dish-wash-scrubber.jpg"
+                                class="absolute -bottom-2 -right-2 sm:-bottom-4 sm:-right-4 w-16 h-16 sm:w-28 sm:h-28 object-cover rounded-full border-2 sm:border-4 border-white shadow-xl z-10"
+                                alt="Free Scrubber">
+                            <div class="absolute -bottom-1 -right-1 sm:-bottom-2 sm:-right-2 bg-red-600 text-white text-[10px] sm:text-xs font-bold px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-md shadow z-20"
+                                data-i18n="offer_free_gift_badge">
+                                FREE
+                            </div>
+                        </div>
                     </div>
-                    <div class="w-full md:w-2/3 text-center md:text-left">
-                        <h2 class="text-2xl sm:text-3xl font-bold text-primary mb-3 sm:mb-4">🌴 Authentic South Indian
-                            Essence</h2>
-                        <ul class="space-y-2 sm:space-y-3 mb-6 sm:mb-8 text-gray-600 text-sm sm:text-lg">
-                            <li class="flex items-center gap-2 sm:gap-3 justify-center md:justify-start">
-                                <i class="fas fa-check-circle text-green-500 text-sm sm:text-base"></i> <span
-                                    class="text-xs sm:text-base">100% Pollachi-Sourced Coconuts</span>
-                            </li>
-                            <li class="flex items-center gap-2 sm:gap-3 justify-center md:justify-start">
-                                <i class="fas fa-check-circle text-green-500 text-sm sm:text-base"></i> <span
-                                    class="text-xs sm:text-base">Traditional Wood-Pressed (Chekku)</span>
-                            </li>
-                            <li class="flex items-center gap-2 sm:gap-3 justify-center md:justify-start">
-                                <i class="fas fa-check-circle text-green-500 text-sm sm:text-base"></i> <span
-                                    class="text-xs sm:text-base">Chemical-Free & Unrefined</span>
-                            </li>
-                            <li class="flex items-center gap-2 sm:gap-3 justify-center md:justify-start">
-                                <i class="fas fa-check-circle text-green-500 text-sm sm:text-base"></i> <span
-                                    class="text-xs sm:text-base">Delivered to Coimbatore & TN</span>
-                            </li>
-                        </ul>
-                        <a href="products.html"
-                            class="inline-block px-6 sm:px-8 py-2 sm:py-3 bg-accent text-white font-semibold rounded-full shadow-lg hover:bg-red-700 transition hover:-translate-y-1 text-sm sm:text-base">
-                            Order on WhatsApp
-                        </a>
+
+                    <!-- Text Column -->
+                    <div class="w-3/5 md:w-2/3 text-left">
+                        <span
+                            class="text-accent font-bold tracking-wider text-[10px] sm:text-sm uppercase mb-1 sm:mb-2 block"
+                            data-i18n="offer_label">Special
+                            Deal</span>
+                        <h2 class="text-xs sm:text-3xl md:text-4xl font-bold text-primary mb-2 sm:mb-4 leading-tight">
+                            <span data-i18n="offer_title">Buy 1L Oil & Get <br class="hidden sm:block"> Free
+                                Scrubber</span>
+                        </h2>
+
+                        <div class="flex items-center gap-2 mb-2 sm:mb-6">
+                            <div
+                                class="flex items-center gap-1 sm:gap-2 bg-green-50 px-2 sm:px-4 py-1 sm:py-2 rounded-lg border border-green-100">
+                                <i class="fas fa-gift text-green-600 text-sm sm:text-xl"></i>
+                                <span class="font-bold text-gray-800 text-[10px] sm:text-base"
+                                    data-i18n="offer_free_gift_included">Free Gift
+                                    Included!</span>
+                            </div>
+                        </div>
+
+                        <p class="text-gray-600 mb-4 sm:mb-8 text-sm sm:text-base leading-relaxed hidden sm:block"
+                            data-i18n="offer_desc">
+                            Experience the double goodness of nature! Use our premium cold-pressed oil for your
+                            health
+                            and our eco-friendly scrubber for a sustainable kitchen.
+                        </p>
+
+                        <div class="flex flex-col sm:flex-row gap-2 sm:gap-3 justify-start">
+                            <a href="products.html"
+                                class="inline-flex items-center justify-center px-4 sm:px-8 py-2 sm:py-3 bg-primary text-white font-semibold rounded-full shadow-lg hover:bg-green-900 transition hover:-translate-y-1 text-[10px] sm:text-base gap-2 w-fit">
+                                <i class="fas fa-shopping-bag"></i> <span data-i18n="offer_btn">Buy Now</span>
+                            </a>
+                            <p class="text-[8px] sm:text-xs text-gray-400 self-center sm:self-end italic"
+                                data-i18n="offer_validity">*1000ml
+                                only</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -533,12 +599,17 @@
 
             <div class="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 mb-10 sm:mb-16 text-center">
                 <span
-                    class="inline-block py-1 px-3 rounded-full bg-orange-100 text-orange-800 text-xs font-bold tracking-wider uppercase mb-4">Exclusive
+                    class="inline-block py-1 px-3 rounded-full bg-orange-100 text-orange-800 text-xs font-bold tracking-wider uppercase mb-4"
+                    data-i18n="cat_title">Exclusive
                     Collection</span>
-                <h2 class="text-2xl sm:text-3xl md:text-5xl font-bold text-primary mb-4 sm:mb-6">Hand Craft Treasures
+                <h2 class="text-2xl sm:text-3xl md:text-5xl font-bold text-primary mb-4 sm:mb-6" data-i18n="cat_crafts">
+                    Hand Craft
+                    Treasures
                 </h2>
-                <p class="text-gray-600 max-w-2xl mx-auto text-sm sm:text-base md:text-lg leading-relaxed">
-                    Adorn your home with the rustic elegance of Pollachi. Each piece is meticulously handcrafted from
+                <p class="text-gray-600 max-w-2xl mx-auto text-sm sm:text-base md:text-lg leading-relaxed"
+                    data-i18n="cat_crafts_desc">
+                    Adorn your home with the rustic elegance of Pollachi. Each piece is meticulously handcrafted
+                    from
                     natural
                     coconut shells, blending tradition with modern artistry.
                 </p>
@@ -556,7 +627,8 @@
         <section class="py-8 sm:py-12 md:py-20 bg-slate-50">
             <div class="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
                 <div class="text-center mb-10 sm:mb-16">
-                    <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">What Our Customers Say</h2>
+                    <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-4" data-i18n="testi_title">What Our
+                        Customers Say</h2>
                     <div class="h-1 w-20 bg-primary mx-auto rounded-full"></div>
                 </div>
 
@@ -565,17 +637,20 @@
                     <div
                         class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition duration-300 relative border border-gray-100">
                         <i class="fas fa-quote-left text-4xl text-green-100 absolute top-6 left-6 -z-0"></i>
-                        <p class="text-gray-600 italic mb-6 relative z-10">"I ordered just to ‘try once’… but now even
+                        <p class="text-gray-600 italic mb-6 relative z-10" data-i18n="testi_1_text">"I ordered just
+                            to ‘try once’… but now
+                            even
                             my
-                            mom reminds me to check Mugavari Thazhai before shopping anywhere else. Guess who lost his
+                            mom reminds me to check Mugavari Thazhai before shopping anywhere else. Guess who lost
+                            his
                             bargaining rights at home? Me!"</p>
                         <div class="flex items-center gap-4">
                             <img src="images/user1.jpg"
                                 onerror="this.onerror=null;this.src='https://placehold.co/50x50/E0F2E9/0E2C18?text=A'"
                                 class="w-12 h-12 rounded-full object-cover" alt="Customer Arun K">
                             <div>
-                                <h4 class="font-bold text-gray-900">Arun.K</h4>
-                                <p class="text-xs text-gray-500">Coimbatore</p>
+                                <h4 class="font-bold text-gray-900" data-i18n="testi_1_name">Arun.K</h4>
+                                <p class="text-xs text-gray-500" data-i18n="testi_1_loc">Coimbatore</p>
                             </div>
                         </div>
                     </div>
@@ -585,18 +660,22 @@
                         class="bg-white p-4 sm:p-8 rounded-xl sm:rounded-2xl shadow-sm hover:shadow-xl transition duration-300 relative border border-gray-100">
                         <i
                             class="fas fa-quote-left text-3xl sm:text-4xl text-green-100 absolute top-4 sm:top-6 left-4 sm:left-6 -z-0"></i>
-                        <p class="text-gray-600 italic mb-4 sm:mb-6 relative z-10 text-sm sm:text-base">"Good products,
+                        <p class="text-gray-600 italic mb-4 sm:mb-6 relative z-10 text-sm sm:text-base"
+                            data-i18n="testi_2_text">"Good
+                            products,
                             fast delivery. Honestly, the
                             only
-                            time I got this excited for a parcel was when my online food order came with extra sambar.
+                            time I got this excited for a parcel was when my online food order came with extra
+                            sambar.
                             Respect!"</p>
                         <div class="flex items-center gap-3 sm:gap-4">
                             <img src="images/user2.jpg"
                                 onerror="this.onerror=null;this.src='https://placehold.co/50x50/E0F2E9/0E2C18?text=R'"
                                 class="w-10 sm:w-12 h-10 sm:h-12 rounded-full object-cover" alt="Customer Ramesh V">
                             <div>
-                                <h4 class="font-bold text-gray-900 text-sm sm:text-base">Ramesh.V</h4>
-                                <p class="text-xs text-gray-500">Madurai</p>
+                                <h4 class="font-bold text-gray-900 text-sm sm:text-base" data-i18n="testi_2_name">
+                                    Ramesh.V</h4>
+                                <p class="text-xs text-gray-500" data-i18n="testi_2_loc">Madurai</p>
                             </div>
                         </div>
                     </div>
@@ -605,7 +684,9 @@
                     <div
                         class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition duration-300 relative border border-gray-100">
                         <i class="fas fa-quote-left text-4xl text-green-100 absolute top-6 left-6 -z-0"></i>
-                        <p class="text-gray-600 italic mb-6 relative z-10">"Usually, I’m the lazy guy who never writes
+                        <p class="text-gray-600 italic mb-6 relative z-10" data-i18n="testi_3_text">"Usually, I’m
+                            the lazy guy who never
+                            writes
                             reviews. But this time, Mugavari Thazhai – you people are the reason my friends think I
                             suddenly
                             became ‘responsible’."</p>
@@ -614,8 +695,8 @@
                                 onerror="this.onerror=null;this.src='https://placehold.co/50x50/E0F2E9/0E2C18?text=S'"
                                 class="w-12 h-12 rounded-full object-cover" alt="Customer Saravanan S">
                             <div>
-                                <h4 class="font-bold text-gray-900">Saravanan.S</h4>
-                                <p class="text-xs text-gray-500">Chennai</p>
+                                <h4 class="font-bold text-gray-900" data-i18n="testi_3_name">Saravanan.S</h4>
+                                <p class="text-xs text-gray-500" data-i18n="testi_3_loc">Chennai</p>
                             </div>
                         </div>
                     </div>
@@ -623,30 +704,74 @@
             </div>
         </section>
 
-        <!-- Brands Section -->
-        <section class="py-8 sm:py-12 bg-white border-t border-gray-100">
-            <div
-                class="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 flex justify-center grayscale hover:grayscale-0 transition duration-500">
-                <a href="https://www.fssai.gov.in/" target="_blank">
-                    <img src="images/Fssai-Logo-Vector.png"
-                        onerror="this.onerror=null;this.src='https://placehold.co/150x80/ffffff/555555?text=FSSAI'"
-                        alt="FSSAI" class="h-12 sm:h-16 w-auto opacity-70 hover:opacity-100">
-                </a>
+        <!-- Trust & Certifications Section -->
+        <section class="py-10 sm:py-16 bg-white border-t border-gray-100">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-8 items-center text-center">
+                    <!-- FSSAI -->
+                    <div class="flex flex-col items-center justify-center gap-3">
+                        <a href="https://www.fssai.gov.in/" target="_blank" class="hover:opacity-80 transition">
+                            <img src="images/Fssai-Logo-Vector.png"
+                                onerror="this.onerror=null;this.src='https://placehold.co/150x80/ffffff/555555?text=FSSAI'"
+                                alt="FSSAI Certified" class="h-12 sm:h-16 w-auto object-contain">
+                        </a>
+                        <span class="text-xs sm:text-sm font-semibold text-gray-500 uppercase tracking-wider"
+                            data-i18n="trust_fssai">FSSAI
+                            Certified</span>
+                    </div>
+
+                    <!-- 100% Natural -->
+                    <div class="flex flex-col items-center justify-center gap-3">
+                        <div
+                            class="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-green-50 flex items-center justify-center text-green-600 mb-1">
+                            <i class="fas fa-leaf text-2xl sm:text-3xl"></i>
+                        </div>
+                        <span class="text-xs sm:text-sm font-semibold text-gray-500 uppercase tracking-wider"
+                            data-i18n="trust_natural">100%
+                            Natural</span>
+                    </div>
+
+                    <!-- Secure Payment -->
+                    <div class="flex flex-col items-center justify-center gap-3">
+                        <div
+                            class="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-blue-50 flex items-center justify-center text-blue-600 mb-1">
+                            <i class="fas fa-shield-alt text-2xl sm:text-3xl"></i>
+                        </div>
+                        <span class="text-xs sm:text-sm font-semibold text-gray-500 uppercase tracking-wider"
+                            data-i18n="trust_secure">Secure
+                            Payments</span>
+                    </div>
+
+                    <!-- Premium Quality -->
+                    <div class="flex flex-col items-center justify-center gap-3">
+                        <div
+                            class="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-yellow-50 flex items-center justify-center text-yellow-600 mb-1">
+                            <i class="fas fa-award text-2xl sm:text-3xl"></i>
+                        </div>
+                        <span class="text-xs sm:text-sm font-semibold text-gray-500 uppercase tracking-wider"
+                            data-i18n="trust_quality">Premium
+                            Quality</span>
+                    </div>
+                </div>
             </div>
         </section>
 
         <!-- How to Order Section -->
         <section class="py-8 sm:py-12 md:py-20 bg-green-50/50">
             <div class="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 text-center">
-                <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-8 sm:mb-12">How to Order</h2>
+                <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-8 sm:mb-12" data-i18n="order_title">How
+                    to Order</h2>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
                     <div
                         class="p-4 sm:p-6 bg-white rounded-xl sm:rounded-2xl shadow-sm border border-green-50 hover:shadow-md transition">
                         <div
                             class="w-14 sm:w-16 h-14 sm:h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4 text-xl sm:text-2xl">
                             🛒</div>
-                        <h3 class="font-bold text-lg sm:text-xl mb-2 text-primary">1. Select Products</h3>
-                        <p class="text-gray-600 text-sm sm:text-base">Browse our authentic collection and choose your
+                        <h3 class="font-bold text-lg sm:text-xl mb-2 text-primary" data-i18n="order_step1_title">1.
+                            Select Products</h3>
+                        <p class="text-gray-600 text-sm sm:text-base" data-i18n="order_step1_desc">Browse our
+                            authentic collection and choose
+                            your
                             favorites.</p>
                     </div>
                     <div
@@ -654,8 +779,10 @@
                         <div
                             class="w-14 sm:w-16 h-14 sm:h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4 text-xl sm:text-2xl">
                             💬</div>
-                        <h3 class="font-bold text-lg sm:text-xl mb-2 text-primary">2. Send to WhatsApp</h3>
-                        <p class="text-gray-600 text-sm sm:text-base">Click "Order on WhatsApp" to send your cart
+                        <h3 class="font-bold text-lg sm:text-xl mb-2 text-primary" data-i18n="order_step2_title">2.
+                            Send to WhatsApp</h3>
+                        <p class="text-gray-600 text-sm sm:text-base" data-i18n="order_step2_desc">Click "Order on
+                            WhatsApp" to send your cart
                             details directly to us.</p>
                     </div>
                     <div
@@ -663,8 +790,11 @@
                         <div
                             class="w-14 sm:w-16 h-14 sm:h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4 text-xl sm:text-2xl">
                             🚚</div>
-                        <h3 class="font-bold text-lg sm:text-xl mb-2 text-primary">3. Fast Delivery</h3>
-                        <p class="text-gray-600 text-sm sm:text-base">We verify your order and ship it swiftly to your
+                        <h3 class="font-bold text-lg sm:text-xl mb-2 text-primary" data-i18n="order_step3_title">3.
+                            Fast Delivery</h3>
+                        <p class="text-gray-600 text-sm sm:text-base" data-i18n="order_step3_desc">We verify your
+                            order and ship it swiftly to
+                            your
                             doorstep!</p>
                     </div>
                 </div>
@@ -674,42 +804,51 @@
         <!-- FAQ & Shipping Section -->
         <section class="py-8 sm:py-12 md:py-20 bg-white">
             <div class="max-w-3xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
-                <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-6 sm:mb-8 text-center">Frequently Asked
+                <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-6 sm:mb-8 text-center" data-i18n="faq_title">
+                    Frequently Asked
                     Questions</h2>
                 <div class="space-y-3 sm:space-y-4">
                     <details
                         class="group bg-gray-50 p-4 sm:p-6 rounded-xl sm:rounded-2xl cursor-pointer hover:bg-green-50 transition duration-300">
                         <summary
                             class="font-bold text-gray-900 list-none flex justify-between items-center text-base sm:text-lg">
-                            Do you ship all over India?
+                            <span data-i18n="faq_1_q">Do you ship all over India?</span>
                             <span class="transition group-open:rotate-180"><i
                                     class="fas fa-chevron-down text-primary text-sm sm:text-base"></i></span>
                         </summary>
-                        <p class="text-gray-600 mt-3 sm:mt-4 leading-relaxed text-sm sm:text-base">Yes, we deliver our
+                        <p class="text-gray-600 mt-3 sm:mt-4 leading-relaxed text-sm sm:text-base" data-i18n="faq_1_a">
+                            Yes, we deliver
+                            our
                             authentic Pollachi products to
-                            every corner of India using reliable courier partners. Your order reaches you safely!</p>
+                            every corner of India using reliable courier partners. Your order reaches you safely!
+                        </p>
                     </details>
                     <details
                         class="group bg-gray-50 p-4 sm:p-6 rounded-xl sm:rounded-2xl cursor-pointer hover:bg-green-50 transition duration-300">
                         <summary
                             class="font-bold text-gray-900 list-none flex justify-between items-center text-base sm:text-lg">
-                            Is the oil purely cold-pressed?
+                            <span data-i18n="faq_2_q">Is the oil purely cold-pressed?</span>
                             <span class="transition group-open:rotate-180"><i
                                     class="fas fa-chevron-down text-primary text-sm sm:text-base"></i></span>
                         </summary>
-                        <p class="text-gray-600 mt-3 sm:mt-4 leading-relaxed text-sm sm:text-base">Absolutely! We use
+                        <p class="text-gray-600 mt-3 sm:mt-4 leading-relaxed text-sm sm:text-base" data-i18n="faq_2_a">
+                            Absolutely! We
+                            use
                             the traditional 'Chekku'
-                            (wood-pressing) method. No heat, no chemicals—just 100% nutrient-rich natural goodness.</p>
+                            (wood-pressing) method. No heat, no chemicals—just 100% nutrient-rich natural goodness.
+                        </p>
                     </details>
                     <details
                         class="group bg-gray-50 p-4 sm:p-6 rounded-xl sm:rounded-2xl cursor-pointer hover:bg-green-50 transition duration-300">
                         <summary
                             class="font-bold text-gray-900 list-none flex justify-between items-center text-base sm:text-lg">
-                            Can I customize the handcrafts?
+                            <span data-i18n="faq_3_q">Can I customize the handcrafts?</span>
                             <span class="transition group-open:rotate-180"><i
                                     class="fas fa-chevron-down text-primary text-sm sm:text-base"></i></span>
                         </summary>
-                        <p class="text-gray-600 mt-3 sm:mt-4 leading-relaxed text-sm sm:text-base">Yes! Since our crafts
+                        <p class="text-gray-600 mt-3 sm:mt-4 leading-relaxed text-sm sm:text-base" data-i18n="faq_3_a">
+                            Yes! Since our
+                            crafts
                             are handmade from coconut
                             shells, we can personalize them for gifts or specific designs. Contact us on WhatsApp to
                             discuss.</p>
@@ -737,12 +876,15 @@
                         onerror="this.onerror=null;this.src='https://placehold.co/100x100/E0F2E9/0E2C18?text=Logo'"
                         class="w-20 sm:w-24 h-20 sm:h-24 rounded-full mx-auto mb-4 sm:mb-6 border-2 border-gray-700"
                         alt="Logo">
-                    <p class="text-lg sm:text-xl font-medium text-white mb-3 sm:mb-4">Pure & Authentic Products from
+                    <p class="text-lg sm:text-xl font-medium text-white mb-3 sm:mb-4" data-i18n="footer_tagline">
+                        Pure & Authentic Products from
                         Pollachi with Love ❤️
                     </p>
                     <p class="text-xs sm:text-sm text-gray-400 mb-6 sm:mb-8"><i
                             class="fas fa-map-marker-alt mr-2 text-primary"></i>
-                        Location: Pollachi, Coimbatore District, Tamil Nadu, India</p>
+                        <span data-i18n="footer_loc">Location: Pollachi, Coimbatore District, Tamil Nadu,
+                            India</span>
+                    </p>
 
                     <div class="flex justify-center gap-4 sm:gap-8 mb-8 sm:mb-12">
                         <a href="https://wa.me/919842535962" target="_blank" class="group">
@@ -844,7 +986,7 @@
                 content.innerHTML = `
                     <div class="text-center py-12">
                         <i class="fas fa-shopping-basket text-5xl text-gray-300 mb-4 block"></i>
-                        <p class="text-gray-600 text-lg font-semibold">Cart is Empty</p>
+                        <p class="text-gray-600 text-lg font-semibold">${langManager.getText('cart_empty')}</p>
                     </div>
                 `;
                 footer.classList.add("hidden");
@@ -861,6 +1003,11 @@
                     total += subtotal;
                     totalQty += qty;
 
+                    // Try to get translated product name if available (fallback to item name)
+                    // This assumes product names in cart match keys or we just use English names for now.
+                    // Ideally, we store product IDs and fetch details, but here we just have names.
+                    // We can stick to English names for products or try a lookup.
+                    // For now keeping product name as is.
                     const displayName = item.variant
                         ? `${item.productName} - ${item.variant}`
                         : item.productName;
@@ -878,15 +1025,15 @@
                             
                             <div class="grid grid-cols-3 gap-3 text-center">
                                 <div class="bg-white rounded p-2 border border-gray-200">
-                                    <p class="text-xs text-gray-600 mb-1">Price</p>
+                                    <p class="text-xs text-gray-600 mb-1">${langManager.getText('cart_price')}</p>
                                     <p class="font-bold text-sm text-primary">₹${price}</p>
                                 </div>
                                 <div class="bg-white rounded p-2 border border-gray-200">
-                                    <p class="text-xs text-gray-600 mb-1">Qty</p>
+                                    <p class="text-xs text-gray-600 mb-1">${langManager.getText('cart_qty')}</p>
                                     <p class="font-bold text-sm text-gray-900">${qty}</p>
                                 </div>
                                 <div class="bg-white rounded p-2 border border-gray-200">
-                                    <p class="text-xs text-gray-600 mb-1">Subtotal</p>
+                                    <p class="text-xs text-gray-600 mb-1">${langManager.getText('cart_subtotal')}</p>
                                     <p class="font-bold text-sm text-primary">₹${subtotal}</p>
                                 </div>
                             </div>
@@ -902,16 +1049,16 @@
                     <div class="space-y-3">
                         <div class="grid grid-cols-2 gap-4 pb-4 border-b-2 border-gray-300">
                             <div>
-                                <p class="text-gray-600 text-sm">Total Items</p>
+                                <p class="text-gray-600 text-sm">${langManager.getText('cart_total_items')}</p>
                                 <h3 class="text-3xl font-bold text-primary">${totalQty}</h3>
                             </div>
                             <div class="text-right">
-                                <p class="text-gray-600 text-sm">Total Amount</p>
+                                <p class="text-gray-600 text-sm">${langManager.getText('cart_total_amount')}</p>
                                 <h3 class="text-3xl font-bold text-primary">₹${total}</h3>
                             </div>
                         </div>
                         <button onclick="goToProducts()" class="w-full px-4 py-3 bg-primary text-white font-bold rounded-lg hover:bg-green-800 transition">
-                            <i class="fas fa-shopping-cart mr-2"></i>Go to Products
+                            <i class="fas fa-shopping-cart mr-2"></i>${langManager.getText('cart_go_products')}
                         </button>
                     </div>
                 `;
@@ -982,8 +1129,8 @@
                  loading="lazy">
             <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
                 <div>
-                   <span class="block text-white font-bold text-lg transform translate-y-4 group-hover:translate-y-0 transition duration-300 delay-75">Handcrafted Art</span>
-                   <span class="block text-white/80 text-sm transform translate-y-4 group-hover:translate-y-0 transition duration-300 delay-100">Pure Coconut Shell</span>
+                   <span class="block text-white font-bold text-lg transform translate-y-4 group-hover:translate-y-0 transition duration-300 delay-75" data-i18n="gallery_art">Handcrafted Art</span>
+                   <span class="block text-white/80 text-sm transform translate-y-4 group-hover:translate-y-0 transition duration-300 delay-100" data-i18n="gallery_material">Pure Coconut Shell</span>
                 </div>
             </div>
         `;

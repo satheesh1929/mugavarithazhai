@@ -15,15 +15,33 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="icon" type="image/png" href="./images/favicon.png">
   <link rel="apple-touch-icon" href="./images/favicon.png">
-  <title>Pure Cold Pressed Coconut Oil in Coimbatore | Mugavari Thazhai</title>
+  <title data-i18n="prod_seo_title">Pure Cold Pressed Coconut Oil in Coimbatore | Mugavari Thazhai</title>
   <meta name="description"
-    content="Buy pure, cold pressed coconut oil from Pollachi. 100% natural, wood pressed & chemical free. Best coconut oil in Coimbatore, Tamil Nadu. Order on WhatsApp.">
+    content="Buy pure, cold pressed coconut oil from Pollachi. 100% natural, wood pressed & chemical free. Best coconut oil in Coimbatore, Tamil Nadu. Order on WhatsApp."
+    data-i18n="prod_seo_desc">
+  <link rel="canonical" href="https://mugavarithazhai.in/products.html" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="product">
+  <meta property="og:site_name" content="Mugavari Thazhai">
+  <meta property="og:url" content="https://mugavarithazhai.in/products.html">
+  <meta property="og:title" content="Pure Cold Pressed Coconut Oil | Mugavari Thazhai">
+  <meta property="og:description"
+    content="Buy pure, cold pressed coconut oil from Pollachi. 100% natural, wood pressed & chemical free.">
+  <meta property="og:image" content="https://mugavarithazhai.in/images/coconut%20oil.jpg">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Pure Cold Pressed Coconut Oil | Mugavari Thazhai">
+  <meta name="twitter:description"
+    content="Buy pure, cold pressed coconut oil from Pollachi. 100% natural, wood pressed & chemical free.">
+  <meta name="twitter:image" content="https://mugavarithazhai.in/images/coconut%20oil.jpg">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org/",
     "@type": "Product",
     "name": "Pure Cold Pressed Coconut Oil",
-    "image": "https://mugavarithazhai.com/images/coconut%20oil.jpg",
+    "image": "https://mugavarithazhai.in/images/coconut%20oil.jpg",
     "description": "100% pure, cold pressed coconut oil from Pollachi, Tamil Nadu. Wood pressed, unrefined and chemical free.",
     "brand": {
       "@type": "Brand",
@@ -31,7 +49,7 @@
     },
     "offers": {
       "@type": "Offer",
-      "url": "https://mugavarithazhai.com/products.html",
+      "url": "https://mugavarithazhai.in/products.html",
       "priceCurrency": "INR",
       "price": "250.00",
       "availability": "https://schema.org/InStock",
@@ -133,6 +151,7 @@
       animation-delay: 4s;
     }
   </style>
+  <script src="js/translations.js"></script>
 </head>
 
 <body class="font-sans text-gray-800 antialiased bg-slate-50">
@@ -143,8 +162,7 @@
     <nav class="fixed w-full z-50 glass-nav transition-all duration-300 shadow-sm" id="navbar">
       <div class="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
         <div class="flex justify-between items-center h-16 sm:h-20">
-          <!-- Logo -->
-          <div class="flex-shrink-0 flex items-center gap-2 sm:gap-3">
+          <div class="flex-shrink-0 flex items-center gap-3">
             <a href="index.html" class="block">
               <img src="images/mugavari thazhai logo.jpg"
                 onerror="this.onerror=null;this.src='https://placehold.co/125x125/E0F2E9/0E2C18?text=Logo'"
@@ -153,45 +171,55 @@
             <div class="text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-primary tracking-tight line-clamp-1">
               Mugavari Thazhai</div>
           </div>
+          <div class="hidden md:flex items-center gap-8">
+            <a href="index.html" class="text-gray-700 hover:text-primary font-medium transition text-sm"
+              data-i18n="nav_home">Home</a>
+            <a href="products.html" class="text-primary font-bold transition text-sm"
+              data-i18n="nav_products">Products</a>
+            <a href="about.html" class="text-gray-700 hover:text-primary font-medium transition text-sm"
+              data-i18n="nav_about">About Us</a>
+            <a href="#footer" class="text-gray-700 hover:text-primary font-medium transition text-sm"
+              data-i18n="nav_contact">Contact</a>
 
-          <!-- Desktop Menu -->
-          <div class="hidden md:flex items-center space-x-8">
-            <a href="index.html" class="text-gray-700 hover:text-primary font-medium transition text-sm">Home</a>
-            <a href="products.html" class="text-primary font-bold transition text-sm">Products</a>
-            <a href="#footer" class="text-gray-700 hover:text-primary font-medium transition text-sm">Contact</a>
+            <button id="lang-toggle"
+              class="px-3 py-1 bg-gray-100 rounded-full text-sm font-semibold text-primary border border-gray-200 hover:bg-gray-200 transition">
+              தமிழ்
+            </button>
 
-            <!-- Cart Icon -->
-            <a href="#cart" class="relative group">
-              <i class="fa fa-shopping-cart text-2xl text-gray-700 group-hover:text-primary transition"></i>
+            <button onclick="document.getElementById('cart').scrollIntoView({behavior: 'smooth'})"
+              class="relative group">
+              <i class="fa fa-shopping-cart text-xl text-gray-700 group-hover:text-primary transition"></i>
               <span id="cart-count"
                 class="absolute -top-2 -right-2 bg-accent text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full hidden">0</span>
-            </a>
+            </button>
           </div>
-
           <!-- Mobile Menu Button -->
-          <div class="md:hidden flex items-center gap-3 sm:gap-4">
+          <div class="md:hidden flex items-center gap-4">
+            <button onclick="langManager.toggleLanguage()"
+              class="text-sm font-bold text-primary bg-green-50 px-2 py-1 rounded">Ta/En</button>
             <a href="#cart" class="relative">
-              <i class="fa fa-shopping-cart text-xl sm:text-2xl text-gray-700"></i>
+              <i class="fa fa-shopping-cart text-2xl text-gray-700"></i>
               <span id="mobile-cart-count"
                 class="absolute -top-2 -right-2 bg-accent text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full hidden">0</span>
             </a>
-            <button id="mobile-menu-btn" class="text-gray-700 focus:outline-none">
-              <i class="fa fa-bars text-xl sm:text-2xl"></i>
+            <button id="mobile-menu-btn" class="text-gray-700 focus:outline-none p-2">
+              <i class="fa fa-bars text-2xl"></i>
             </button>
           </div>
         </div>
       </div>
-
       <!-- Mobile Menu -->
       <div id="mobile-menu"
-        class="md:hidden hidden bg-white border-t border-gray-100 absolute w-full left-0 top-16 sm:top-20 shadow-lg">
-        <div class="px-3 sm:px-4 pt-2 pb-4 sm:pb-6 space-y-2">
-          <a href="index.html"
-            class="block px-3 py-2 rounded-md text-sm sm:text-base font-medium text-gray-700 hover:bg-gray-50">Home</a>
-          <a href="products.html"
-            class="block px-3 py-2 rounded-md text-sm sm:text-base font-medium text-primary bg-green-50">Products</a>
-          <a href="#footer"
-            class="block px-3 py-2 rounded-md text-sm sm:text-base font-medium text-gray-700 hover:bg-gray-50">Contact</a>
+        class="md:hidden hidden bg-white border-t border-gray-100 absolute w-full left-0 top-16 sm:top-20 shadow-lg z-40">
+        <div class="px-4 pt-3 pb-4 space-y-2">
+          <a href="index.html" class="block px-4 py-3 rounded-lg text-base font-medium text-gray-700 hover:bg-green-50"
+            data-i18n="nav_home">Home</a>
+          <a href="products.html" class="block px-4 py-3 rounded-lg text-base font-medium text-primary bg-green-50"
+            data-i18n="nav_products">Products</a>
+          <a href="about.html" class="block px-4 py-3 rounded-lg text-base font-medium text-gray-700 hover:bg-green-50"
+            data-i18n="nav_about">About Us</a>
+          <a href="#footer" class="block px-4 py-3 rounded-lg text-base font-medium text-gray-700 hover:bg-green-50"
+            data-i18n="nav_contact">Contact</a>
         </div>
       </div>
     </nav>
@@ -208,9 +236,11 @@
       </div>
 
       <div class="max-w-7xl mx-auto text-center relative z-10">
-        <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-2 sm:mb-4 drop-shadow-sm">Our Products
+        <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-2 sm:mb-4 drop-shadow-sm"
+          data-i18n="prod_title">Our Products
         </h1>
-        <p class="text-gray-600 text-sm sm:text-base md:text-lg max-w-2xl mx-auto">Discover the purity of Pollachi. From
+        <p class="text-gray-600 text-sm sm:text-base md:text-lg max-w-2xl mx-auto" data-i18n="prod_subtitle">Discover
+          the purity of Pollachi. From
           cold-pressed oils to handcrafted coconut shell art.</p>
       </div>
     </div>
@@ -230,12 +260,14 @@
               onerror="this.onerror=null;this.src='https://placehold.co/600x400/E0F2E9/0E2C18?text=Coconut+Oil'"
               class="w-full h-full object-cover transition duration-700">
             <div
-              class="absolute top-2 sm:top-4 right-2 sm:right-4 bg-white/90 backdrop-blur px-2 sm:px-3 py-1 rounded-full text-xs font-bold text-primary shadow-sm">
+              class="absolute top-2 sm:top-4 right-2 sm:right-4 bg-white/90 backdrop-blur px-2 sm:px-3 py-1 rounded-full text-xs font-bold text-primary shadow-sm"
+              data-i18n="badge_best_seller">
               Best Seller
             </div>
           </div>
           <div class="p-3 sm:p-4 md:p-6">
-            <h4 class="text-lg sm:text-xl font-bold text-gray-900 mb-2">Pure Coconut Oil</h4>
+            <h4 class="text-lg sm:text-xl font-bold text-gray-900 mb-2" data-i18n="prod_pure_coco_oil">Pure Coconut Oil
+            </h4>
             <div class="flex items-center mb-3">
               <div class="text-yellow-400 text-xs gap-0.5 flex">
                 <i class="fas fa-star"></i>
@@ -249,24 +281,31 @@
 
             <!-- Variant/Size Selector as Dropdown -->
             <div class="mb-4">
-              <label class="block text-xs sm:text-sm font-medium text-gray-700 mb-1 sm:mb-2">Select Size:</label>
+              <label class="block text-xs sm:text-sm font-medium text-gray-700 mb-1 sm:mb-2"
+                data-i18n="prod_select_size">Select Size:</label>
               <select
                 class="size-dropdown w-full border border-gray-300 rounded-lg px-2 sm:px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary bg-white cursor-pointer">
                 <option value="1000ml" data-price="400" selected>1000ml - ₹400</option>
                 <option value="500ml" data-price="210">500ml - ₹210</option>
                 <option value="200ml" data-price="90">200ml - ₹90</option>
               </select>
+              <!-- Offer Message -->
+              <div
+                class="offer-message mt-2 text-xs font-bold text-green-700 bg-green-50 p-2 rounded-lg border border-green-200 flex items-center gap-2 animate-pulse">
+                <i class="fas fa-gift text-lg text-accent"></i>
+                <span data-i18n="offer_free_scrubber">Free Coconut Coir Scrubber!</span>
+              </div>
             </div>
 
             <!-- Price Display -->
             <div class="mb-3 sm:mb-4 pb-3 sm:pb-4 border-b border-gray-200">
-              <p class="text-xs sm:text-sm text-gray-600 mb-1">Unit Price:</p>
+              <p class="text-xs sm:text-sm text-gray-600 mb-1" data-i18n="prod_unit_price">Unit Price:</p>
               <p class="text-2xl sm:text-3xl font-bold text-green-700">₹<span class="unit-price">400</span></p>
             </div>
 
             <!-- Quantity Control -->
             <div class="mb-3 sm:mb-4">
-              <p class="text-xs sm:text-sm text-gray-600 mb-2">Quantity:</p>
+              <p class="text-xs sm:text-sm text-gray-600 mb-2" data-i18n="cart_qty">Quantity:</p>
               <div class="flex items-center border border-gray-300 rounded-lg w-fit">
                 <button
                   class="qty-decrease px-2 sm:px-3 py-1 sm:py-2 hover:bg-gray-100 transition text-gray-600 font-bold text-sm">−</button>
@@ -280,13 +319,13 @@
 
             <!-- Total Price -->
             <div class="mb-3 sm:mb-4 pb-3 sm:pb-4 border-b border-gray-200">
-              <p class="text-xs sm:text-sm text-gray-600 mb-1">Total Price:</p>
+              <p class="text-xs sm:text-sm text-gray-600 mb-1" data-i18n="prod_total_price">Total Price:</p>
               <p class="text-xl sm:text-2xl font-bold text-primary">₹<span class="total-price">400</span></p>
             </div>
 
             <button
               class="add-to-cart w-full py-2 sm:py-3 bg-primary text-white font-medium text-sm sm:text-base rounded-lg sm:rounded-xl hover:bg-green-800 transition shadow-lg shadow-green-900/20 active:scale-95 touch-manipulation">
-              Add to Cart <i class="fas fa-shopping-cart ml-2"></i>
+              <span data-i18n="prod_add_cart">Add to Cart</span> <i class="fas fa-shopping-cart ml-2"></i>
             </button>
           </div>
         </div>
@@ -301,12 +340,14 @@
               onerror="this.onerror=null;this.src='https://placehold.co/600x400/FDF3E7/8B6F47?text=Groundnut+Oil'"
               class="w-full h-full object-cover transition duration-700">
             <div
-              class="absolute top-2 sm:top-4 right-2 sm:right-4 bg-white/90 backdrop-blur px-2 sm:px-3 py-1 rounded-full text-xs font-bold text-orange-600 shadow-sm">
+              class="absolute top-2 sm:top-4 right-2 sm:right-4 bg-white/90 backdrop-blur px-2 sm:px-3 py-1 rounded-full text-xs font-bold text-orange-600 shadow-sm"
+              data-i18n="badge_pure">
               Pure
             </div>
           </div>
           <div class="p-3 sm:p-4 md:p-6">
-            <h4 class="text-lg sm:text-xl font-bold text-gray-900 mb-2">Groundnut Oil</h4>
+            <h4 class="text-lg sm:text-xl font-bold text-gray-900 mb-2" data-i18n="prod_groundnut_oil">Groundnut Oil
+            </h4>
             <div class="flex items-center mb-3">
               <div class="text-yellow-400 text-xs gap-0.5 flex">
                 <i class="fas fa-star"></i>
@@ -320,7 +361,8 @@
 
             <!-- Variant/Size Selector -->
             <div class="mb-4">
-              <label class="block text-xs sm:text-sm font-medium text-gray-700 mb-1 sm:mb-2">Size:</label>
+              <label class="block text-xs sm:text-sm font-medium text-gray-700 mb-1 sm:mb-2"
+                data-i18n="prod_select_size">Size:</label>
               <select
                 class="size-dropdown w-full border border-gray-300 rounded-lg px-2 sm:px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary bg-white cursor-pointer">
                 <option value="1000ml" data-price="270" selected>1000ml - ₹270</option>
@@ -329,13 +371,13 @@
 
             <!-- Price Display -->
             <div class="mb-3 sm:mb-4 pb-3 sm:pb-4 border-b border-gray-200">
-              <p class="text-xs sm:text-sm text-gray-600 mb-1">Unit Price:</p>
+              <p class="text-xs sm:text-sm text-gray-600 mb-1" data-i18n="prod_unit_price">Unit Price:</p>
               <p class="text-2xl sm:text-3xl font-bold text-green-700">₹<span class="unit-price">270</span></p>
             </div>
 
             <!-- Quantity Control -->
             <div class="mb-3 sm:mb-4">
-              <p class="text-xs sm:text-sm text-gray-600 mb-2">Quantity:</p>
+              <p class="text-xs sm:text-sm text-gray-600 mb-2" data-i18n="cart_qty">Quantity:</p>
               <div class="flex items-center border border-gray-300 rounded-lg w-fit">
                 <button
                   class="qty-decrease px-2 sm:px-3 py-1 sm:py-2 hover:bg-gray-100 transition text-gray-600 font-bold text-sm">−</button>
@@ -349,13 +391,13 @@
 
             <!-- Total Price -->
             <div class="mb-3 sm:mb-4 pb-3 sm:pb-4 border-b border-gray-200">
-              <p class="text-xs sm:text-sm text-gray-600 mb-1">Total Price:</p>
+              <p class="text-xs sm:text-sm text-gray-600 mb-1" data-i18n="prod_total_price">Total Price:</p>
               <p class="text-xl sm:text-2xl font-bold text-primary">₹<span class="total-price">270</span></p>
             </div>
 
             <button
               class="add-to-cart w-full py-2 sm:py-3 bg-primary text-white font-medium text-sm sm:text-base rounded-lg sm:rounded-xl hover:bg-green-800 transition shadow-lg shadow-green-900/20 active:scale-95 touch-manipulation">
-              Add to Cart <i class="fas fa-shopping-cart ml-2"></i>
+              <span data-i18n="prod_add_cart">Add to Cart</span> <i class="fas fa-shopping-cart ml-2"></i>
             </button>
           </div>
         </div>
@@ -371,12 +413,14 @@
               onerror="this.onerror=null;this.src='https://placehold.co/600x400/D4AF96/5A4A3A?text=Hand+Crafts'"
               class="w-full h-full object-cover transition duration-700">
             <div
-              class="absolute top-2 sm:top-4 right-2 sm:right-4 bg-white/90 backdrop-blur px-2 sm:px-3 py-1 rounded-full text-xs font-bold text-amber-700 shadow-sm">
+              class="absolute top-2 sm:top-4 right-2 sm:right-4 bg-white/90 backdrop-blur px-2 sm:px-3 py-1 rounded-full text-xs font-bold text-amber-700 shadow-sm"
+              data-i18n="badge_handmade">
               Handmade
             </div>
           </div>
           <div class="p-3 sm:p-4 md:p-6">
-            <h4 class="text-lg sm:text-xl font-bold text-gray-900 mb-2">Coconut Shell Handcrafts</h4>
+            <h4 class="text-lg sm:text-xl font-bold text-gray-900 mb-2" data-i18n="prod_handcrafts">Coconut Shell
+              Handcrafts</h4>
             <div class="flex items-center mb-3">
               <div class="text-yellow-400 text-xs gap-0.5 flex">
                 <i class="fas fa-star"></i>
@@ -399,13 +443,13 @@
 
             <!-- Price Display -->
             <div class="mb-3 sm:mb-4 pb-3 sm:pb-4 border-b border-gray-200">
-              <p class="text-xs sm:text-sm text-gray-600 mb-1">Unit Price:</p>
+              <p class="text-xs sm:text-sm text-gray-600 mb-1" data-i18n="prod_unit_price">Unit Price:</p>
               <p class="text-2xl sm:text-3xl font-bold text-green-700">₹<span class="unit-price">150</span></p>
             </div>
 
             <!-- Quantity Control -->
             <div class="mb-3 sm:mb-4">
-              <p class="text-xs sm:text-sm text-gray-600 mb-2">Quantity:</p>
+              <p class="text-xs sm:text-sm text-gray-600 mb-2" data-i18n="cart_qty">Quantity:</p>
               <div class="flex items-center border border-gray-300 rounded-lg w-fit">
                 <button
                   class="qty-decrease px-2 sm:px-3 py-1 sm:py-2 hover:bg-gray-100 transition text-gray-600 font-bold text-sm">−</button>
@@ -419,13 +463,13 @@
 
             <!-- Total Price -->
             <div class="mb-3 sm:mb-4 pb-3 sm:pb-4 border-b border-gray-200">
-              <p class="text-xs sm:text-sm text-gray-600 mb-1">Total Price:</p>
+              <p class="text-xs sm:text-sm text-gray-600 mb-1" data-i18n="prod_total_price">Total Price:</p>
               <p class="text-xl sm:text-2xl font-bold text-primary">₹<span class="total-price">150</span></p>
             </div>
 
             <button
               class="add-to-cart w-full py-2 sm:py-3 bg-primary text-white font-medium text-sm sm:text-base rounded-lg sm:rounded-xl hover:bg-green-800 transition shadow-lg shadow-green-900/20 active:scale-95 touch-manipulation">
-              Add to Cart <i class="fas fa-shopping-cart ml-2"></i>
+              <span data-i18n="prod_add_cart">Add to Cart</span> <i class="fas fa-shopping-cart ml-2"></i>
             </button>
           </div>
         </div>
@@ -438,7 +482,8 @@
       <div
         class="bg-white rounded-xl sm:rounded-2xl lg:rounded-3xl shadow-lg sm:shadow-xl p-4 sm:p-6 md:p-8 border border-gray-100">
         <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-0 mb-6 sm:mb-8">
-          <h2 class="text-xl sm:text-2xl font-bold text-gray-900 flex items-center gap-2 sm:gap-3">
+          <h2 class="text-xl sm:text-2xl font-bold text-gray-900 flex items-center gap-2 sm:gap-3"
+            data-i18n="cart_title">
             <i class="fas fa-shopping-bag text-primary"></i> Your Cart
           </h2>
           <button onclick="localStorage.removeItem('cart'); updateCartUI();"
@@ -447,19 +492,20 @@
         </div>
 
         <div id="cart-items" class="overflow-x-auto min-h-[100px]">
-          <p class="text-gray-500 text-center py-8 text-sm sm:text-base">Your cart is currently empty. Start adding some
+          <p class="text-gray-500 text-center py-8 text-sm sm:text-base" data-i18n="cart_empty">Your cart is currently
+            empty. Start adding some
             products!</p>
         </div>
 
         <div class="flex flex-col gap-4 sm:gap-6 mt-6 sm:mt-8 pt-6 sm:pt-8 border-t border-gray-100 hidden"
           id="cart-footer">
           <div class="text-center sm:text-left">
-            <p class="text-gray-500 text-xs sm:text-sm mb-1">Total Amount</p>
+            <p class="text-gray-500 text-xs sm:text-sm mb-1" data-i18n="cart_total_amount">Total Amount</p>
             <h3 class="text-2xl sm:text-3xl font-bold text-gray-900">₹<span id="cart-total">0</span></h3>
           </div>
           <button id="whatsappOrderBtn"
             class="w-full px-4 sm:px-8 py-3 sm:py-4 bg-primary text-white font-bold text-sm sm:text-base rounded-lg sm:rounded-xl hover:bg-green-800 transition shadow-lg flex items-center justify-center gap-2">
-            Proceed to Checkout <i class="fas fa-arrow-right"></i>
+            <span data-i18n="cart_checkout">Proceed to Checkout</span> <i class="fas fa-arrow-right"></i>
           </button>
         </div>
       </div>
@@ -473,11 +519,12 @@
             onerror="this.onerror=null;this.src='https://placehold.co/100x100/E0F2E9/0E2C18?text=Logo'"
             class="w-16 sm:w-20 md:w-24 h-16 sm:h-20 md:h-24 rounded-full mx-auto mb-4 sm:mb-6 border-2 border-gray-700"
             alt="Logo">
-          <p class="text-base sm:text-lg md:text-xl font-medium text-white mb-3 sm:mb-4">Pure & Authentic Products from
+          <p class="text-base sm:text-lg md:text-xl font-medium text-white mb-3 sm:mb-4" data-i18n="footer_tagline">Pure
+            & Authentic Products from
             Pollachi with Love ❤️</p>
           <p class="text-xs sm:text-sm text-gray-400 mb-6 sm:mb-8"><i
-              class="fas fa-map-marker-alt mr-2 text-primary"></i> Location:
-            Pollachi, Coimbatore District, Tamil Nadu, India</p>
+              class="fas fa-map-marker-alt mr-2 text-primary"></i> <span data-i18n="footer_loc">Location:
+              Pollachi, Coimbatore District, Tamil Nadu, India</span></p>
 
           <div class="flex justify-center gap-4 sm:gap-6 md:gap-8 mb-8 sm:mb-12">
             <a href="https://wa.me/919842535962" target="_blank" class="group">
@@ -551,6 +598,9 @@
           this.currentVariant = this.sizeDropdown.value;
           this.currentUnitPrice = parseInt(this.sizeDropdown.options[this.sizeDropdown.selectedIndex].dataset.price);
 
+          // Select offer message element
+          this.offerMessage = cardElement.querySelector('.offer-message');
+
           this.init();
         }
 
@@ -566,6 +616,9 @@
 
           // Add to cart listener
           this.addToCartBtn.addEventListener('click', () => this.addToCart());
+
+          // Initial check for offer
+          this.checkOffer();
         }
 
         handleSizeChange(e) {
@@ -576,9 +629,29 @@
           // Update unit price display
           this.unitPriceSpan.textContent = this.currentUnitPrice;
 
+          // Check Offer
+          this.checkOffer();
+
           // Update total price
           this.updateTotalPrice();
         }
+
+        checkOffer() {
+          if (!this.offerMessage) return;
+
+          // Logic: Show only for Coconut Oil (product id check or name check) AND 1000ml
+          // Since we added the HTML only to the first card, this mostly works, but good to be safe.
+          // But actually, only the first card has the .offer-message div, so others will be null.
+
+          if (this.currentVariant === '1000ml') {
+            this.offerMessage.classList.remove('hidden');
+            this.offerMessage.classList.add('flex');
+          } else {
+            this.offerMessage.classList.add('hidden');
+            this.offerMessage.classList.remove('flex');
+          }
+        }
+
 
         increaseQuantity() {
           const currentQty = parseInt(this.qtyInput.value);
@@ -634,7 +707,7 @@
 
           // Visual feedback
           const originalText = this.addToCartBtn.innerHTML;
-          this.addToCartBtn.innerHTML = '<i class="fas fa-check"></i> Added to Cart';
+          this.addToCartBtn.innerHTML = `<i class="fas fa-check"></i> ${langManager.getText('btn_added')}`;
           this.addToCartBtn.classList.add('bg-green-700');
 
           setTimeout(() => {
@@ -690,7 +763,7 @@
           cartItemsContainer.innerHTML = `
           <div class='text-center py-12'>
             <i class='fas fa-shopping-basket text-4xl text-gray-200 mb-4'></i>
-            <p class='text-gray-500'>Your cart is empty. Start adding some products!</p>
+            <p class='text-gray-500'>${langManager.getText('cart_empty')}</p>
           </div>
         `;
           cartFooter.classList.add('hidden');
@@ -702,23 +775,42 @@
         <table class="w-full text-left text-sm sm:text-base">
           <thead class="text-xs text-gray-500 uppercase bg-gray-50 border-b">
             <tr>
-              <th class="px-2 sm:px-4 py-2 sm:py-3 rounded-tl-lg">Product</th>
-              <th class="px-2 sm:px-4 py-2 sm:py-3">Unit Price</th>
-              <th class="px-2 sm:px-4 py-2 sm:py-3 text-center">Qty</th>
-              <th class="px-2 sm:px-4 py-2 sm:py-3">Subtotal</th>
+              <th class="px-2 sm:px-4 py-2 sm:py-3 rounded-tl-lg">${langManager.getText('col_product')}</th>
+              <th class="px-2 sm:px-4 py-2 sm:py-3">${langManager.getText('cart_price')}</th>
+              <th class="px-2 sm:px-4 py-2 sm:py-3 text-center">${langManager.getText('cart_qty')}</th>
+              <th class="px-2 sm:px-4 py-2 sm:py-3">${langManager.getText('cart_subtotal')}</th>
               <th class="px-2 sm:px-4 py-2 sm:py-3 rounded-tr-lg"></th>
             </tr>
           </thead>
           <tbody class="divide-y divide-gray-100">
       `;
 
-        let cartTotal = 0;
+        let subTotal = 0;
+        let freeGiftQty = 0;
+
+        // Product Name Mapping for Translation
+        const productKeyMap = {
+          "Pure Coconut Oil": "prod_pure_coco_oil",
+          "Groundnut Oil": "prod_groundnut_oil",
+          "Coconut Shell Handcrafts": "prod_handcrafts"
+        };
+
 
         cart.forEach((item, index) => {
-          cartTotal += item.totalPrice;
-          const displayName = item.variant
-            ? `${item.productName} - ${item.variant}`
-            : item.productName;
+          subTotal += item.totalPrice;
+
+          // Check for Free Gift Condition
+          if (item.productName === "Pure Coconut Oil" && item.variant === "1000ml") {
+            freeGiftQty += item.quantity;
+          }
+
+          // Translate Product Name
+          const key = productKeyMap[item.productName];
+          const translatedName = key ? langManager.getText(key) : item.productName;
+
+          const displayName = item.variant && item.variant !== 'customizable'
+            ? `${translatedName} - ${item.variant}`
+            : translatedName;
 
           cartHTML += `
           <tr class="hover:bg-gray-50 transition">
@@ -737,13 +829,44 @@
         `;
         });
 
+        // Add Free Gift Row if applicable
+        if (freeGiftQty > 0) {
+          cartHTML += `
+              <tr class="bg-green-50/50">
+                <td class="px-2 sm:px-4 py-2 sm:py-3 font-medium text-green-800 text-xs sm:text-base flex items-center gap-2">
+                    <i class="fas fa-gift"></i> Coconut Coir Scrubber
+                </td>
+                <td class="px-2 sm:px-4 py-2 sm:py-3 text-gray-500 text-xs sm:text-base line-through">₹${40 * freeGiftQty}</td>
+                <td class="px-2 sm:px-4 py-2 sm:py-3 text-center">
+                  <span class="inline-block bg-green-100/50 px-2 py-1 rounded text-xs sm:text-sm font-bold text-green-700">${freeGiftQty}</span>
+                </td>
+                <td class="px-2 sm:px-4 py-2 sm:py-3 font-bold text-green-700 text-xs sm:text-base">FREE</td>
+                <td class="px-2 sm:px-4 py-2 sm:py-3"></td>
+              </tr>
+            `;
+        }
+
+        // Add Shipping Row
+        const shippingCost = 50;
+        cartHTML += `
+          <tr class="border-t border-gray-100 bg-slate-50/50">
+            <td class="px-2 sm:px-4 py-2 sm:py-3 font-medium text-gray-600 text-xs sm:text-base">Delivery Charge</td>
+            <td class="px-2 sm:px-4 py-2 sm:py-3"></td>
+            <td class="px-2 sm:px-4 py-2 sm:py-3"></td>
+            <td class="px-2 sm:px-4 py-2 sm:py-3 font-bold text-gray-900 text-xs sm:text-base">₹${shippingCost}</td>
+            <td class="px-2 sm:px-4 py-2 sm:py-3"></td>
+          </tr>
+        `;
+
         cartHTML += `
           </tbody>
         </table>
       `;
 
+        const grandTotal = subTotal + shippingCost;
+
         cartItemsContainer.innerHTML = cartHTML;
-        cartTotalSpan.textContent = cartTotal;
+        cartTotalSpan.textContent = grandTotal;
         cartFooter.classList.remove('hidden');
       }
 

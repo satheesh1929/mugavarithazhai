@@ -16,6 +16,21 @@
     <link rel="icon" type="image/png" href="./images/favicon.png">
     <link rel="apple-touch-icon" href="./images/favicon.png">
     <title>Checkout & Payment | Mugavari Thazhai</title>
+    <link rel="canonical" href="https://mugavarithazhai.in/payment.html" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Mugavari Thazhai">
+    <meta property="og:url" content="https://mugavarithazhai.in/payment.html">
+    <meta property="og:title" content="Secure Checkout | Mugavari Thazhai">
+    <meta property="og:description"
+        content="Complete your purchase securely. Mugavari Thazhai - Authentic Pollachi Products.">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Secure Checkout | Mugavari Thazhai">
+    <meta name="twitter:description"
+        content="Complete your purchase securely. Mugavari Thazhai - Authentic Pollachi Products.">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
@@ -37,6 +52,7 @@
             }
         }
     </script>
+    <script src="js/translations.js"></script>
 </head>
 
 <body class="font-sans text-gray-800 antialiased bg-slate-50">
@@ -56,7 +72,7 @@
                 <div>
                     <a href="products.html"
                         class="text-sm font-medium text-gray-600 hover:text-primary transition flex items-center gap-1">
-                        <i class="fas fa-arrow-left"></i> Back to Products
+                        <i class="fas fa-arrow-left"></i> <span data-i18n="btn_back_products">Back to Products</span>
                     </a>
                 </div>
             </div>
@@ -66,8 +82,10 @@
     <!-- Checkout Container -->
     <main class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 sm:pt-32 pb-20">
         <div class="mb-8 text-center">
-            <h1 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">Secure Checkout</h1>
-            <p class="text-gray-500 text-sm">Review your order and complete payment to finalize.</p>
+            <h1 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-2" data-i18n="checkout_title">Secure Checkout
+            </h1>
+            <p class="text-gray-500 text-sm" data-i18n="checkout_subtitle">Review your order and complete payment to
+                finalize.</p>
         </div>
 
         <div class="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden">
@@ -75,13 +93,13 @@
             <!-- Order Summary -->
             <div class="bg-gray-50 p-6 border-b border-gray-100">
                 <h2 class="font-bold text-gray-800 mb-4 flex items-center gap-2">
-                    <i class="fas fa-receipt text-primary"></i> Order Summary
+                    <i class="fas fa-receipt text-primary"></i> <span data-i18n="checkout_summary">Order Summary</span>
                 </h2>
                 <div id="order-summary-items" class="space-y-3 mb-4">
                     <!-- Items will be injected here -->
                 </div>
                 <div class="flex justify-between items-center pt-4 border-t border-gray-200">
-                    <span class="text-gray-600 font-medium">Total Amount</span>
+                    <span class="text-gray-600 font-medium" data-i18n="checkout_total">Total Amount</span>
                     <span class="text-2xl font-bold text-primary">₹<span id="summary-total">0</span></span>
                 </div>
             </div>
@@ -94,29 +112,34 @@
 
                     <!-- Shipping Details -->
                     <div>
-                        <h3 class="font-semibold text-gray-900 mb-4 text-lg">Shipping Details</h3>
+                        <h3 class="font-semibold text-gray-900 mb-4 text-lg" data-i18n="checkout_shipping">Shipping
+                            Details</h3>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+                                <label class="block text-sm font-medium text-gray-700 mb-1" data-i18n="lbl_name">Full
+                                    Name</label>
                                 <input type="text" id="name" placeholder="John Doe"
                                     class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition"
                                     required>
                             </div>
                         </div>
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
+                            <label class="block text-sm font-medium text-gray-700 mb-1" data-i18n="lbl_phone">Phone
+                                Number</label>
                             <input type="tel" id="phone" placeholder="9876543210"
                                 class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition"
                                 required>
                         </div>
                         <div class="md:col-span-2">
-                            <label class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
+                            <label class="block text-sm font-medium text-gray-700 mb-1" data-i18n="lbl_email">Email
+                                Address</label>
                             <input type="email" id="email" placeholder="john@example.com"
                                 class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition"
                                 required>
                         </div>
                         <div class="md:col-span-2">
-                            <label class="block text-sm font-medium text-gray-700 mb-1">Delivery Address</label>
+                            <label class="block text-sm font-medium text-gray-700 mb-1" data-i18n="lbl_address">Delivery
+                                Address</label>
                             <textarea id="address" placeholder="House No, Street, City, Pincode"
                                 class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition h-24"
                                 required></textarea>
@@ -127,12 +150,14 @@
             <!-- Payment Section -->
             <div class="border-t border-gray-100 pt-6">
                 <h3 class="font-semibold text-gray-900 mb-4 text-lg flex items-center gap-2">
-                    Payment Method <span class="bg-green-100 text-green-700 text-xs px-2 py-0.5 rounded-full">UPI</span>
+                    <span data-i18n="lbl_pay_method">Payment Method</span> <span
+                        class="bg-green-100 text-green-700 text-xs px-2 py-0.5 rounded-full">UPI</span>
                 </h3>
 
                 <!-- Step 1: Pay -->
                 <div class="bg-gray-50 border rounded-xl p-6 mb-4 text-center">
-                    <span class="block text-xs font-bold text-gray-400 mb-3 uppercase tracking-wide">Step 1:
+                    <span class="block text-xs font-bold text-gray-400 mb-3 uppercase tracking-wide"
+                        data-i18n="lbl_step1">Step 1:
                         Scan & Pay</span>
 
                     <div class="bg-white p-2 rounded-lg shadow-sm w-fit mx-auto mb-3 border border-gray-200">
@@ -141,10 +166,11 @@
                             alt="UPI QR Code" class="w-48 h-48 object-contain">
                     </div>
 
-                    <p class="font-bold text-lg text-gray-900 mb-1">Total: ₹<span id="upi-btn-amount">0</span>
+                    <p class="font-bold text-lg text-gray-900 mb-1"><span data-i18n="lbl_total">Total</span>: ₹<span
+                            id="upi-btn-amount">0</span>
                     </p>
                     <div class="flex items-center justify-center gap-2 mb-2 mt-2">
-                        <span class="text-sm text-gray-600">UPI ID:</span>
+                        <span class="text-sm text-gray-600"><span data-i18n="lbl_upi_id">UPI ID</span>:</span>
                         <code id="display-upi-id"
                             class="bg-white border border-gray-200 px-2 py-1 rounded text-sm font-mono select-all text-primary"></code>
                         <button type="button" onclick="copyUPI()" class="text-gray-400 hover:text-primary transition"
@@ -152,19 +178,22 @@
                             <i class="far fa-copy"></i>
                         </button>
                     </div>
-                    <p class="text-xs text-gray-500">Scan QR or Copy UPI ID to Pay via GPay/PhonePe</p>
+                    <p class="text-xs text-gray-500" data-i18n="lbl_scan_instruct">Scan QR or Copy UPI ID to Pay via
+                        GPay/PhonePe</p>
                 </div>
 
                 <!-- Step 2: Upload -->
                 <div class="bg-white border rounded-xl p-4">
-                    <span class="block text-xs font-bold text-gray-400 mb-2 uppercase tracking-wide">Step 2:
+                    <span class="block text-xs font-bold text-gray-400 mb-2 uppercase tracking-wide"
+                        data-i18n="lbl_step2">Step 2:
                         Upload Screenshot</span>
                     <label class="block cursor-pointer">
                         <div
                             class="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:bg-gray-50 transition group">
                             <i
                                 class="fas fa-cloud-upload-alt text-3xl text-gray-300 group-hover:text-primary mb-2 transition"></i>
-                            <p class="text-sm font-medium text-gray-700">Click to Upload Payment Screenshot</p>
+                            <p class="text-sm font-medium text-gray-700" data-i18n="lbl_upload_instruct">Click to Upload
+                                Payment Screenshot</p>
                             <p class="text-xs text-gray-400 mt-1">Supported: JPG, PNG</p>
                         </div>
                         <input type="file" id="screenshot" accept="image/*" class="hidden" required
@@ -177,9 +206,10 @@
             <div class="pt-4 flex flex-col gap-3">
                 <button type="submit"
                     class="w-full py-4 bg-primary text-white font-bold text-lg rounded-xl hover:bg-green-800 transition shadow-lg hover:shadow-xl active:scale-[0.99] flex items-center justify-center gap-2">
-                    Confirm Order <i class="fas fa-check-circle"></i>
+                    <span data-i18n="btn_confirm">Confirm Order</span> <i class="fas fa-check-circle"></i>
                 </button>
-                <p class="text-center text-xs text-gray-400">Your details are safe. Order confirmation will be
+                <p class="text-center text-xs text-gray-400" data-i18n="msg_safe">Your details are safe. Order
+                    confirmation will be
                     sent to Email.</p>
             </div>
             </form>
@@ -194,17 +224,20 @@
             class="w-24 h-24 bg-green-100 text-green-600 rounded-full flex items-center justify-center mb-6 animate-bounce">
             <i class="fas fa-check text-5xl"></i>
         </div>
-        <h2 class="text-3xl font-bold text-gray-900 mb-2">Order Placed!</h2>
-        <p class="text-gray-600 mb-8 max-w-md">Thank you for shopping with Mugavari Thazhai. We have received your order
+        <h2 class="text-3xl font-bold text-gray-900 mb-2" data-i18n="success_title">Order Placed!</h2>
+        <p class="text-gray-600 mb-8 max-w-md" data-i18n="success_msg">Thank you for shopping with Mugavari Thazhai. We
+            have received your order
             details and payment reference.</p>
 
         <div class="flex gap-4">
             <a href="index.html"
-                class="px-6 py-3 bg-gray-100 text-gray-700 font-medium rounded-xl hover:bg-gray-200 transition">
+                class="px-6 py-3 bg-gray-100 text-gray-700 font-medium rounded-xl hover:bg-gray-200 transition"
+                data-i18n="btn_return">
                 Return Home
             </a>
             <a href="products.html"
-                class="px-6 py-3 bg-primary text-white font-medium rounded-xl hover:bg-green-800 transition">
+                class="px-6 py-3 bg-primary text-white font-medium rounded-xl hover:bg-green-800 transition"
+                data-i18n="btn_buy_more">
                 Buy More
             </a>
         </div>
@@ -218,6 +251,11 @@
         // TODO: Replace with your actual UPI ID (VPA) and Name
         const MERCHANT_VPA = "9842535962@ybl";
         const MERCHANT_NAME = "Mugavari Thazhai";
+
+        // Global variables for calculations
+        let grandTotal = 0;
+        let freeGiftQty = 0;
+        const shippingCost = 50;
 
         // Load Cart Data
         function loadCart() {
@@ -235,12 +273,28 @@
                 return;
             }
 
-            let total = 0;
+            let subTotal = 0;
             let itemsHtml = '';
+            freeGiftQty = 0;
+
+            const productKeyMap = {
+                "Pure Coconut Oil": "prod_pure_coco_oil",
+                "Groundnut Oil": "prod_groundnut_oil",
+                "Coconut Shell Handcrafts": "prod_handcrafts"
+            };
 
             cart.forEach(item => {
-                total += item.totalPrice;
-                const displayName = item.variant ? `${item.productName} (${item.variant})` : item.productName;
+                subTotal += item.totalPrice;
+
+                const key = productKeyMap[item.productName];
+                const translatedName = key ? langManager.getText(key) : item.productName;
+
+                const displayName = item.variant ? `${translatedName} (${item.variant})` : translatedName;
+
+                // Check Gift
+                if (item.productName === "Pure Coconut Oil" && item.variant === "1000ml") {
+                    freeGiftQty += item.quantity;
+                }
 
                 itemsHtml += `
           <div class="flex justify-between text-sm">
@@ -250,18 +304,43 @@
         `;
             });
 
+            // Add Gift Row
+            if (freeGiftQty > 0) {
+                itemsHtml += `
+                  <div class="flex justify-between text-sm bg-green-50 p-2 rounded-lg border border-green-100">
+                    <span class="text-green-800 font-medium flex items-center gap-1"><i class="fas fa-gift"></i> ${langManager.getText('offer_free_scrubber')} 
+                        <span class="text-xs bg-green-200 text-green-800 px-1.5 rounded-full ml-1">x${freeGiftQty}</span>
+                    </span>
+                    <span class="font-bold text-green-700">${langManager.getText('lbl_free')}</span>
+                  </div>
+                `;
+            }
+
+            // Add Shipping Row
+            itemsHtml += `
+              <div class="flex justify-between text-sm border-t border-gray-100 pt-2 mt-2">
+                <span class="text-gray-600">${langManager.getText('lbl_delivery_charge')}</span>
+                <span class="font-medium text-gray-900">₹${shippingCost}</span>
+              </div>
+            `;
+
+            grandTotal = subTotal + shippingCost;
+
             summaryContainer.innerHTML = itemsHtml;
-            totalEl.textContent = total;
-            if (upiBtnAmount) upiBtnAmount.textContent = total;
+            totalEl.textContent = grandTotal;
+            if (upiBtnAmount) upiBtnAmount.textContent = grandTotal;
         }
 
         // Handle Pay Button Click
         function payViaUPI() {
-            const cart = JSON.parse(localStorage.getItem('cart')) || [];
-            const total = cart.reduce((sum, item) => sum + item.totalPrice, 0);
+            // Validate
+            if (grandTotal === 0) {
+                alert(langManager.getText('alert_invalid_total'));
+                return;
+            }
 
             // Format amount to 2 decimal places (required by some apps)
-            const amount = total.toFixed(2);
+            const amount = grandTotal.toFixed(2);
 
             // Construct UPI Intent Link
             // tr = Transaction Ref (random to make unique), tn = Note
@@ -312,16 +391,18 @@
             const screenshotFile = document.getElementById('screenshot').files[0];
 
             if (!screenshotFile) {
-                alert("Please upload the payment screenshot.");
+                alert(langManager.getText('alert_upload'));
                 return;
             }
 
-            // Calculate Total
-            const total = cart.reduce((sum, item) => sum + item.totalPrice, 0);
+            if (grandTotal === 0) {
+                // Recalculate if for some reason it's 0 (edge case)
+                loadCart();
+            }
 
             // UI Feedback
             const submitBtn = document.querySelector('button[type="submit"]');
-            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Uploading...';
+            submitBtn.innerHTML = `<i class="fas fa-spinner fa-spin"></i> ${langManager.getText('btn_uploading')}`;
             submitBtn.disabled = true;
 
             try {
@@ -335,6 +416,15 @@
                     const itemName = item.variant ? `${item.productName} (${item.variant})` : item.productName;
                     orderDetailsArray.push(`${itemName} x${item.quantity}`);
                 });
+
+                // Add Gift to Order Logic string
+                if (freeGiftQty > 0) {
+                    orderDetailsArray.push(`FREE Coconut Coir Scrubber x${freeGiftQty}`);
+                }
+
+                // Add Shipping to Order Logic String
+                orderDetailsArray.push(`Delivery Charge: ₹${shippingCost}`);
+
                 const orderDetailsString = orderDetailsArray.join(', ');
 
                 // Payload for Google Sheet
@@ -344,7 +434,7 @@
                     email: email,
                     address: address,
                     orderDetails: orderDetailsString,
-                    totalAmount: total,
+                    totalAmount: grandTotal,
                     fileData: imageBase64,
                     mimeType: mimeType,
                     fileName: screenshotFile.name
@@ -358,7 +448,7 @@
                     body: JSON.stringify(sheetData)
                 });
 
-                // WhatsApp Message (Since we can't get the image URL back easily in no-cors, we just confirm order)
+                // WhatsApp Message
                 let orderMessage = `Hello! I placed an order and uploaded the payment screenshot.\n\n`;
                 orderMessage += `*Customer Details:*\nName: ${name}\nPhone: ${phone}\nEmail: ${email}\nAddress: ${address}\n\n`;
                 orderMessage += `*Order Summary:*\n`;
@@ -366,7 +456,14 @@
                     const itemName = item.variant ? `${item.productName} (${item.variant})` : item.productName;
                     orderMessage += `${itemName} x${item.quantity} = ₹${item.totalPrice}\n`;
                 });
-                orderMessage += `\n*Total Amount: ₹${total}*\n\nPlease check my payment screenshot in your records.`;
+
+                if (freeGiftQty > 0) {
+                    orderMessage += `🎁 Free Coconut Coir Scrubber x${freeGiftQty}\n`;
+                }
+
+                orderMessage += `Delivery Charge: ₹${shippingCost}\n`;
+
+                orderMessage += `\n*Total Amount: ₹${grandTotal}*\n\nPlease check my payment screenshot in your records.`;
 
                 const whatsappUrl = `https://wa.me/${whatsappBusinessNumber}?text=${encodeURIComponent(orderMessage)}`;
 
@@ -380,8 +477,8 @@
 
             } catch (error) {
                 console.error("Error:", error);
-                alert("An error occurred. Please try again.");
-                submitBtn.innerHTML = 'Confirm Order';
+                alert(langManager.getText('alert_error'));
+                submitBtn.innerHTML = langManager.getText('btn_confirm');
                 submitBtn.disabled = false;
             }
         });
