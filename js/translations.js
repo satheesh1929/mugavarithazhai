@@ -36,7 +36,7 @@ const TRANSLATIONS = {
         "about_mission_desc2": "Beyond oils, we are committed to sustainability. Our eco-friendly coconut shell crafts are proof that nature's gifts are endless if we use them wisely.",
 
         "about_founder_title": "About the Founder",
-        "about_founder_role": "P. Sumsothan – Founder",
+        "about_founder_role": "Mr. Sumsothan Ponnusamy – Founder",
         "about_founder_desc1": "Mugavari Thazhai was founded with a simple yet powerful vision — to reconnect people with pure, traditional, and trustworthy products from the heart of Pollachi.",
         "about_founder_desc2": "Growing up close to nature and local farming practices, the founder understood the value of traditional cold-pressed oils, natural food processing, ethical sourcing and fair trade.",
         "about_founder_desc3": "What started as a personal belief soon became a mission — to make authentic, chemical-free products accessible to everyone, without losing their traditional essence.",
@@ -44,7 +44,7 @@ const TRANSLATIONS = {
         "about_founder_desc4": "The founder continues to guide Mugavari Thazhai with a strong focus on purity, transparency, and sustainability.",
 
         "about_team_craft_title": "Craft Work & Production Management",
-        "about_team_craft_role": "Vignesh – Craft & Production Manager",
+        "about_team_craft_role": "Mr. Vignesh – Craft & Production Manager",
         "about_team_craft_desc1": "Behind every product lies skilled hands and deep-rooted knowledge. Our Craft Work & Production Manager ensures that every item reflects traditional excellence.",
         "about_team_craft_resp1": "Managing traditional oil extraction processes",
         "about_team_craft_resp2": "Supervising handcrafted product preparation",
@@ -53,7 +53,7 @@ const TRANSLATIONS = {
         "about_team_craft_desc2": "By preserving age-old methods and combining them with strict quality checks, this role ensures that authenticity is never compromised.",
 
         "about_team_tech_title": "Technology & Digital Management",
-        "about_team_tech_role": "S. Satheesh Kumar – Technology & Platform Manager",
+        "about_team_tech_role": "Mr. Satheesh Kumar – Technology & Platform Manager",
         "about_team_tech_desc1": "The Technology Manager is responsible for transforming tradition into a seamless digital experience.",
         "about_team_tech_resp1": "Website development & maintenance",
         "about_team_tech_resp2": "Product display and updates",
