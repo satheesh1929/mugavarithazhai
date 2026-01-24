@@ -410,10 +410,18 @@
                 const imageBase64 = await fileToBase64(screenshotFile);
                 const mimeType = screenshotFile.type;
 
+                const productKeyMap = {
+                    "Pure Coconut Oil": "prod_pure_coco_oil",
+                    "Groundnut Oil": "prod_groundnut_oil",
+                    "Coconut Shell Handcrafts": "prod_handcrafts"
+                };
+
                 // Prepare Order Strings
                 let orderDetailsArray = [];
                 cart.forEach((item) => {
-                    const itemName = item.variant ? `${item.productName} (${item.variant})` : item.productName;
+                    const key = productKeyMap[item.productName];
+                    const translatedName = key ? langManager.getText(key) : item.productName;
+                    const itemName = item.variant ? `${translatedName} (${item.variant})` : translatedName;
                     orderDetailsArray.push(`${itemName} x${item.quantity}`);
                 });
 
@@ -452,8 +460,12 @@
                 let orderMessage = `Hello! I placed an order and uploaded the payment screenshot.\n\n`;
                 orderMessage += `*Customer Details:*\nName: ${name}\nPhone: ${phone}\nEmail: ${email}\nAddress: ${address}\n\n`;
                 orderMessage += `*Order Summary:*\n`;
+
+                // Re-use the orderDetailsArray logic or rebuild properly with prices
                 cart.forEach(item => {
-                    const itemName = item.variant ? `${item.productName} (${item.variant})` : item.productName;
+                    const key = productKeyMap[item.productName];
+                    const translatedName = key ? langManager.getText(key) : item.productName;
+                    const itemName = item.variant ? `${translatedName} (${item.variant})` : translatedName;
                     orderMessage += `${itemName} x${item.quantity} = ₹${item.totalPrice}\n`;
                 });
 

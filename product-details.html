@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XFTR2EZJBQ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-XFTR2EZJBQ');
+    </script>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/png" href="./images/favicon.png">
+    <link rel="apple-touch-icon" href="./images/favicon.png">
+    <title>Product Details | Mugavari Thazhai</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0E2C18', // Deep Emerald Green
+                        secondary: '#E0F2E9', // Soft Greenish White
+                        accent: '#D32F2F', // Vibrant Red
+                        earth: '#8D6E63', // Earthy Brown
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .active-tab {
+            color: #0E2C18;
+            border-bottom: 2px solid #0E2C18;
+            font-weight: 600;
+        }
+
+        .inactive-tab {
+            color: #6B7280;
+            border-bottom: 2px solid transparent;
+        }
+
+        .inactive-tab:hover {
+            color: #0E2C18;
+        }
+
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+    </style>
+    <script src="js/translations.js"></script>
+    <script src="js/product-data.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+
+<body class="font-sans text-gray-800 antialiased bg-slate-50">
+
+    <!-- Navbar -->
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 glass-nav transition-all duration-300 shadow-sm" id="navbar">
+        <div class="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16 sm:h-20">
+                <div class="flex-shrink-0 flex items-center gap-3">
+                    <a href="index.html" class="block">
+                        <img src="images/mugavari thazhai logo.jpg"
+                            onerror="this.onerror=null;this.src='https://placehold.co/125x125/E0F2E9/0E2C18?text=Logo'"
+                            class="h-10 sm:h-12 w-10 sm:w-12 rounded-full border-2 border-primary shadow-sm" alt="Logo">
+                    </a>
+                    <div
+                        class="text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-primary tracking-tight line-clamp-1">
+                        Mugavari Thazhai</div>
+                </div>
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="index.html" class="text-gray-700 hover:text-primary font-medium transition text-sm"
+                        data-i18n="nav_home">Home</a>
+                    <a href="products.html" class="text-gray-700 hover:text-primary font-medium transition text-sm"
+                        data-i18n="nav_products">Products</a>
+                    <a href="about.html" class="text-gray-700 hover:text-primary font-medium transition text-sm"
+                        data-i18n="nav_about">About Us</a>
+                    <a href="#footer" class="text-gray-700 hover:text-primary font-medium transition text-sm"
+                        data-i18n="nav_contact">Contact</a>
+
+                    <button id="lang-toggle"
+                        class="px-3 py-1 bg-gray-100 rounded-full text-sm font-semibold text-primary border border-gray-200 hover:bg-gray-200 transition">
+                        தமிழ்
+                    </button>
+
+                    <a href="cart.html" class="relative group">
+                        <i class="fas fa-shopping-cart text-xl text-gray-700 group-hover:text-primary transition"></i>
+                        <span id="cart-count"
+                            class="absolute -top-2 -right-2 bg-accent text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full hidden">0</span>
+                    </a>
+                </div>
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center gap-4">
+                    <button onclick="langManager.toggleLanguage()"
+                        class="text-sm font-bold text-primary bg-green-50 px-2 py-1 rounded">Ta/En</button>
+                    <a href="cart.html" class="relative">
+                        <i class="fas fa-shopping-cart text-2xl text-gray-700"></i>
+                        <span id="mobile-cart-count"
+                            class="absolute -top-2 -right-2 bg-accent text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full hidden">0</span>
+                    </a>
+                    <button id="mobile-menu-btn" class="text-gray-700 focus:outline-none p-2">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu"
+            class="md:hidden hidden bg-white border-t border-gray-100 absolute w-full left-0 top-16 sm:top-20 shadow-lg z-40">
+            <div class="px-4 pt-3 pb-4 space-y-2">
+                <a href="index.html"
+                    class="block px-4 py-3 rounded-lg text-base font-medium text-gray-700 hover:bg-green-50"
+                    data-i18n="nav_home">Home</a>
+                <a href="products.html"
+                    class="block px-4 py-3 rounded-lg text-base font-medium text-primary bg-green-50"
+                    data-i18n="nav_products">Products</a>
+                <a href="about.html"
+                    class="block px-4 py-3 rounded-lg text-base font-medium text-gray-700 hover:bg-green-50"
+                    data-i18n="nav_about">About Us</a>
+                <a href="#footer"
+                    class="block px-4 py-3 rounded-lg text-base font-medium text-gray-700 hover:bg-green-50"
+                    data-i18n="nav_contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 sm:pt-32 pb-8" id="product-container">
+        <!-- Loading State -->
+        <div class="animate-pulse flex flex-col md:flex-row gap-8">
+            <div class="w-full md:w-1/2 h-96 bg-gray-200 rounded-xl"></div>
+            <div class="w-full md:w-1/2 space-y-4">
+                <div class="h-8 bg-gray-200 w-3/4 rounded"></div>
+                <div class="h-4 bg-gray-200 w-1/2 rounded"></div>
+                <div class="h-10 bg-gray-200 w-1/4 rounded"></div>
+                <div class="h-32 bg-gray-200 rounded"></div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <!-- Footer -->
+    <footer id="footer" class="bg-gray-900 text-gray-300 py-8 sm:py-12">
+        <div class="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
+            <div class="text-center">
+                <img src="images/mugavari thazhai logo.jpg"
+                    onerror="this.onerror=null;this.src='https://placehold.co/100x100/E0F2E9/0E2C18?text=Logo'"
+                    class="w-16 sm:w-20 md:w-24 h-16 sm:h-20 md:h-24 rounded-full mx-auto mb-4 sm:mb-6 border-2 border-gray-700"
+                    alt="Logo">
+                <p class="text-base sm:text-lg md:text-xl font-medium text-white mb-3 sm:mb-4"
+                    data-i18n="footer_tagline">Pure
+                    & Authentic Products from
+                    Pollachi with Love ❤️</p>
+                <p class="text-xs sm:text-sm text-gray-400 mb-6 sm:mb-8"><i
+                        class="fas fa-map-marker-alt mr-2 text-primary"></i> <span data-i18n="footer_loc">Location:
+                        Pollachi, Coimbatore District, Tamil Nadu, India</span></p>
+
+                <div class="flex justify-center gap-4 sm:gap-6 md:gap-8 mb-8 sm:mb-12">
+                    <a href="https://wa.me/919842535962" target="_blank" class="group">
+                        <div class="bg-white p-2 sm:p-3 rounded-full group-hover:bg-[#25D366] transition duration-300">
+                            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/whatsapp.svg"
+                                class="w-5 sm:w-6 h-5 sm:h-6 group-hover:invert transition" alt="WhatsApp">
+                        </div>
+                    </a>
+                    <a href="https://www.instagram.com/jackcity_official" target="_blank" class="group">
+                        <div class="bg-white p-2 sm:p-3 rounded-full group-hover:bg-[#E1306C] transition duration-300">
+                            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg"
+                                class="w-5 sm:w-6 h-5 sm:h-6 group-hover:invert transition" alt="Instagram">
+                        </div>
+                    </a>
+                    <a href="https://www.youtube.com/@JACKCITYVlog" target="_blank" class="group">
+                        <div class="bg-white p-2 sm:p-3 rounded-full group-hover:bg-[#FF0000] transition duration-300">
+                            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/youtube.svg"
+                                class="w-5 sm:w-6 h-5 sm:h-6 group-hover:invert transition" alt="YouTube">
+                        </div>
+                    </a>
+                </div>
+
+                <div class="flex flex-col items-center gap-3 sm:gap-4 border-t border-gray-800 pt-6 sm:pt-8">
+                    <p class="text-xs sm:text-sm text-gray-500">© 2026 - SK | Mugavari Thazhai</p>
+
+                    <!-- Buy Me a Coffee Button -->
+                    <a href="https://buymeachai.ezee.li/satheesh_devoloper" target="_blank"
+                        class="inline-flex items-center gap-2 px-3 sm:px-4 py-2 bg-yellow-400 text-gray-900 rounded-full text-xs sm:text-sm font-bold hover:bg-yellow-300 transition hover:scale-105 shadow-lg">
+                        <i class="fas fa-coffee"></i> Buy me a Chai
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Sticky Mobile CTA -->
+    <!-- Sticky Mobile CTA Removed -->
+
+    <script>
+        // Get Product ID
+        const urlParams = new URLSearchParams(window.location.search);
+        const productId = urlParams.get('id') || 'coconut-oil'; // Default fallback
+        const product = PRODUCTS[productId];
+
+        const container = document.getElementById('product-container');
+        const cartCountBadge = document.getElementById('cart-count');
+        const mobileCartCountBadge = document.getElementById('mobile-cart-count');
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        if (mobileMenuBtn) {
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+        }
+
+        let currentVariant = product.variants[0];
+
+        // -----------------------
+        // RENDER FUNCTION
+        // -----------------------
+        if (!product) {
+            container.innerHTML = `<div class="text-center py-20 text-gray-500">Product not found. <a href="products.html" class="text-primary underline">Go back</a></div>`;
+        } else {
+            document.title = `${product.title} | Mugavari Thazhai`;
+
+            // Build Images HTML
+            const imagesHtml = product.images.map((img, index) => `
+                <div class="border border-gray-200 rounded-lg overflow-hidden cursor-pointer hover:border-primary transition ${index === 0 ? 'ring-2 ring-primary ring-offset-1' : ''}" onclick="switchImage('${img}', this)">
+                    <img src="${img}" class="w-full h-full object-cover">
+                </div>
+            `).join('');
+
+            // Build Highlights HTML
+            const highlightsHtml = product.highlights.map(h => `
+                <li class="flex items-start gap-3 items-center text-sm text-gray-700">
+                    <div class="w-8 h-8 rounded-full bg-green-50 flex items-center justify-center flex-shrink-0 text-primary">
+                        <i class="fas ${h.icon}"></i>
+                    </div>
+                    <span>${h.text}</span>
+                </li>
+            `).join('');
+
+            // Build Specifications HTML (for description tab)
+            const specsHtml = product.specifications.map(s => `
+                <tr class="border-b border-gray-100 last:border-0">
+                    <td class="py-2 text-gray-500 font-medium w-1/3">${s.label}</td>
+                    <td class="py-2 text-gray-900">${s.value}</td>
+                </tr>
+            `).join('');
+
+            // Build Uses HTML
+            const usesHtml = product.uses.map(u => `<li class="mb-1"><i class="fas fa-check text-green-500 mr-2"></i>${u}</li>`).join('');
+
+            // Build FAQ HTML
+            const faqHtml = product.faq.map(f => `
+                <div class="border-b border-gray-100 pb-3 mb-3 last:border-0">
+                    <p class="font-semibold text-gray-900 mb-1">Q: ${f.q}</p>
+                    <p class="text-gray-600 text-sm">A: ${f.a}</p>
+                </div>
+            `).join('');
+
+            // Render Main
+            container.innerHTML = `
+                <div class="flex flex-col lg:flex-row gap-8 lg:gap-12">
+                    
+                    <!-- LEFT COLUMN: Images -->
+                    <div class="w-full lg:w-5/12 lg:sticky lg:top-24 h-fit">
+                        <div class="bg-white rounded-2xl border border-gray-100 overflow-hidden mb-4 relative group">
+                            <img id="main-image" src="${product.images[0]}" class="w-full h-auto object-cover transition duration-500 group-hover:scale-105" alt="${product.title}">
+                            <div class="absolute top-4 left-4 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded shadow-sm hidden" id="offer-badge">
+                                OFFER
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-4 gap-2 sm:gap-4">
+                            ${imagesHtml}
+                        </div>
+                    </div>
+
+                    <!-- RIGHT COLUMN: Info -->
+                    <div class="w-full lg:w-7/12">
+                        <!-- Breadcrumb -->
+                        <nav class="text-xs text-gray-500 mb-4">
+                            <a href="index.html" class="hover:underline">Home</a> &gt; 
+                            <a href="products.html" class="hover:underline">Products</a> &gt; 
+                            <span class="text-gray-900 font-medium">${product.title}</span>
+                        </nav>
+
+                        <!-- Title & Rating -->
+                        <h1 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-2 leading-tight">${product.title}</h1>
+                        <p class="text-gray-500 text-sm mb-3">${product.subtitle}</p>
+                        
+                        <div class="flex items-center gap-3 mb-6">
+                            <div class="bg-green-700 text-white text-xs font-bold px-2 py-0.5 rounded flex items-center gap-1">
+                                ${product.rating} <i class="fas fa-star text-[10px]"></i>
+                            </div>
+                            <span class="text-sm text-gray-500 font-medium">${product.reviews} Ratings & Reviews</span>
+                        </div>
+
+                        <!-- Price Section -->
+                        <div class="mb-6">
+                            <div class="flex items-end gap-3 mb-2">
+                                <span class="text-3xl sm:text-4xl font-bold text-gray-900" id="display-price">₹${currentVariant.price}</span>
+                                <span class="text-lg text-gray-400 line-through decoration-red-500 decoration-2 mb-1 hidden" id="display-offer"></span>
+                                <span class="text-green-600 font-bold text-sm mb-1 hidden" id="display-discount"></span>
+                            </div>
+                            <p class="text-xs text-gray-500">+ Free Shipping (Tamil Nadu)</p>
+                        </div>
+
+                        <!-- Size Selector -->
+                        <div class="mb-8">
+                            <p class="text-sm font-semibold text-gray-900 mb-3">Available Sizes</p>
+                            <div class="flex flex-wrap gap-3" id="size-selector">
+                                <!-- JS Injected Buttons -->
+                            </div>
+                        </div>
+
+                         <!-- Mobile Actions (Hidden on desktop) -->
+                         <!-- Done via Fixed Bottom bar -->
+
+                        <!-- Desktop Buttons -->
+                        <div class="flex gap-4 mb-8">
+                            <button onclick="addToCart()" class="flex-1 bg-[#ff9f00] text-white font-bold py-3 px-6 rounded shadow-sm hover:shadow-md transition flex items-center justify-center gap-2" id="add-to-cart-btn">
+                                <i class="fas fa-shopping-cart"></i> ADD TO CART
+                            </button>
+                            <button onclick="buyNow()" class="flex-1 bg-[#fb641b] text-white font-bold py-3 px-6 rounded shadow-sm hover:shadow-md transition flex items-center justify-center gap-2">
+                                <i class="fas fa-bolt"></i> BUY NOW
+                            </button>
+                        </div>
+
+                        <!-- Highlights -->
+                        <div class="bg-white border border-gray-100 rounded-xl p-5 mb-8">
+                            <h3 class="font-bold text-gray-900 mb-4 text-sm uppercase tracking-wide">Product Highlights</h3>
+                            <ul class="grid grid-cols-1 sm:grid-cols-2 gap-y-3 gap-x-4">
+                                ${highlightsHtml}
+                            </ul>
+                        </div>
+
+                        <!-- Tabs Section -->
+                        <div class="border border-gray-200 rounded-xl overflow-hidden bg-white mb-8">
+                            <div class="flex border-b border-gray-200 overflow-x-auto no-scrollbar">
+                                <button class="px-6 py-4 text-sm font-medium whitespace-nowrap active-tab" onclick="switchTab('desc', this)">Description</button>
+                                <button class="px-6 py-4 text-sm font-medium whitespace-nowrap inactive-tab" onclick="switchTab('specs', this)">Specifications</button>
+                                <button class="px-6 py-4 text-sm font-medium whitespace-nowrap inactive-tab" onclick="switchTab('reviews', this)">Reviews</button>
+                                <button class="px-6 py-4 text-sm font-medium whitespace-nowrap inactive-tab" onclick="switchTab('seller', this)">Seller Info</button>
+                            </div>
+                            
+                            <div class="p-6 text-sm text-gray-600 leading-relaxed" id="tab-content">
+                                <!-- Default: Description -->
+                                <div id="tab-desc">
+                                    <p class="mb-4">${product.description}</p>
+                                    
+                                    <h4 class="font-bold text-gray-900 mt-6 mb-3">Processing Method</h4>
+                                    <ul class="list-disc pl-5 space-y-1 mb-6">
+                                        ${product.processing.map(p => `<li>${p}</li>`).join('')}
+                                    </ul>
+
+                                    <h4 class="font-bold text-gray-900 mt-6 mb-3">Best Used For</h4>
+                                    <ul class="space-y-1">
+                                        ${usesHtml}
+                                    </ul>
+
+                                    <h4 class="font-bold text-gray-900 mt-6 mb-3">Delivery Information</h4>
+                                    <ul class="list-none space-y-2">
+                                        <li class="flex items-center gap-2"><i class="fas fa-truck text-primary"></i> ${product.delivery.tn}</li>
+                                        <li class="flex items-center gap-2"><i class="fab fa-whatsapp text-green-500"></i> ${product.delivery.other}</li>
+                                    </ul>
+                                </div>
+
+                                <!-- Specifications (Hidden) -->
+                                <div id="tab-specs" class="hidden">
+                                     <table class="w-full text-left">
+                                        ${specsHtml}
+                                    </table>
+                                </div>
+
+                                <!-- Reviews (Hidden - Static for now) -->
+                                <div id="tab-reviews" class="hidden">
+                                    <div class="flex items-center gap-4 mb-6">
+                                        <div class="text-4xl font-bold text-gray-900">${product.rating}</div>
+                                        <div>
+                                            <div class="flex text-yellow-400 text-sm">
+                                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                                            </div>
+                                            <p class="text-xs text-gray-500 mt-1">${product.reviews} Verified Reviews</p>
+                                        </div>
+                                    </div>
+                                    <div class="space-y-4">
+                                        <div class="border-b border-gray-100 pb-3">
+                                            <div class="flex items-center gap-2 mb-1"><span class="bg-green-700 text-white text-[10px] px-1.5 rounded">5 <i class="fas fa-star"></i></span> <span class="font-semibold text-gray-900 text-xs">Aswin Kumar</span></div>
+                                            <p class="text-gray-600">Excellent quality. The aroma is very genuine. Will buy again.</p>
+                                        </div>
+                                         <div class="border-b border-gray-100 pb-3">
+                                            <div class="flex items-center gap-2 mb-1"><span class="bg-green-700 text-white text-[10px] px-1.5 rounded">5 <i class="fas fa-star"></i></span> <span class="font-semibold text-gray-900 text-xs">Priya R.</span></div>
+                                            <p class="text-gray-600">Packed very well and delivered fast manually.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Seller Info (Hidden) -->
+                                <div id="tab-seller" class="hidden">
+                                     <div class="flex items-center gap-4 mb-4">
+                                        <div class="w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center font-bold text-xl">MT</div>
+                                        <div>
+                                            <h4 class="font-bold text-gray-900">Mugavari Thazhai</h4>
+                                            <p class="text-green-600 text-xs font-semibold"><i class="fas fa-check-circle"></i> Trusted Manufacturer</p>
+                                        </div>
+                                     </div>
+                                     <div class="space-y-2 text-gray-700">
+                                        <p><i class="fas fa-map-marker-alt w-5 text-gray-400"></i> Pollachi, Coimbatore – 642202</p>
+                                        <p><i class="fas fa-phone w-5 text-gray-400"></i> 98425 35962</p>
+                                        <p><i class="fas fa-seedling w-5 text-gray-400"></i> FSSAI Certified | 100% Natural</p>
+                                     </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- FAQ Section -->
+                         <div class="mb-8">
+                             <h3 class="font-bold text-gray-900 mb-4">Frequently Asked Questions</h3>
+                             <div class="space-y-4">
+                                 ${faqHtml}
+                             </div>
+                         </div>
+                    </div>
+                </div>
+            `;
+
+            // Initialize Dynamic Components
+            renderSizeSelector();
+            updatePriceDisplay();
+
+            updatePriceDisplay();
+        }
+
+        // -----------------------
+        // INTERACTIVE FUNCTIONS
+        // -----------------------
+
+        function switchImage(src, el) {
+            document.getElementById('main-image').src = src;
+            // Reset borders
+            el.parentElement.querySelectorAll('div').forEach(d => {
+                d.classList.remove('ring-2', 'ring-primary', 'ring-offset-1');
+            });
+            // Set active
+            el.classList.add('ring-2', 'ring-primary', 'ring-offset-1');
+        }
+
+        function switchTab(tabName, btn) {
+            // Hide all contents
+            ['desc', 'specs', 'reviews', 'seller'].forEach(t => {
+                document.getElementById(`tab-${t}`).classList.add('hidden');
+            });
+            // Show target
+            document.getElementById(`tab-${tabName}`).classList.remove('hidden');
+
+            // Update buttons
+            btn.parentElement.querySelectorAll('button').forEach(b => {
+                b.classList.remove('active-tab');
+                b.classList.add('inactive-tab');
+            });
+            btn.classList.add('active-tab');
+            btn.classList.remove('inactive-tab');
+        }
+
+        function renderSizeSelector() {
+            const selector = document.getElementById('size-selector');
+            selector.innerHTML = product.variants.map(v => `
+                <button 
+                    onclick="selectVariant('${v.id}')"
+                    class="px-4 py-2 border rounded-full text-sm font-medium transition ${v.id === currentVariant.id ? 'bg-green-50 border-primary text-primary ring-1 ring-primary' : 'bg-white border-gray-200 text-gray-700 hover:border-gray-400'}">
+                    ${v.label}
+                </button>
+            `).join('');
+        }
+
+        function selectVariant(id) {
+            currentVariant = product.variants.find(v => v.id === id);
+            renderSizeSelector();
+            updatePriceDisplay();
+            // Animate Price
+            const priceEl = document.getElementById('display-price');
+            priceEl.classList.add('scale-110', 'text-green-700');
+            setTimeout(() => priceEl.classList.remove('scale-110', 'text-green-700'), 200);
+        }
+
+        function updatePriceDisplay() {
+            document.getElementById('display-price').innerText = `₹${currentVariant.price}`;
+
+            const offerEl = document.getElementById('display-offer');
+            const discountEl = document.getElementById('display-discount');
+            const offerBadge = document.getElementById('offer-badge');
+
+            if (currentVariant.offer) {
+                offerEl.innerText = currentVariant.offer;
+                offerEl.classList.remove('hidden');
+                // Calculate crude percentage for display
+                // Logic: offer string might be "₹450" -> parse it
+                const oldPrice = parseInt(currentVariant.offer.replace(/[^0-9]/g, ''));
+                if (oldPrice > currentVariant.price) {
+                    const savings = Math.round(((oldPrice - currentVariant.price) / oldPrice) * 100);
+                    discountEl.innerText = `${savings}% off`;
+                    discountEl.classList.remove('hidden');
+                    offerBadge.innerText = `${savings}% OFF`;
+                    offerBadge.classList.remove('hidden');
+                }
+            } else {
+                offerEl.classList.add('hidden');
+                discountEl.classList.add('hidden');
+                offerBadge.classList.add('hidden');
+            }
+        }
+
+        // Shared Cart Logic
+        function addItemToStorage() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+            const cartItem = {
+                productId: product.id,
+                productName: product.title,
+                variant: currentVariant.label,
+                unitPrice: currentVariant.price,
+                quantity: 1,
+                totalPrice: currentVariant.price,
+                timestamp: Date.now()
+            };
+
+            const existingItem = cart.find(item => item.productId === cartItem.productId && item.variant === cartItem.variant);
+            if (existingItem) {
+                existingItem.quantity += 1;
+                existingItem.totalPrice = existingItem.unitPrice * existingItem.quantity;
+            } else {
+                cart.push(cartItem);
+            }
+
+            localStorage.setItem('cart', JSON.stringify(cart));
+        }
+
+        function addToCart() {
+            addItemToStorage();
+            updateCartCount();
+
+            // Feedback
+            const btn = document.getElementById('add-to-cart-btn');
+
+            // Trigger Confetti Blast
+            confetti({
+                particleCount: 100,
+                spread: 70,
+                origin: { y: 0.6 },
+                colors: ['#0E2C18', '#D32F2F', '#FF9800', '#ffffff'] // Brand colors
+            });
+
+            btn.innerHTML = `<i class="fas fa-check"></i> ADDED!`;
+            btn.classList.add('bg-green-700', 'border-green-700');
+
+            setTimeout(() => {
+                btn.innerHTML = `<i class="fas fa-shopping-cart"></i> VIEW CART`;
+                btn.onclick = () => window.location.href = 'cart.html';
+                btn.classList.remove('bg-green-700', 'border-green-700');
+                btn.classList.add('bg-green-600');
+            }, 1000);
+        }
+
+        function updateCartCount() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+            if (count > 0) {
+                cartCountBadge.innerText = count;
+                cartCountBadge.classList.remove('hidden');
+                if (mobileCartCountBadge) {
+                    mobileCartCountBadge.innerText = count;
+                    mobileCartCountBadge.classList.remove('hidden');
+                }
+            } else {
+                cartCountBadge.classList.add('hidden');
+                if (mobileCartCountBadge) {
+                    mobileCartCountBadge.classList.add('hidden');
+                }
+            }
+        }
+
+        function buyNow() {
+            addItemToStorage();
+            window.location.href = 'payment.html';
+        }
+
+        // Init Cart Count
+        updateCartCount();
+
+        // Init Cart Count
+        updateCartCount();
+
+    </script>
+</body>
+
+</html>

@@ -186,18 +186,17 @@
               தமிழ்
             </button>
 
-            <button onclick="document.getElementById('cart').scrollIntoView({behavior: 'smooth'})"
-              class="relative group">
+            <a href="cart.html" class="relative group">
               <i class="fa fa-shopping-cart text-xl text-gray-700 group-hover:text-primary transition"></i>
               <span id="cart-count"
                 class="absolute -top-2 -right-2 bg-accent text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full hidden">0</span>
-            </button>
+            </a>
           </div>
           <!-- Mobile Menu Button -->
           <div class="md:hidden flex items-center gap-4">
             <button onclick="langManager.toggleLanguage()"
               class="text-sm font-bold text-primary bg-green-50 px-2 py-1 rounded">Ta/En</button>
-            <a href="#cart" class="relative">
+            <a href="cart.html" class="relative">
               <i class="fa fa-shopping-cart text-2xl text-gray-700"></i>
               <span id="mobile-cart-count"
                 class="absolute -top-2 -right-2 bg-accent text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full hidden">0</span>
@@ -247,269 +246,152 @@
 
     <!-- Products Grid -->
     <main class="w-full max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 py-8 pb-20" id="products">
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 sm:gap-4 lg:gap-6">
 
-        <!-- Product Card 1: Pure Coconut Oil with Variants -->
-        <div
-          class="bg-white rounded-xl sm:rounded-2xl shadow-md hover:shadow-xl transition duration-300 overflow-hidden border border-gray-100 product-card"
-          data-product-id="coconut-oil" data-product-name="Pure Coconut Oil"
-          data-variants='[{"id":"1000ml","label":"1000ml","price":400},{"id":"500ml","label":"500ml","price":210},{"id":"200ml","label":"200ml","price":90}]'
-          data-default-variant="1000ml">
-          <div class="relative overflow-hidden h-48 sm:h-56 md:h-64 bg-gray-100">
+        <!-- Card 1: Coconut Oil -->
+        <a href="product-details.html?id=coconut-oil"
+          class="group bg-white rounded-lg shadow-sm hover:shadow-xl transition duration-300 border border-gray-100 overflow-hidden flex flex-col">
+          <div class="relative h-40 sm:h-56 bg-gray-100 flex items-center justify-center p-4">
             <img src="images/coconut oil.jpg"
               onerror="this.onerror=null;this.src='https://placehold.co/600x400/E0F2E9/0E2C18?text=Coconut+Oil'"
-              class="w-full h-full object-cover transition duration-700">
+              class="max-h-full max-w-full object-contain group-hover:scale-105 transition duration-500 mix-blend-multiply">
+            <!-- Wishlist Icon (Visual only) -->
             <div
-              class="absolute top-2 sm:top-4 right-2 sm:right-4 bg-white/90 backdrop-blur px-2 sm:px-3 py-1 rounded-full text-xs font-bold text-primary shadow-sm"
-              data-i18n="badge_best_seller">
-              Best Seller
+              class="absolute top-2 right-2 w-8 h-8 bg-white/80 rounded-full flex items-center justify-center text-gray-300 hover:text-red-500 shadow-sm">
+              <i class="fas fa-heart"></i>
             </div>
           </div>
-          <div class="p-3 sm:p-4 md:p-6">
-            <h4 class="text-lg sm:text-xl font-bold text-gray-900 mb-2" data-i18n="prod_pure_coco_oil">Pure Coconut Oil
-            </h4>
-            <div class="flex items-center mb-3">
-              <div class="text-yellow-400 text-xs gap-0.5 flex">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star-half-alt"></i>
-              </div>
-              <span class="text-xs text-gray-500 ml-2 font-medium">4.8 (124)</span>
+          <div class="p-3 sm:p-4 flex flex-col flex-grow">
+            <div class="text-xs text-gray-400 font-medium mb-1">Mugavari Thazhai</div>
+            <h3
+              class="font-medium text-gray-900 text-sm sm:text-base leading-tight mb-1 line-clamp-2 hover:text-primary transition">
+              Cold Pressed Coconut Oil (Chekku Ennai)</h3>
+
+            <!-- Rating -->
+            <div class="flex items-center gap-2 mb-2">
+              <span
+                class="bg-green-700 text-white text-[10px] sm:text-xs font-bold px-1.5 py-0.5 rounded flex items-center gap-1">
+                4.8 <i class="fas fa-star text-[8px] sm:text-[10px]"></i>
+              </span>
+              <span class="text-gray-400 text-[10px] sm:text-xs">(124)</span>
             </div>
 
-            <!-- Variant/Size Selector as Dropdown -->
-            <div class="mb-4">
-              <label class="block text-xs sm:text-sm font-medium text-gray-700 mb-1 sm:mb-2"
-                data-i18n="prod_select_size">Select Size:</label>
-              <select
-                class="size-dropdown w-full border border-gray-300 rounded-lg px-2 sm:px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary bg-white cursor-pointer">
-                <option value="1000ml" data-price="400" selected>1000ml - ₹400</option>
-                <option value="500ml" data-price="210">500ml - ₹210</option>
-                <option value="200ml" data-price="90">200ml - ₹90</option>
-              </select>
-              <!-- Offer Message -->
-              <div
-                class="offer-message mt-2 text-xs font-bold text-green-700 bg-green-50 p-2 rounded-lg border border-green-200 flex items-center gap-2 animate-pulse">
-                <i class="fas fa-gift text-lg text-accent"></i>
-                <span data-i18n="offer_free_scrubber">Free Coconut Coir Scrubber!</span>
-              </div>
+            <!-- Price -->
+            <div class="flex items-center gap-2 mb-2">
+              <span class="text-base sm:text-lg font-bold text-gray-900">₹400</span>
+              <span class="text-xs text-gray-400 line-through">₹450</span>
+              <span class="text-xs font-bold text-green-700">11% off</span>
             </div>
 
-            <!-- Price Display -->
-            <div class="mb-3 sm:mb-4 pb-3 sm:pb-4 border-b border-gray-200">
-              <p class="text-xs sm:text-sm text-gray-600 mb-1" data-i18n="prod_unit_price">Unit Price:</p>
-              <p class="text-2xl sm:text-3xl font-bold text-green-700">₹<span class="unit-price">400</span></p>
-            </div>
+            <!-- Highlights -->
+            <ul class="hidden sm:block text-xs text-gray-500 space-y-1 mb-3 flex-grow">
+              <li class="line-clamp-1">• 1 L Bottle</li>
+              <li class="line-clamp-1">• Wood Pressed</li>
+              <li class="line-clamp-1">• 100% Zero Preservative</li>
+            </ul>
 
-            <!-- Quantity Control -->
-            <div class="mb-3 sm:mb-4">
-              <p class="text-xs sm:text-sm text-gray-600 mb-2" data-i18n="cart_qty">Quantity:</p>
-              <div class="flex items-center border border-gray-300 rounded-lg w-fit">
-                <button
-                  class="qty-decrease px-2 sm:px-3 py-1 sm:py-2 hover:bg-gray-100 transition text-gray-600 font-bold text-sm">−</button>
-                <input type="number"
-                  class="qty-input text-center py-1 sm:py-2 px-2 w-12 sm:w-14 border-x border-gray-300 focus:outline-none text-sm"
-                  value="1" min="1">
-                <button
-                  class="qty-increase px-2 sm:px-3 py-1 sm:py-2 hover:bg-gray-100 transition text-gray-600 font-bold text-sm">+</button>
-              </div>
+            <div class="mt-auto">
+              <span class="text-[10px] text-gray-500 border border-gray-200 px-1 rounded">Free Delivery</span>
             </div>
-
-            <!-- Total Price -->
-            <div class="mb-3 sm:mb-4 pb-3 sm:pb-4 border-b border-gray-200">
-              <p class="text-xs sm:text-sm text-gray-600 mb-1" data-i18n="prod_total_price">Total Price:</p>
-              <p class="text-xl sm:text-2xl font-bold text-primary">₹<span class="total-price">400</span></p>
-            </div>
-
-            <button
-              class="add-to-cart w-full py-2 sm:py-3 bg-primary text-white font-medium text-sm sm:text-base rounded-lg sm:rounded-xl hover:bg-green-800 transition shadow-lg shadow-green-900/20 active:scale-95 touch-manipulation">
-              <span data-i18n="prod_add_cart">Add to Cart</span> <i class="fas fa-shopping-cart ml-2"></i>
-            </button>
           </div>
-        </div>
+        </a>
 
-        <!-- Product Card 2: Groundnut Oil -->
-        <div
-          class="bg-white rounded-xl sm:rounded-2xl shadow-md hover:shadow-xl transition duration-300 overflow-hidden border border-gray-100 product-card"
-          data-product-id="groundnut-oil" data-product-name="Groundnut Oil"
-          data-variants='[{"id":"1000ml","label":"1000ml","price":270}]' data-default-variant="1000ml">
-          <div class="relative overflow-hidden h-48 sm:h-56 md:h-64 bg-gray-100">
+        <!-- Card 2: Groundnut Oil -->
+        <a href="product-details.html?id=groundnut-oil"
+          class="group bg-white rounded-lg shadow-sm hover:shadow-xl transition duration-300 border border-gray-100 overflow-hidden flex flex-col">
+          <div class="relative h-40 sm:h-56 bg-gray-100 flex items-center justify-center p-4">
             <img src="images/groundnut oil.jpg"
               onerror="this.onerror=null;this.src='https://placehold.co/600x400/FDF3E7/8B6F47?text=Groundnut+Oil'"
-              class="w-full h-full object-cover transition duration-700">
+              class="max-h-full max-w-full object-contain group-hover:scale-105 transition duration-500 mix-blend-multiply">
             <div
-              class="absolute top-2 sm:top-4 right-2 sm:right-4 bg-white/90 backdrop-blur px-2 sm:px-3 py-1 rounded-full text-xs font-bold text-orange-600 shadow-sm"
-              data-i18n="badge_pure">
-              Pure
+              class="absolute top-2 right-2 w-8 h-8 bg-white/80 rounded-full flex items-center justify-center text-gray-300 hover:text-red-500 shadow-sm">
+              <i class="fas fa-heart"></i>
             </div>
           </div>
-          <div class="p-3 sm:p-4 md:p-6">
-            <h4 class="text-lg sm:text-xl font-bold text-gray-900 mb-2" data-i18n="prod_groundnut_oil">Groundnut Oil
-            </h4>
-            <div class="flex items-center mb-3">
-              <div class="text-yellow-400 text-xs gap-0.5 flex">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-              </div>
-              <span class="text-xs text-gray-500 ml-2 font-medium">5.0 (89)</span>
+          <div class="p-3 sm:p-4 flex flex-col flex-grow">
+            <div class="text-xs text-gray-400 font-medium mb-1">Mugavari Thazhai</div>
+            <h3
+              class="font-medium text-gray-900 text-sm sm:text-base leading-tight mb-1 line-clamp-2 hover:text-primary transition">
+              Cold Pressed Groundnut Oil (Kadala Ennai)</h3>
+
+            <!-- Rating -->
+            <div class="flex items-center gap-2 mb-2">
+              <span
+                class="bg-green-700 text-white text-[10px] sm:text-xs font-bold px-1.5 py-0.5 rounded flex items-center gap-1">
+                5.0 <i class="fas fa-star text-[8px] sm:text-[10px]"></i>
+              </span>
+              <span class="text-gray-400 text-[10px] sm:text-xs">(89)</span>
             </div>
 
-            <!-- Variant/Size Selector -->
-            <div class="mb-4">
-              <label class="block text-xs sm:text-sm font-medium text-gray-700 mb-1 sm:mb-2"
-                data-i18n="prod_select_size">Size:</label>
-              <select
-                class="size-dropdown w-full border border-gray-300 rounded-lg px-2 sm:px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary bg-white cursor-pointer">
-                <option value="1000ml" data-price="270" selected>1000ml - ₹270</option>
-              </select>
+            <!-- Price -->
+            <div class="flex items-center gap-2 mb-2">
+              <span class="text-base sm:text-lg font-bold text-gray-900">₹270</span>
+              <span class="text-xs font-bold text-green-700">Best Price</span>
             </div>
 
-            <!-- Price Display -->
-            <div class="mb-3 sm:mb-4 pb-3 sm:pb-4 border-b border-gray-200">
-              <p class="text-xs sm:text-sm text-gray-600 mb-1" data-i18n="prod_unit_price">Unit Price:</p>
-              <p class="text-2xl sm:text-3xl font-bold text-green-700">₹<span class="unit-price">270</span></p>
-            </div>
+            <!-- Highlights -->
+            <ul class="hidden sm:block text-xs text-gray-500 space-y-1 mb-3 flex-grow">
+              <li class="line-clamp-1">• 1 L Bottle</li>
+              <li class="line-clamp-1">• Traditional Chekku</li>
+              <li class="line-clamp-1">• For Frying & Cooking</li>
+            </ul>
 
-            <!-- Quantity Control -->
-            <div class="mb-3 sm:mb-4">
-              <p class="text-xs sm:text-sm text-gray-600 mb-2" data-i18n="cart_qty">Quantity:</p>
-              <div class="flex items-center border border-gray-300 rounded-lg w-fit">
-                <button
-                  class="qty-decrease px-2 sm:px-3 py-1 sm:py-2 hover:bg-gray-100 transition text-gray-600 font-bold text-sm">−</button>
-                <input type="number"
-                  class="qty-input text-center py-1 sm:py-2 px-2 w-12 sm:w-14 border-x border-gray-300 focus:outline-none text-sm"
-                  value="1" min="1">
-                <button
-                  class="qty-increase px-2 sm:px-3 py-1 sm:py-2 hover:bg-gray-100 transition text-gray-600 font-bold text-sm">+</button>
-              </div>
+            <div class="mt-auto">
+              <span class="text-[10px] text-gray-500 border border-gray-200 px-1 rounded">Fast Delivery</span>
             </div>
-
-            <!-- Total Price -->
-            <div class="mb-3 sm:mb-4 pb-3 sm:pb-4 border-b border-gray-200">
-              <p class="text-xs sm:text-sm text-gray-600 mb-1" data-i18n="prod_total_price">Total Price:</p>
-              <p class="text-xl sm:text-2xl font-bold text-primary">₹<span class="total-price">270</span></p>
-            </div>
-
-            <button
-              class="add-to-cart w-full py-2 sm:py-3 bg-primary text-white font-medium text-sm sm:text-base rounded-lg sm:rounded-xl hover:bg-green-800 transition shadow-lg shadow-green-900/20 active:scale-95 touch-manipulation">
-              <span data-i18n="prod_add_cart">Add to Cart</span> <i class="fas fa-shopping-cart ml-2"></i>
-            </button>
           </div>
-        </div>
+        </a>
 
-        <!-- Product Card 3: Coconut Shell Handcrafts -->
-        <div
-          class="bg-white rounded-xl sm:rounded-2xl shadow-md hover:shadow-xl transition duration-300 overflow-hidden border border-gray-100 product-card"
-          data-product-id="handcraft" data-product-name="Coconut Shell Handcrafts"
-          data-variants='[{"id":"customizable","label":"Customizable","price":150}]'
-          data-default-variant="customizable">
-          <div class="relative overflow-hidden h-48 sm:h-56 md:h-64 bg-gray-100">
+        <!-- Card 3: Handcrafts -->
+        <a href="product-details.html?id=handcraft"
+          class="group bg-white rounded-lg shadow-sm hover:shadow-xl transition duration-300 border border-gray-100 overflow-hidden flex flex-col">
+          <div class="relative h-40 sm:h-56 bg-gray-100 flex items-center justify-center p-4">
             <img src="images/handCraft.jpg"
               onerror="this.onerror=null;this.src='https://placehold.co/600x400/D4AF96/5A4A3A?text=Hand+Crafts'"
-              class="w-full h-full object-cover transition duration-700">
+              class="max-h-full max-w-full object-contain group-hover:scale-105 transition duration-500 mix-blend-multiply">
             <div
-              class="absolute top-2 sm:top-4 right-2 sm:right-4 bg-white/90 backdrop-blur px-2 sm:px-3 py-1 rounded-full text-xs font-bold text-amber-700 shadow-sm"
-              data-i18n="badge_handmade">
-              Handmade
+              class="absolute top-2 right-2 w-8 h-8 bg-white/80 rounded-full flex items-center justify-center text-gray-300 hover:text-red-500 shadow-sm">
+              <i class="fas fa-heart"></i>
             </div>
           </div>
-          <div class="p-3 sm:p-4 md:p-6">
-            <h4 class="text-lg sm:text-xl font-bold text-gray-900 mb-2" data-i18n="prod_handcrafts">Coconut Shell
-              Handcrafts</h4>
-            <div class="flex items-center mb-3">
-              <div class="text-yellow-400 text-xs gap-0.5 flex">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star-half-alt"></i>
-              </div>
-              <span class="text-xs text-gray-500 ml-2 font-medium">4.9 (156)</span>
+          <div class="p-3 sm:p-4 flex flex-col flex-grow">
+            <div class="text-xs text-gray-400 font-medium mb-1">Mugavari Thazhai</div>
+            <h3
+              class="font-medium text-gray-900 text-sm sm:text-base leading-tight mb-1 line-clamp-2 hover:text-primary transition">
+              Coconut Shell Handcrafts (Sustainable)</h3>
+
+            <!-- Rating -->
+            <div class="flex items-center gap-2 mb-2">
+              <span
+                class="bg-green-700 text-white text-[10px] sm:text-xs font-bold px-1.5 py-0.5 rounded flex items-center gap-1">
+                4.9 <i class="fas fa-star text-[8px] sm:text-[10px]"></i>
+              </span>
+              <span class="text-gray-400 text-[10px] sm:text-xs">(156)</span>
             </div>
 
-            <!-- Variant/Size Selector as Dropdown -->
-            <div class="mb-4">
-              <label class="block text-xs sm:text-sm font-medium text-gray-700 mb-1 sm:mb-2">Type:</label>
-              <select
-                class="size-dropdown w-full border border-gray-300 rounded-lg px-2 sm:px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary bg-white cursor-pointer">
-                <option value="customizable" data-price="150" selected>Customizable - ₹150</option>
-              </select>
+            <!-- Price -->
+            <div class="flex items-center gap-2 mb-2">
+              <span class="text-base sm:text-lg font-bold text-gray-900">₹150</span>
+              <span class="text-xs font-bold text-green-700">Handmade</span>
             </div>
 
-            <!-- Price Display -->
-            <div class="mb-3 sm:mb-4 pb-3 sm:pb-4 border-b border-gray-200">
-              <p class="text-xs sm:text-sm text-gray-600 mb-1" data-i18n="prod_unit_price">Unit Price:</p>
-              <p class="text-2xl sm:text-3xl font-bold text-green-700">₹<span class="unit-price">150</span></p>
-            </div>
+            <!-- Highlights -->
+            <ul class="hidden sm:block text-xs text-gray-500 space-y-1 mb-3 flex-grow">
+              <li class="line-clamp-1">• Eco Friendly</li>
+              <li class="line-clamp-1">• No Plastic</li>
+              <li class="line-clamp-1">• Customizable</li>
+            </ul>
 
-            <!-- Quantity Control -->
-            <div class="mb-3 sm:mb-4">
-              <p class="text-xs sm:text-sm text-gray-600 mb-2" data-i18n="cart_qty">Quantity:</p>
-              <div class="flex items-center border border-gray-300 rounded-lg w-fit">
-                <button
-                  class="qty-decrease px-2 sm:px-3 py-1 sm:py-2 hover:bg-gray-100 transition text-gray-600 font-bold text-sm">−</button>
-                <input type="number"
-                  class="qty-input text-center py-1 sm:py-2 px-2 w-12 sm:w-14 border-x border-gray-300 focus:outline-none text-sm"
-                  value="1" min="1">
-                <button
-                  class="qty-increase px-2 sm:px-3 py-1 sm:py-2 hover:bg-gray-100 transition text-gray-600 font-bold text-sm">+</button>
-              </div>
+            <div class="mt-auto">
+              <span class="text-[10px] text-gray-500 border border-gray-200 px-1 rounded">Unique Gift</span>
             </div>
-
-            <!-- Total Price -->
-            <div class="mb-3 sm:mb-4 pb-3 sm:pb-4 border-b border-gray-200">
-              <p class="text-xs sm:text-sm text-gray-600 mb-1" data-i18n="prod_total_price">Total Price:</p>
-              <p class="text-xl sm:text-2xl font-bold text-primary">₹<span class="total-price">150</span></p>
-            </div>
-
-            <button
-              class="add-to-cart w-full py-2 sm:py-3 bg-primary text-white font-medium text-sm sm:text-base rounded-lg sm:rounded-xl hover:bg-green-800 transition shadow-lg shadow-green-900/20 active:scale-95 touch-manipulation">
-              <span data-i18n="prod_add_cart">Add to Cart</span> <i class="fas fa-shopping-cart ml-2"></i>
-            </button>
           </div>
-        </div>
+        </a>
 
       </div>
     </main>
 
-    <!-- Cart Section -->
-    <section id="cart" class="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 pb-20">
-      <div
-        class="bg-white rounded-xl sm:rounded-2xl lg:rounded-3xl shadow-lg sm:shadow-xl p-4 sm:p-6 md:p-8 border border-gray-100">
-        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-0 mb-6 sm:mb-8">
-          <h2 class="text-xl sm:text-2xl font-bold text-gray-900 flex items-center gap-2 sm:gap-3"
-            data-i18n="cart_title">
-            <i class="fas fa-shopping-bag text-primary"></i> Your Cart
-          </h2>
-          <button onclick="localStorage.removeItem('cart'); updateCartUI();"
-            class="text-xs sm:text-sm text-red-500 hover:text-red-700 underline self-start sm:self-auto">Clear
-            Cart</button>
-        </div>
-
-        <div id="cart-items" class="overflow-x-auto min-h-[100px]">
-          <p class="text-gray-500 text-center py-8 text-sm sm:text-base" data-i18n="cart_empty">Your cart is currently
-            empty. Start adding some
-            products!</p>
-        </div>
-
-        <div class="flex flex-col gap-4 sm:gap-6 mt-6 sm:mt-8 pt-6 sm:pt-8 border-t border-gray-100 hidden"
-          id="cart-footer">
-          <div class="text-center sm:text-left">
-            <p class="text-gray-500 text-xs sm:text-sm mb-1" data-i18n="cart_total_amount">Total Amount</p>
-            <h3 class="text-2xl sm:text-3xl font-bold text-gray-900">₹<span id="cart-total">0</span></h3>
-          </div>
-          <button id="whatsappOrderBtn"
-            class="w-full px-4 sm:px-8 py-3 sm:py-4 bg-primary text-white font-bold text-sm sm:text-base rounded-lg sm:rounded-xl hover:bg-green-800 transition shadow-lg flex items-center justify-center gap-2">
-            <span data-i18n="cart_checkout">Proceed to Checkout</span> <i class="fas fa-arrow-right"></i>
-          </button>
-        </div>
-      </div>
-    </section>
+    <!-- Cart Section Removed -->
 
     <!-- Footer (Consistent with index.html) -->
     <footer id="footer" class="bg-gray-900 text-gray-300 py-8 sm:py-12">
@@ -582,149 +464,11 @@
       // PRODUCT CARD FUNCTIONALITY
       // ==========================================
 
-      class ProductCard {
-        constructor(cardElement) {
-          this.card = cardElement;
-          this.productId = cardElement.dataset.productId;
-          this.productName = cardElement.dataset.productName;
-          this.sizeDropdown = cardElement.querySelector('.size-dropdown');
-          this.qtyInput = cardElement.querySelector('.qty-input');
-          this.qtyDecreaseBtn = cardElement.querySelector('.qty-decrease');
-          this.qtyIncreaseBtn = cardElement.querySelector('.qty-increase');
-          this.unitPriceSpan = cardElement.querySelector('.unit-price');
-          this.totalPriceSpan = cardElement.querySelector('.total-price');
-          this.addToCartBtn = cardElement.querySelector('.add-to-cart');
+      // ==========================================
+      // PRODUCT CARD FUNCTIONALITY REPLACED WITH LINK ONLY
+      // ==========================================
+      // The product list is now just a gateway to product-details.html
 
-          this.currentVariant = this.sizeDropdown.value;
-          this.currentUnitPrice = parseInt(this.sizeDropdown.options[this.sizeDropdown.selectedIndex].dataset.price);
-
-          // Select offer message element
-          this.offerMessage = cardElement.querySelector('.offer-message');
-
-          this.init();
-        }
-
-        init() {
-          // Size dropdown listener
-          this.sizeDropdown.addEventListener('change', (e) => this.handleSizeChange(e));
-
-          // Quantity control listeners
-          this.qtyDecreaseBtn.addEventListener('click', () => this.decreaseQuantity());
-          this.qtyIncreaseBtn.addEventListener('click', () => this.increaseQuantity());
-          this.qtyInput.addEventListener('change', () => this.updateTotalPrice());
-          this.qtyInput.addEventListener('input', () => this.updateTotalPrice());
-
-          // Add to cart listener
-          this.addToCartBtn.addEventListener('click', () => this.addToCart());
-
-          // Initial check for offer
-          this.checkOffer();
-        }
-
-        handleSizeChange(e) {
-          const selectedOption = e.target.options[e.target.selectedIndex];
-          this.currentVariant = selectedOption.value;
-          this.currentUnitPrice = parseInt(selectedOption.dataset.price);
-
-          // Update unit price display
-          this.unitPriceSpan.textContent = this.currentUnitPrice;
-
-          // Check Offer
-          this.checkOffer();
-
-          // Update total price
-          this.updateTotalPrice();
-        }
-
-        checkOffer() {
-          if (!this.offerMessage) return;
-
-          // Logic: Show only for Coconut Oil (product id check or name check) AND 1000ml
-          // Since we added the HTML only to the first card, this mostly works, but good to be safe.
-          // But actually, only the first card has the .offer-message div, so others will be null.
-
-          if (this.currentVariant === '1000ml') {
-            this.offerMessage.classList.remove('hidden');
-            this.offerMessage.classList.add('flex');
-          } else {
-            this.offerMessage.classList.add('hidden');
-            this.offerMessage.classList.remove('flex');
-          }
-        }
-
-
-        increaseQuantity() {
-          const currentQty = parseInt(this.qtyInput.value);
-          this.qtyInput.value = currentQty + 1;
-          this.updateTotalPrice();
-        }
-
-        decreaseQuantity() {
-          const currentQty = parseInt(this.qtyInput.value);
-          if (currentQty > 1) {
-            this.qtyInput.value = currentQty - 1;
-            this.updateTotalPrice();
-          }
-        }
-
-        updateTotalPrice() {
-          const quantity = parseInt(this.qtyInput.value) || 1;
-          const totalPrice = this.currentUnitPrice * quantity;
-          this.totalPriceSpan.textContent = totalPrice;
-        }
-
-        addToCart() {
-          const quantity = parseInt(this.qtyInput.value) || 1;
-          const totalPrice = this.currentUnitPrice * quantity;
-
-          const cartItem = {
-            productId: this.productId,
-            productName: this.productName,
-            variant: this.currentVariant,
-            unitPrice: this.currentUnitPrice,
-            quantity: quantity,
-            totalPrice: totalPrice,
-            timestamp: Date.now()
-          };
-
-          // Add to cart storage
-          const cart = getCart();
-
-          // Check if exact same item exists
-          const existingItem = cart.find(item =>
-            item.productId === cartItem.productId && item.variant === cartItem.variant
-          );
-
-          if (existingItem) {
-            existingItem.quantity += quantity;
-            existingItem.totalPrice = existingItem.unitPrice * existingItem.quantity;
-          } else {
-            cart.push(cartItem);
-          }
-
-          setCart(cart);
-          updateCartUI();
-
-          // Visual feedback
-          const originalText = this.addToCartBtn.innerHTML;
-          this.addToCartBtn.innerHTML = `<i class="fas fa-check"></i> ${langManager.getText('btn_added')}`;
-          this.addToCartBtn.classList.add('bg-green-700');
-
-          setTimeout(() => {
-            this.addToCartBtn.innerHTML = originalText;
-            this.addToCartBtn.classList.remove('bg-green-700');
-          }, 2000);
-
-          // Reset quantity to 1
-          this.qtyInput.value = 1;
-          this.updateTotalPrice();
-        }
-      }
-
-      // Initialize all product cards
-      document.querySelectorAll('.product-card').forEach(card => {
-        new ProductCard(card);
-      });
 
       // ==========================================
       // CART FUNCTIONALITY
@@ -740,11 +484,8 @@
 
       function updateCartUI() {
         const cart = getCart();
-        const cartItemsContainer = document.getElementById('cart-items');
-        const cartFooter = document.getElementById('cart-footer');
         const cartCountBadge = document.getElementById('cart-count');
         const mobileCartCountBadge = document.getElementById('mobile-cart-count');
-        const cartTotalSpan = document.getElementById('cart-total');
 
         // Update cart count badges
         const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
@@ -757,170 +498,9 @@
           cartCountBadge.classList.add('hidden');
           mobileCartCountBadge.classList.add('hidden');
         }
-
-        // Handle empty cart
-        if (cart.length === 0) {
-          cartItemsContainer.innerHTML = `
-          <div class='text-center py-12'>
-            <i class='fas fa-shopping-basket text-4xl text-gray-200 mb-4'></i>
-            <p class='text-gray-500'>${langManager.getText('cart_empty')}</p>
-          </div>
-        `;
-          cartFooter.classList.add('hidden');
-          return;
-        }
-
-        // Build cart table
-        let cartHTML = `
-        <table class="w-full text-left text-sm sm:text-base">
-          <thead class="text-xs text-gray-500 uppercase bg-gray-50 border-b">
-            <tr>
-              <th class="px-2 sm:px-4 py-2 sm:py-3 rounded-tl-lg">${langManager.getText('col_product')}</th>
-              <th class="px-2 sm:px-4 py-2 sm:py-3">${langManager.getText('cart_price')}</th>
-              <th class="px-2 sm:px-4 py-2 sm:py-3 text-center">${langManager.getText('cart_qty')}</th>
-              <th class="px-2 sm:px-4 py-2 sm:py-3">${langManager.getText('cart_subtotal')}</th>
-              <th class="px-2 sm:px-4 py-2 sm:py-3 rounded-tr-lg"></th>
-            </tr>
-          </thead>
-          <tbody class="divide-y divide-gray-100">
-      `;
-
-        let subTotal = 0;
-        let freeGiftQty = 0;
-
-        // Product Name Mapping for Translation
-        const productKeyMap = {
-          "Pure Coconut Oil": "prod_pure_coco_oil",
-          "Groundnut Oil": "prod_groundnut_oil",
-          "Coconut Shell Handcrafts": "prod_handcrafts"
-        };
-
-
-        cart.forEach((item, index) => {
-          subTotal += item.totalPrice;
-
-          // Check for Free Gift Condition
-          if (item.productName === "Pure Coconut Oil" && item.variant === "1000ml") {
-            freeGiftQty += item.quantity;
-          }
-
-          // Translate Product Name
-          const key = productKeyMap[item.productName];
-          const translatedName = key ? langManager.getText(key) : item.productName;
-
-          const displayName = item.variant && item.variant !== 'customizable'
-            ? `${translatedName} - ${item.variant}`
-            : translatedName;
-
-          cartHTML += `
-          <tr class="hover:bg-gray-50 transition">
-            <td class="px-2 sm:px-4 py-2 sm:py-3 font-medium text-gray-900 text-xs sm:text-base">${displayName}</td>
-            <td class="px-2 sm:px-4 py-2 sm:py-3 text-gray-600 text-xs sm:text-base">₹${item.unitPrice}</td>
-            <td class="px-2 sm:px-4 py-2 sm:py-3 text-center">
-              <span class="inline-block bg-gray-100 px-2 py-1 rounded text-xs sm:text-sm font-bold">${item.quantity}</span>
-            </td>
-            <td class="px-2 sm:px-4 py-2 sm:py-3 font-bold text-gray-900 text-xs sm:text-base">₹${item.totalPrice}</td>
-            <td class="px-2 sm:px-4 py-2 sm:py-3 text-right">
-              <button onclick="removeFromCart(${index})" class="text-red-400 hover:text-red-600 transition text-xs sm:text-base">
-                <i class="fas fa-trash-alt"></i>
-              </button>
-            </td>
-          </tr>
-        `;
-        });
-
-        // Add Free Gift Row if applicable
-        if (freeGiftQty > 0) {
-          cartHTML += `
-              <tr class="bg-green-50/50">
-                <td class="px-2 sm:px-4 py-2 sm:py-3 font-medium text-green-800 text-xs sm:text-base flex items-center gap-2">
-                    <i class="fas fa-gift"></i> Coconut Coir Scrubber
-                </td>
-                <td class="px-2 sm:px-4 py-2 sm:py-3 text-gray-500 text-xs sm:text-base line-through">₹${40 * freeGiftQty}</td>
-                <td class="px-2 sm:px-4 py-2 sm:py-3 text-center">
-                  <span class="inline-block bg-green-100/50 px-2 py-1 rounded text-xs sm:text-sm font-bold text-green-700">${freeGiftQty}</span>
-                </td>
-                <td class="px-2 sm:px-4 py-2 sm:py-3 font-bold text-green-700 text-xs sm:text-base">FREE</td>
-                <td class="px-2 sm:px-4 py-2 sm:py-3"></td>
-              </tr>
-            `;
-        }
-
-        // Add Shipping Row
-        const shippingCost = 50;
-        cartHTML += `
-          <tr class="border-t border-gray-100 bg-slate-50/50">
-            <td class="px-2 sm:px-4 py-2 sm:py-3 font-medium text-gray-600 text-xs sm:text-base">Delivery Charge</td>
-            <td class="px-2 sm:px-4 py-2 sm:py-3"></td>
-            <td class="px-2 sm:px-4 py-2 sm:py-3"></td>
-            <td class="px-2 sm:px-4 py-2 sm:py-3 font-bold text-gray-900 text-xs sm:text-base">₹${shippingCost}</td>
-            <td class="px-2 sm:px-4 py-2 sm:py-3"></td>
-          </tr>
-        `;
-
-        cartHTML += `
-          </tbody>
-        </table>
-      `;
-
-        const grandTotal = subTotal + shippingCost;
-
-        cartItemsContainer.innerHTML = cartHTML;
-        cartTotalSpan.textContent = grandTotal;
-        cartFooter.classList.remove('hidden');
       }
 
-      function removeFromCart(index) {
-        const cart = getCart();
-        cart.splice(index, 1);
-        setCart(cart);
-        updateCartUI();
-      }
-
-      // ==========================================
-      // MODAL & WHATSAPP FUNCTIONALITY
-      // ==========================================
-
-      // Mobile Menu Toggle
-      const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-      const mobileMenu = document.getElementById('mobile-menu');
-      if (mobileMenuBtn) {
-        mobileMenuBtn.addEventListener('click', () => {
-          mobileMenu.classList.toggle('hidden');
-        });
-      }
-
-      // Cart Order Modal
-      // Note: Modal has been replaced by separate payment page
-
-      const whatsappOrderBtn = document.getElementById('whatsappOrderBtn');
-
-      if (whatsappOrderBtn) {
-        whatsappOrderBtn.addEventListener('click', () => {
-          const cart = getCart();
-          if (cart.length === 0) {
-            alert("Your cart is empty!");
-            return;
-          }
-          // Redirect to payment page
-          window.location.href = 'payment.html';
-        });
-      }
-
-      // Google Apps Script URL for storing orders
-      // TODO: Follow the instructions in 'instructions_google_sheet_setup.md' to get your specific URL.
-      const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyWoFLSktIDW7n63PQdfyUTVrzcCGeGN7OzSpVroY0ncvfskv8GYfecITEal2_Dp-bq/exec';
-
-
-
-      // Clear cart button
-      const clearCartBtn = document.querySelector('button[onclick*="localStorage.removeItem"]');
-      if (clearCartBtn) {
-        clearCartBtn.onclick = () => {
-          localStorage.removeItem('cart');
-          updateCartUI();
-        };
-      }
+      // Unused cart functions removed
 
       // Initialize cart UI on page load
       window.addEventListener('load', updateCartUI);
