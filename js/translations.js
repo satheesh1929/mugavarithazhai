@@ -36,7 +36,7 @@ const TRANSLATIONS = {
         "about_mission_desc2": "Beyond oils, we are committed to sustainability. Our eco-friendly coconut shell crafts are proof that nature's gifts are endless if we use them wisely.",
 
         "about_founder_title": "About the Founder",
-        "about_founder_role": "Founder – Mugavari Thazhai",
+        "about_founder_role": "P. Sumsothan – Founder",
         "about_founder_desc1": "Mugavari Thazhai was founded with a simple yet powerful vision — to reconnect people with pure, traditional, and trustworthy products from the heart of Pollachi.",
         "about_founder_desc2": "Growing up close to nature and local farming practices, the founder understood the value of traditional cold-pressed oils, natural food processing, ethical sourcing and fair trade.",
         "about_founder_desc3": "What started as a personal belief soon became a mission — to make authentic, chemical-free products accessible to everyone, without losing their traditional essence.",
@@ -44,7 +44,7 @@ const TRANSLATIONS = {
         "about_founder_desc4": "The founder continues to guide Mugavari Thazhai with a strong focus on purity, transparency, and sustainability.",
 
         "about_team_craft_title": "Craft Work & Production Management",
-        "about_team_craft_role": "Craft & Production Manager",
+        "about_team_craft_role": "Vignesh – Craft & Production Manager",
         "about_team_craft_desc1": "Behind every product lies skilled hands and deep-rooted knowledge. Our Craft Work & Production Manager ensures that every item reflects traditional excellence.",
         "about_team_craft_resp1": "Managing traditional oil extraction processes",
         "about_team_craft_resp2": "Supervising handcrafted product preparation",
@@ -53,7 +53,7 @@ const TRANSLATIONS = {
         "about_team_craft_desc2": "By preserving age-old methods and combining them with strict quality checks, this role ensures that authenticity is never compromised.",
 
         "about_team_tech_title": "Technology & Digital Management",
-        "about_team_tech_role": "Technology & Platform Manager",
+        "about_team_tech_role": "S. Satheesh Kumar – Technology & Platform Manager",
         "about_team_tech_desc1": "The Technology Manager is responsible for transforming tradition into a seamless digital experience.",
         "about_team_tech_resp1": "Website development & maintenance",
         "about_team_tech_resp2": "Product display and updates",
@@ -253,7 +253,7 @@ const TRANSLATIONS = {
         "about_mission_desc2": "எண்ணெய்களைத் தாண்டி, நாங்கள் இயற்கை வளங்களைப் பாதுகாப்பதில் உறுதியாக உள்ளோம். எங்களின் தேங்காய் சிரட்டை கைவினைப்பொருட்கள் இயற்கையின் பரிசுகளை நாம் புத்திசாலித்தனமாகப் பயன்படுத்தினால் அவை முடிவற்றவை என்பதற்கு சான்றாகும்.",
 
         "about_founder_title": "நிறுவுனர் பற்றி",
-        "about_founder_role": "நிறுவுனர் – முகவரி தாழை",
+        "about_founder_role": "P. சம்சோதன் – நிறுவுனர்",
         "about_founder_desc1": "பொள்ளாச்சியின் இதயத்திலிருந்து தூய்மையான, பாரம்பரியமான மற்றும் நம்பகமான தயாரிப்புகளுடன் மக்களை மீண்டும் இணைக்கும் எளிய ஆனால் சக்திவாய்ந்த பார்வையுடன் முகவரி தாழை நிறுவப்பட்டது.",
         "about_founder_desc2": "இயற்கை மற்றும் உள்ளூர் விவசாய முறைகளுக்கு மிக அருகில் வளர்ந்ததால், பாரம்பரிய மரச்செக்கு எண்ணெய், இயற்கை உணவு பதப்படுத்துதல் மற்றும் நியாயமான வர்த்தகத்தின் மதிப்பை நிறுவுனர் புரிந்து கொண்டார்.",
         "about_founder_desc3": "தனிப்பட்ட நம்பிக்கையாகத் தொடங்கியது விரைவில் ஒரு பயணமாக மாறியது — பாரம்பரிய சாரத்தை இழக்காமல், உண்மையான, ரசாயனங்கள் இல்லாத பொருட்களை அனைவருக்கும் கிடைக்கச் செய்வது.",
@@ -261,7 +261,7 @@ const TRANSLATIONS = {
         "about_founder_desc4": "தூய்மை, வெளிப்படைத்தன்மை மற்றும் நிலைத்தன்மை ஆகியவற்றில் வலுவான கவனம் செலுத்தி முகவரி தாழையை நிறுவுனர் தொடர்ந்து வழிநடத்துகிறார்.",
 
         "about_team_craft_title": "கைவினை வேலை & உற்பத்தி மேலாண்மை",
-        "about_team_craft_role": "கைவினை & உற்பத்தி மேலாளர்",
+        "about_team_craft_role": "விக்னேஷ் – கைவினை & உற்பத்தி மேலாளர்",
         "about_team_craft_desc1": "ஒவ்வொரு தயாரிப்புக்கும் பின்னால் திறமையான கைகளும் ஆழமான அறிவும் உள்ளன. எங்கள் உற்பத்தி மேலாளர் ஒவ்வொரு பொருளும் பாரம்பரிய சிறப்பை பிரதிபலிப்பதை உறுதி செய்கிறார்.",
         "about_team_craft_resp1": "பாரம்பரிய எண்ணெய் பிழித்தெடுத்தல் செயல்முறைகளை நிர்வகித்தல்",
         "about_team_craft_resp2": "கைவினைப் பொருட்கள் தயாரிப்பை மேற்பார்வையிடுதல்",
@@ -270,7 +270,7 @@ const TRANSLATIONS = {
         "about_team_craft_desc2": "பழமையான முறைகளைப் பாதுகாத்து, கடுமையான தரச் சோதனைகளுடன் இணைப்பதன் மூலம், நம்பகத்தன்மை ஒருபோதும் சமரசம் செய்யப்படாமல் இருப்பதை இந்த பங்கு உறுதி செய்கிறது.",
 
         "about_team_tech_title": "தொழில்நுட்பம் & டிஜிட்டல் மேலாண்மை",
-        "about_team_tech_role": "தொழில்நுட்பம் & பிளாட்ஃபார்ம் மேலாளர்",
+        "about_team_tech_role": "S. சதீஷ் குமார் – தொழில்நுட்பம் & பிளாட்ஃபார்ம் மேலாளர்",
         "about_team_tech_desc1": "பாரம்பரியத்தை ஒரு எளிய டிஜிட்டல் அனுபவமாக மாற்றுவதற்கு தொழில்நுட்ப மேலாளர் பொறுப்பு.",
         "about_team_tech_resp1": "இணையதள உருவாக்கம் & பராமரிப்பு",
         "about_team_tech_resp2": "தயாரிப்பு காட்சி மற்றும் புதுப்பிப்புகள்",
