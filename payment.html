@@ -151,35 +151,32 @@
             <div class="border-t border-gray-100 pt-6">
                 <h3 class="font-semibold text-gray-900 mb-4 text-lg flex items-center gap-2">
                     <span data-i18n="lbl_pay_method">Payment Method</span> <span
-                        class="bg-green-100 text-green-700 text-xs px-2 py-0.5 rounded-full">UPI</span>
+                        class="bg-[#3399cc] text-white text-xs px-2 py-0.5 rounded-full">Razorpay</span>
                 </h3>
 
                 <!-- Step 1: Pay -->
                 <div class="bg-gray-50 border rounded-xl p-6 mb-4 text-center">
                     <span class="block text-xs font-bold text-gray-400 mb-3 uppercase tracking-wide"
                         data-i18n="lbl_step1">Step 1:
-                        Scan & Pay</span>
+                        Make Payment</span>
 
-                    <div class="bg-white p-2 rounded-lg shadow-sm w-fit mx-auto mb-3 border border-gray-200">
-                        <img src="./images/UPI QR.jpeg" id="upi-qr-image"
-                            onerror="this.onerror=null;this.src='https://placehold.co/200x200?text=QR+Error'"
-                            alt="UPI QR Code" class="w-48 h-48 object-contain">
+                    <div class="mb-4">
+                        <p class="font-bold text-lg text-gray-900 mb-1"><span data-i18n="lbl_total">Total to Pay</span>:
+                            ₹<span id="upi-btn-amount">0</span>
+                        </p>
+                        <p class="text-xs text-amber-600 font-medium mb-4">Please enter this exact amount on the payment
+                            page.</p>
                     </div>
 
-                    <p class="font-bold text-lg text-gray-900 mb-1"><span data-i18n="lbl_total">Total</span>: ₹<span
-                            id="upi-btn-amount">0</span>
-                    </p>
-                    <div class="flex items-center justify-center gap-2 mb-2 mt-2">
-                        <span class="text-sm text-gray-600"><span data-i18n="lbl_upi_id">UPI ID</span>:</span>
-                        <code id="display-upi-id"
-                            class="bg-white border border-gray-200 px-2 py-1 rounded text-sm font-mono select-all text-primary"></code>
-                        <button type="button" onclick="copyUPI()" class="text-gray-400 hover:text-primary transition"
-                            title="Copy UPI ID">
-                            <i class="far fa-copy"></i>
-                        </button>
+                    <div class="flex justify-center mb-4">
+                        <a href="https://razorpay.me/@mugavarithazhai" target="_blank" id="razorpay-link"
+                            class="inline-flex items-center gap-2 px-6 py-3 bg-[#3399cc] text-white font-bold rounded-lg hover:bg-[#2b82ad] transition shadow-md">
+                            <span data-i18n="btn_pay_online">Pay Now</span> <i class="fas fa-external-link-alt"></i>
+                        </a>
                     </div>
-                    <p class="text-xs text-gray-500" data-i18n="lbl_scan_instruct">Scan QR or Copy UPI ID to Pay via
-                        GPay/PhonePe</p>
+
+                    <p class="text-xs text-gray-500" data-i18n="lbl_scan_instruct">Click the button below to pay via
+                        Razorpay. Please enter the Exact Amount.</p>
                 </div>
 
                 <!-- Step 2: Upload -->
@@ -331,41 +328,7 @@
             if (upiBtnAmount) upiBtnAmount.textContent = grandTotal;
         }
 
-        // Handle Pay Button Click
-        function payViaUPI() {
-            // Validate
-            if (grandTotal === 0) {
-                alert(langManager.getText('alert_invalid_total'));
-                return;
-            }
-
-            // Format amount to 2 decimal places (required by some apps)
-            const amount = grandTotal.toFixed(2);
-
-            // Construct UPI Intent Link
-            // tr = Transaction Ref (random to make unique), tn = Note
-            const tr = "TXN" + Date.now();
-
-            // Note: We include 'tr' (Transaction Ref) which is crucial for many apps
-            const upiLink = `upi://pay?pa=${MERCHANT_VPA}&pn=${encodeURIComponent(MERCHANT_NAME)}&am=${amount}&cu=INR&tr=${tr}&tn=Order%20Payment`;
-
-            // Redirect to UPI App
-            window.location.href = upiLink;
-        }
-
-        // Helper: Copy UPI
-        function copyUPI() {
-            navigator.clipboard.writeText(MERCHANT_VPA).then(() => {
-                const btn = document.querySelector('button[onclick="copyUPI()"]');
-                const icon = btn.querySelector('i');
-                icon.classList.remove('fa-copy');
-                icon.classList.add('fa-check');
-                setTimeout(() => {
-                    icon.classList.remove('fa-check');
-                    icon.classList.add('fa-copy');
-                }, 2000);
-            });
-        }
+        // Razorpay Link used directly in HTML
 
         // Helper: Convert File to Base64
         const fileToBase64 = (file) => {
