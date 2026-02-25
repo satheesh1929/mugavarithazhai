@@ -181,23 +181,23 @@
 
         /* Hand Craft Gallery Styles */
         .handcraft-wrapper {
-            -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
-            mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+            -webkit-mask-image: linear-gradient(to right, transparent, black 4%, black 96%, transparent);
+            mask-image: linear-gradient(to right, transparent, black 4%, black 96%, transparent);
         }
 
         .marquee-track {
             display: flex;
-            gap: 2rem;
+            gap: 1.25rem;
             width: max-content;
-            animation: scroll 60s linear infinite;
-            padding: 2rem 0;
+            animation: scrollLeft 90s linear infinite;
+            padding: 1rem 0;
         }
 
         .marquee-track:hover {
             animation-play-state: paused;
         }
 
-        @keyframes scroll {
+        @keyframes scrollLeft {
             0% {
                 transform: translateX(0);
             }
@@ -208,50 +208,72 @@
         }
 
         .craft-card {
-            width: 280px;
-            height: 280px;
+            width: 240px;
+            height: 240px;
             flex-shrink: 0;
-            border-radius: 1.5rem;
+            border-radius: 1.25rem;
             overflow: hidden;
             position: relative;
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            transition: all 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
         }
 
-        /* Float Animation */
+        /* Staggered Float Animation */
         .float-anim {
             animation: float 6s ease-in-out infinite;
         }
 
         .float-anim:nth-child(2n) {
-            animation-delay: 1s;
+            animation-delay: 0.8s;
         }
 
         .float-anim:nth-child(3n) {
-            animation-delay: 2s;
+            animation-delay: 1.6s;
+        }
+
+        .float-anim:nth-child(4n) {
+            animation-delay: 2.4s;
         }
 
         .float-anim:nth-child(5n) {
-            animation-delay: 3s;
+            animation-delay: 3.2s;
+        }
+
+        .float-anim:nth-child(6n) {
+            animation-delay: 4.0s;
+        }
+
+        .float-anim:nth-child(7n) {
+            animation-delay: 0.4s;
+        }
+
+        .float-anim:nth-child(11n) {
+            animation-delay: 1.2s;
         }
 
         @keyframes float {
 
             0%,
             100% {
-                transform: translateY(0);
+                transform: translateY(0px);
             }
 
             50% {
-                transform: translateY(-15px);
+                transform: translateY(-14px);
             }
         }
 
         .craft-card:hover {
-            transform: scale(1.05) translateY(-5px) !important;
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            transform: scale(1.07) translateY(-6px) !important;
+            box-shadow: 0 24px 40px rgba(0, 0, 0, 0.18);
             z-index: 10;
             animation-play-state: paused;
+        }
+
+        /* Image shimmer while loading */
+        .craft-card img {
+            background: linear-gradient(90deg, #e8e8e8 25%, #f5f5f5 50%, #e8e8e8 75%);
+            background-size: 200% 100%;
         }
     </style>
 </head>
@@ -472,7 +494,7 @@
                     <div
                         class="group relative overflow-hidden rounded-xl sm:rounded-2xl shadow-lg cursor-pointer hover:shadow-2xl hover:-translate-y-2 transition duration-500">
                         <img src="images/hand craft.jpg"
-                            onerror="this.onerror=null;this.src='https://placehold.co/400x300/E0F2E9/0E2C18?text=Hand+Craft'"
+                            onerror="this.onerror=null;this.src='https://placehold.co/400x400/E0F2E9/0E2C18?text=Hand+Craft'"
                             class="w-full h-48 sm:h-64 md:h-80 object-cover group-hover:scale-110 transition duration-700"
                             alt="Hand Craft">
                         <div
@@ -590,7 +612,7 @@
                 </p>
             </div>
 
-            <!-- Marquee Slider -->
+            <!-- Single Marquee Row — all 35 images, scrolling left continuously -->
             <div class="handcraft-wrapper w-full overflow-hidden">
                 <div class="marquee-track" id="handcraftMarquee">
                     <!-- JavaScript will populate this -->
@@ -887,13 +909,9 @@
 
                     <div class="flex flex-col items-center gap-3 sm:gap-4 border-t border-gray-800 pt-6 sm:pt-8">
                         <p class="text-xs sm:text-sm text-gray-500">© 2026 - SK | Mugavari Thazhai</p>
-                        <p class="text-xs text-gray-600 mt-1">Developed by SCODE</p>
-
-                        <!-- Buy Me a Coffee Button -->
-                        <a href="https://buymeachai.ezee.li/satheesh_devoloper" target="_blank"
-                            class="inline-flex items-center gap-2 px-3 sm:px-4 py-2 bg-yellow-400 text-gray-900 rounded-full text-xs sm:text-sm font-bold hover:bg-yellow-300 transition hover:scale-105 shadow-lg">
-                            <i class="fas fa-coffee text-xs sm:text-sm"></i> Buy me a Chai
-                        </a>
+                        <p class="text-xs text-gray-500 mt-1">Designed by <a href="https://scode360.in" target="_blank"
+                                class="text-green-400 hover:text-green-300 font-semibold transition hover:underline">SCODE360</a>
+                        </p>
                     </div>
                 </div>
             </div>
@@ -975,37 +993,44 @@
             const marqueeTrack = document.getElementById('handcraftMarquee');
             if (!marqueeTrack) return;
 
-            // 31 Images
-            const imageCount = 31;
-            const images = Array.from({
-                length: imageCount
-            }, (_, i) => `i${i + 1}.jpeg`);
+            // All 35 images from the 'Hand Craft Images/' folder
+            const allImages = [
+                'HC1 .jpeg', 'HC2.jpeg', 'HC3.jpeg', 'HC4.jpeg',
+                'i1.jpeg', 'i2.jpeg', 'i3.jpeg', 'i4.jpeg', 'i5.jpeg',
+                'i6.jpeg', 'i7.jpeg', 'i8.jpeg', 'i9.jpeg', 'i10.jpeg',
+                'i11.jpeg', 'i12.jpeg', 'i13.jpeg', 'i14.jpeg', 'i15.jpeg',
+                'i16.jpeg', 'i17.jpeg', 'i18.jpeg', 'i19.jpeg', 'i20.jpeg',
+                'i21.jpeg', 'i22.jpeg', 'i23.jpeg', 'i24.jpeg', 'i25.jpeg',
+                'i26.jpeg', 'i27.jpeg', 'i28.jpeg', 'i29.jpeg', 'i30.jpeg',
+                'i31.jpeg'
+            ];
 
-            // Create card generator
+            // Card factory — path points to 'Hand Craft Images/' subfolder
             const createCard = (imgName) => {
                 const div = document.createElement('div');
-                div.className = 'craft-card float-anim group bg-white cursor-pointer';
+                div.className = 'craft-card float-anim group bg-gray-100 cursor-pointer';
                 div.innerHTML = `
-            <img src="Hand Craft Images/${imgName}" 
-                 class="w-full h-full object-cover transition duration-700 group-hover:scale-110" 
-                 alt="Hand Craft Art"
-                 loading="lazy">
-            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-                <div>
-                   <span class="block text-white font-bold text-lg transform translate-y-4 group-hover:translate-y-0 transition duration-300 delay-75" data-i18n="gallery_art">Handcrafted Art</span>
-                   <span class="block text-white/80 text-sm transform translate-y-4 group-hover:translate-y-0 transition duration-300 delay-100" data-i18n="gallery_material">Pure Coconut Shell</span>
-                </div>
-            </div>
-        `;
+                    <img src="Hand Craft Images/${imgName}"
+                         class="w-full h-full object-cover transition duration-700 group-hover:scale-110"
+                         alt="Hand Craft Art"
+                         loading="lazy">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-5">
+                        <div>
+                            <span class="block text-white font-bold text-base transform translate-y-4 group-hover:translate-y-0 transition duration-300 delay-75" data-i18n="gallery_art">Handcrafted Art</span>
+                            <span class="block text-white/80 text-sm transform translate-y-4 group-hover:translate-y-0 transition duration-300 delay-100" data-i18n="gallery_material">Pure Coconut Shell</span>
+                        </div>
+                    </div>
+                `;
                 return div;
             };
 
-            // Populate Marquee (Double for infinite loop effect)
-            const allImages = [...images, ...images];
+            // Duplicate the full set so the scroll loops seamlessly (translateX -50% trick)
+            [...allImages, ...allImages].forEach(img => marqueeTrack.appendChild(createCard(img)));
 
-            allImages.forEach(img => {
-                marqueeTrack.appendChild(createCard(img));
-            });
+            // Re-apply translations to newly created elements
+            if (window.langManager && typeof langManager.applyTranslations === 'function') {
+                langManager.applyTranslations();
+            }
         }
 
         // Back to Top & Navbar Scroll Effect
