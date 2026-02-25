@@ -8,10 +8,8 @@ const PRODUCTS = {
         reviews: 124,
         images: [
             "images/coconut oil.jpg",
-            // Fallback placeholder images if specific ones don't exist yet
-            "https://placehold.co/600x600/E0F2E9/0E2C18?text=Extraction+Method",
-            "https://placehold.co/600x600/E0F2E9/0E2C18?text=Packaging",
-            "https://placehold.co/600x600/E0F2E9/0E2C18?text=Cooking+Use"
+            "images/coconut oil 1.jpeg",
+            "images/coconut oil 2.jpeg"
         ],
         variants: [
             { id: "1000ml", label: "1 L", price: 400, offer: "₹450" },
@@ -109,9 +107,9 @@ const PRODUCTS = {
         rating: 4.9,
         reviews: 156,
         images: [
-            "images/handCraft.jpg",
-            "https://placehold.co/600x600/D4AF96/5A4A3A?text=Tea+Cups",
-            "https://placehold.co/600x600/D4AF96/5A4A3A?text=Bowls"
+            "Hand Craft Images/HC1 .jpeg",
+            "Hand Craft Images/HC2.jpeg",
+            "Hand Craft Images/HC3.jpeg"
         ],
         variants: [
             { id: "customizable", label: "Customizable", price: 150, offer: null }

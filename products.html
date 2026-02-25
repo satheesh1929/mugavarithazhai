@@ -251,13 +251,27 @@
         <!-- Card 1: Coconut Oil -->
         <a href="product-details.html?id=coconut-oil"
           class="group bg-white rounded-lg shadow-sm hover:shadow-xl transition duration-300 border border-gray-100 overflow-hidden flex flex-col">
-          <div class="relative h-40 sm:h-56 bg-gray-100 flex items-center justify-center p-4">
+          <div class="relative h-40 sm:h-56 bg-gray-100 flex items-center justify-center overflow-hidden" id="co-card">
+            <!-- Image 1 — default -->
             <img src="images/coconut oil.jpg"
               onerror="this.onerror=null;this.src='https://placehold.co/600x400/E0F2E9/0E2C18?text=Coconut+Oil'"
-              class="max-h-full max-w-full object-contain group-hover:scale-105 transition duration-500 mix-blend-multiply">
-            <!-- Wishlist Icon (Visual only) -->
+              class="co-slide absolute inset-0 w-full h-full object-cover transition-opacity duration-700 opacity-100">
+            <!-- Image 2 -->
+            <img src="images/coconut oil 1.jpeg"
+              onerror="this.onerror=null;this.src='https://placehold.co/600x400/E0F2E9/0E2C18?text=Coconut+Oil+1'"
+              class="co-slide absolute inset-0 w-full h-full object-cover transition-opacity duration-700 opacity-0">
+            <!-- Image 3 -->
+            <img src="images/coconut oil 2.jpeg"
+              onerror="this.onerror=null;this.src='https://placehold.co/600x400/E0F2E9/0E2C18?text=Coconut+Oil+2'"
+              class="co-slide absolute inset-0 w-full h-full object-cover transition-opacity duration-700 opacity-0">
+            <!-- Photo count badge -->
             <div
-              class="absolute top-2 right-2 w-8 h-8 bg-white/80 rounded-full flex items-center justify-center text-gray-300 hover:text-red-500 shadow-sm">
+              class="absolute bottom-2 left-2 bg-black/50 text-white text-[10px] font-bold px-2 py-0.5 rounded-full z-10">
+              3 Photos
+            </div>
+            <!-- Wishlist Icon -->
+            <div
+              class="absolute top-2 right-2 w-8 h-8 bg-white/80 rounded-full flex items-center justify-center text-gray-300 hover:text-red-500 shadow-sm z-10">
               <i class="fas fa-heart"></i>
             </div>
           </div>
@@ -345,19 +359,23 @@
         <!-- Card 3: Handcrafts -->
         <a href="product-details.html?id=handcraft"
           class="group bg-white rounded-lg shadow-sm hover:shadow-xl transition duration-300 border border-gray-100 overflow-hidden flex flex-col">
-          <div class="relative h-40 sm:h-56 bg-amber-50 flex items-center justify-center overflow-hidden">
-            <!-- HC1 — default visible image -->
-            <img src="images/HC1 .jpeg"
-              onerror="this.onerror=null;this.src='https://placehold.co/600x400/D4AF96/5A4A3A?text=Hand+Crafts'"
-              class="absolute inset-0 w-full h-full object-cover transition-opacity duration-500 opacity-100 group-hover:opacity-0">
-            <!-- HC2 — visible on hover -->
-            <img src="images/HC2.jpeg"
+          <div class="relative h-40 sm:h-56 bg-amber-50 flex items-center justify-center overflow-hidden" id="hc-card">
+            <!-- Image 1 — default visible -->
+            <img src="Hand Craft Images/HC1 .jpeg"
+              onerror="this.onerror=null;this.src='https://placehold.co/600x400/D4AF96/5A4A3A?text=Hand+Crafts+1'"
+              class="hc-slide absolute inset-0 w-full h-full object-cover transition-opacity duration-700 opacity-100">
+            <!-- Image 2 -->
+            <img src="Hand Craft Images/HC2.jpeg"
               onerror="this.onerror=null;this.src='https://placehold.co/600x400/D4AF96/5A4A3A?text=Hand+Crafts+2'"
-              class="absolute inset-0 w-full h-full object-cover transition-opacity duration-500 opacity-0 group-hover:opacity-100 scale-105 group-hover:scale-100">
-            <!-- Image counter badge -->
+              class="hc-slide absolute inset-0 w-full h-full object-cover transition-opacity duration-700 opacity-0">
+            <!-- Image 3 -->
+            <img src="Hand Craft Images/HC3.jpeg"
+              onerror="this.onerror=null;this.src='https://placehold.co/600x400/D4AF96/5A4A3A?text=Hand+Crafts+3'"
+              class="hc-slide absolute inset-0 w-full h-full object-cover transition-opacity duration-700 opacity-0">
+            <!-- Image count badge -->
             <div
               class="absolute bottom-2 left-2 bg-black/50 text-white text-[10px] font-bold px-2 py-0.5 rounded-full z-10">
-              2 Photos
+              3 Photos
             </div>
             <div
               class="absolute top-2 right-2 w-8 h-8 bg-white/80 rounded-full flex items-center justify-center text-gray-300 hover:text-red-500 shadow-sm z-10">
@@ -509,7 +527,42 @@
       // Unused cart functions removed
 
       // Initialize cart UI on page load
-      window.addEventListener('load', updateCartUI);
+      window.addEventListener('load', () => {
+        updateCartUI();
+        initSlideshow('co-card', '.co-slide');
+        initSlideshow('hc-card', '.hc-slide');
+      });
+
+      // Generic auto-cycle slideshow — cycles images every 1.8s on hover
+      function initSlideshow(cardId, slideSelector) {
+        const slides = document.querySelectorAll(slideSelector);
+        if (!slides.length) return;
+        let current = 0;
+        let timer = null;
+
+        function showSlide(index) {
+          slides.forEach((s, i) => { s.style.opacity = i === index ? '1' : '0'; });
+        }
+
+        function startCycle() {
+          timer = setInterval(() => {
+            current = (current + 1) % slides.length;
+            showSlide(current);
+          }, 1800);
+        }
+
+        function stopCycle() {
+          clearInterval(timer);
+          current = 0;
+          showSlide(0);
+        }
+
+        const card = document.getElementById(cardId);
+        if (card) {
+          card.addEventListener('mouseenter', startCycle);
+          card.addEventListener('mouseleave', stopCycle);
+        }
+      }
     </script>
 
 </body>
