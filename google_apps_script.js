@@ -1,3 +1,14 @@
+function doGet(e) {
+    // Return configuration data
+    // This keeps sensitive keys out of your GitHub repository
+    var config = {
+        razorpay_key: 'rzp_live_ST7aB3oJpqzkZi'
+    };
+
+    return ContentService.createTextOutput(JSON.stringify(config))
+        .setMimeType(ContentService.MimeType.JSON);
+}
+
 function doPost(e) {
     try {
         // 1. Parse the incoming JSON data
@@ -29,7 +40,6 @@ function doPost(e) {
         var timestamp = new Date();
 
         // Headers: Timestamp | Name | Phone | Email | Address | Order Details | Total | Screenshot Link
-        // NOTE: Make sure to add a new "Email" column in your sheet if it doesn't exist
         sheet.appendRow([timestamp, name, phone, email, address, orderDetails, totalAmount, fileUrl]);
 
         // 5. Send Email Confirmation
@@ -39,7 +49,7 @@ function doPost(e) {
                 "Thank you for your order!\n\n" +
                 "Order Details:\n" + orderDetails + "\n\n" +
                 "Total Amount: ₹" + totalAmount + "\n\n" +
-                "We have received your payment screenshot. We will process your order shortly.\n\n" +
+                "We have received your payment details. We will process your order shortly.\n\n" +
                 "Best Regards,\nMugavari Thazhai";
 
             var htmlBody = `

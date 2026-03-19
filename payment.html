@@ -53,6 +53,9 @@
         }
     </script>
     <script src="js/translations.js"></script>
+    <!-- Config is now fetched dynamically from Google Script -->
+    <!-- Razorpay Checkout SDK -->
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 </head>
 
 <body class="font-sans text-gray-800 antialiased bg-slate-50">
@@ -151,63 +154,39 @@
             <div class="border-t border-gray-100 pt-6">
                 <h3 class="font-semibold text-gray-900 mb-4 text-lg flex items-center gap-2">
                     <span data-i18n="lbl_pay_method">Payment Method</span> <span
-                        class="bg-[#3399cc] text-white text-xs px-2 py-0.5 rounded-full">Razorpay</span>
+                        class="bg-[#3399cc] text-white text-xs px-2 py-0.5 rounded-full">Razorpay Secure</span>
                 </h3>
 
-                <!-- Step 1: Pay -->
-                <div class="bg-gray-50 border rounded-xl p-6 mb-4 text-center">
-                    <span class="block text-xs font-bold text-gray-400 mb-3 uppercase tracking-wide"
-                        data-i18n="lbl_step1">Step 1:
-                        Make Payment</span>
-
-                    <div class="mb-4">
-                        <p class="font-bold text-lg text-gray-900 mb-1"><span data-i18n="lbl_total">Total to Pay</span>:
-                            ₹<span id="upi-btn-amount">0</span>
-                        </p>
-                        <p class="text-xs text-amber-600 font-medium mb-4">Please enter this exact amount on the payment
-                            page.</p>
+                <div class="bg-blue-50 border border-blue-100 rounded-xl p-5 mb-6">
+                    <div class="flex items-start gap-4">
+                        <div class="bg-blue-100 p-3 rounded-full text-blue-600">
+                            <i class="fas fa-shield-alt text-xl"></i>
+                        </div>
+                        <div>
+                            <p class="font-bold text-blue-900 mb-1">Instant Online Payment</p>
+                            <p class="text-sm text-blue-700">Pay securely via UPI, Credit/Debit Cards, or Netbanking. Your order will be confirmed immediately after payment.</p>
+                        </div>
                     </div>
-
-                    <div class="flex justify-center mb-4">
-                        <a href="https://razorpay.me/@mugavarithazhai" target="_blank" id="razorpay-link"
-                            class="inline-flex items-center gap-2 px-6 py-3 bg-[#3399cc] text-white font-bold rounded-lg hover:bg-[#2b82ad] transition shadow-md">
-                            <span data-i18n="btn_pay_online">Pay Now</span> <i class="fas fa-external-link-alt"></i>
-                        </a>
-                    </div>
-
-                    <p class="text-xs text-gray-500" data-i18n="lbl_scan_instruct">Click the button below to pay via
-                        Razorpay. Please enter the Exact Amount.</p>
                 </div>
 
-                <!-- Step 2: Upload -->
-                <div class="bg-white border rounded-xl p-4">
-                    <span class="block text-xs font-bold text-gray-400 mb-2 uppercase tracking-wide"
-                        data-i18n="lbl_step2">Step 2:
-                        Upload Screenshot</span>
-                    <label class="block cursor-pointer">
-                        <div
-                            class="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:bg-gray-50 transition group">
-                            <i
-                                class="fas fa-cloud-upload-alt text-3xl text-gray-300 group-hover:text-primary mb-2 transition"></i>
-                            <p class="text-sm font-medium text-gray-700" data-i18n="lbl_upload_instruct">Click to Upload
-                                Payment Screenshot</p>
-                            <p class="text-xs text-gray-400 mt-1">Supported: JPG, PNG</p>
-                        </div>
-                        <input type="file" id="screenshot" accept="image/*" class="hidden" required
-                            onchange="document.querySelector('.text-sm.font-medium.text-gray-700').textContent = this.files[0].name">
-                    </label>
+                <div class="bg-white border rounded-xl p-6 text-center shadow-sm">
+                    <p class="text-gray-500 text-sm mb-1" data-i18n="lbl_total">Total to Pay</p>
+                    <p class="text-3xl font-extrabold text-primary mb-0">₹<span id="upi-btn-amount">0</span></p>
                 </div>
             </div>
 
             <!-- Actions -->
-            <div class="pt-4 flex flex-col gap-3">
-                <button type="submit"
-                    class="w-full py-4 bg-primary text-white font-bold text-lg rounded-xl hover:bg-green-800 transition shadow-lg hover:shadow-xl active:scale-[0.99] flex items-center justify-center gap-2">
-                    <span data-i18n="btn_confirm">Confirm Order</span> <i class="fas fa-check-circle"></i>
+            <div class="pt-8 flex flex-col gap-3">
+                <button type="submit" id="submit-btn"
+                    class="w-full py-4 bg-primary text-white font-bold text-xl rounded-xl hover:bg-green-800 transition shadow-lg hover:shadow-xl active:scale-[0.99] flex items-center justify-center gap-3">
+                    <span data-i18n="btn_confirm">Pay & Confirm Order</span> <i class="fas fa-arrow-right"></i>
                 </button>
-                <p class="text-center text-xs text-gray-400" data-i18n="msg_safe">Your details are safe. Order
-                    confirmation will be
-                    sent to Email.</p>
+                <div class="flex items-center justify-center gap-4 mt-2">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/UPI-Logo.png/640px-UPI-Logo.png" class="h-4 opacity-50 grayscale" alt="UPI">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Visa_Inc._logo.svg/2560px-Visa_Inc._logo.svg.png" class="h-3 opacity-50 grayscale" alt="Visa">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Mastercard-logo.svg/1280px-Mastercard-logo.svg.png" class="h-4 opacity-50 grayscale" alt="MasterCard">
+                </div>
+                <p class="text-center text-xs text-gray-400 mt-4" data-i18n="msg_safe">Secure 128-bit SSL Encrypted Payment</p>
             </div>
             </form>
         </div>
@@ -286,7 +265,7 @@
     </div>
 
     <script>
-        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyWoFLSktIDW7n63PQdfyUTVrzcCGeGN7OzSpVroY0ncvfskv8GYfecITEal2_Dp-bq/exec';
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxy1pkShkeisd4cJWB3EPFF1A4HZHvOQ7N_qMIUatmsOYUbqf64vQLGoHXGmdojunKl/exec';
         const whatsappBusinessNumber = "919842535962";
 
         // MERCHANT UPI CONFIGURATION
@@ -373,21 +352,45 @@
             if (upiBtnAmount) upiBtnAmount.textContent = grandTotal;
         }
 
-        // Razorpay Link used directly in HTML
+        // Razorpay API Configuration (Fetched dynamically for security)
+        let RAZORPAY_KEY_ID = '';
 
-        // Helper: Convert File to Base64
-        const fileToBase64 = (file) => {
-            return new Promise((resolve, reject) => {
-                const reader = new FileReader();
-                reader.readAsDataURL(file);
-                reader.onload = () => resolve(reader.result.split(',')[1]); // remove data:image/...;base64,
-                reader.onerror = error => reject(error);
-            });
-        };
+        // Function to fetch config from Google Script securely
+        async function fetchSecureConfig() {
+            try {
+                // We use GET request to our Google Script URL to get the key
+                const response = await fetch(GOOGLE_SCRIPT_URL);
+                const data = await response.json();
+                if (data && data.razorpay_key) {
+                    RAZORPAY_KEY_ID = data.razorpay_key;
+                    console.log("Secure config loaded.");
+                }
+            } catch (err) {
+                console.error("Failed to load secure config:", err);
+            }
+        }
 
         // Handle Form Submit
         document.getElementById('paymentForm').addEventListener('submit', async (e) => {
             e.preventDefault();
+
+            // UI Feedback
+            const submitBtn = document.getElementById('submit-btn');
+            const originalBtnText = submitBtn.innerHTML;
+            submitBtn.innerHTML = `<i class="fas fa-spinner fa-spin"></i> Loading Secure Payment...`;
+            submitBtn.disabled = true;
+
+            // Ensure key is loaded
+            if (!RAZORPAY_KEY_ID) {
+                await fetchSecureConfig();
+            }
+
+            if (!RAZORPAY_KEY_ID) {
+                alert("Security handshake failed. Please refresh the page and try again.");
+                submitBtn.innerHTML = originalBtnText;
+                submitBtn.disabled = false;
+                return;
+            }
 
             const cart = JSON.parse(localStorage.getItem('cart')) || [];
             if (cart.length === 0) return;
@@ -396,27 +399,55 @@
             const phone = document.getElementById('phone').value;
             const email = document.getElementById('email').value;
             const address = document.getElementById('address').value;
-            const screenshotFile = document.getElementById('screenshot').files[0];
-
-            if (!screenshotFile) {
-                alert(langManager.getText('alert_upload'));
-                return;
-            }
 
             if (grandTotal === 0) {
-                // Recalculate if for some reason it's 0 (edge case)
                 loadCart();
             }
 
-            // UI Feedback
-            const submitBtn = document.querySelector('button[type="submit"]');
+            // Restore btn text while modal is open
+            submitBtn.innerHTML = originalBtnText;
+            submitBtn.disabled = false;
+
+            // Trigger Razorpay Checkout
+            const options = {
+                "key": RAZORPAY_KEY_ID,
+                "amount": grandTotal * 100, // Amount in paise
+                "currency": "INR",
+                "name": MERCHANT_NAME,
+                "description": "Payment for Mugavari Thazhai Order",
+                "image": "images/mugavari thazhai logo.jpg",
+                "handler": async function (response) {
+                    // This callback runs after successful payment
+                    await finalizeOrder(response.razorpay_payment_id);
+                },
+                "prefill": {
+                    "name": name,
+                    "email": email,
+                    "contact": phone
+                },
+                "theme": {
+                    "color": "#0E2C18" // Primary Deep Emerald Green
+                }
+            };
+
+            const rzp1 = new Razorpay(options);
+            rzp1.on('payment.failed', function (response) {
+                alert("Payment Failed: " + response.error.description);
+            });
+            rzp1.open();
+        });
+
+        async function finalizeOrder(paymentId) {
+            const submitBtn = document.getElementById('submit-btn');
             submitBtn.innerHTML = `<i class="fas fa-spinner fa-spin"></i> ${langManager.getText('btn_uploading')}`;
             submitBtn.disabled = true;
 
             try {
-                // Convert image to Base64
-                const imageBase64 = await fileToBase64(screenshotFile);
-                const mimeType = screenshotFile.type;
+                const name = document.getElementById('name').value;
+                const phone = document.getElementById('phone').value;
+                const email = document.getElementById('email').value;
+                const address = document.getElementById('address').value;
+                const cart = JSON.parse(localStorage.getItem('cart')) || [];
 
                 const productKeyMap = {
                     "Pure Coconut Oil": "prod_pure_coco_oil",
@@ -433,14 +464,11 @@
                     orderDetailsArray.push(`${itemName} x${item.quantity}`);
                 });
 
-                // Add Gift to Order Logic string
                 if (freeGiftQty > 0) {
                     orderDetailsArray.push(`FREE Coconut Coir Scrubber x${freeGiftQty}`);
                 }
 
-                // Add Shipping to Order Logic String
                 orderDetailsArray.push(`Delivery Charge: ₹${shippingCost}`);
-
                 const orderDetailsString = orderDetailsArray.join(', ');
 
                 // Payload for Google Sheet
@@ -451,12 +479,11 @@
                     address: address,
                     orderDetails: orderDetailsString,
                     totalAmount: grandTotal,
-                    fileData: imageBase64,
-                    mimeType: mimeType,
-                    fileName: screenshotFile.name
+                    paymentId: paymentId, // Added payment reference
+                    status: 'Paid Online'
                 };
 
-                // Send to Google Sheet
+                // Send to Google Sheet (Optional but good for tracking)
                 await fetch(GOOGLE_SCRIPT_URL, {
                     method: 'POST',
                     mode: 'no-cors',
@@ -465,11 +492,11 @@
                 });
 
                 // WhatsApp Message
-                let orderMessage = `Hello! I placed an order and uploaded the payment screenshot.\n\n`;
+                let orderMessage = `*NEW ORDER - PAYMENT SUCCESSFUL!* ✅\n\n`;
+                orderMessage += `*Payment ID:* ${paymentId}\n`;
                 orderMessage += `*Customer Details:*\nName: ${name}\nPhone: ${phone}\nEmail: ${email}\nAddress: ${address}\n\n`;
                 orderMessage += `*Order Summary:*\n`;
 
-                // Re-use the orderDetailsArray logic or rebuild properly with prices
                 cart.forEach(item => {
                     const key = productKeyMap[item.productName];
                     const translatedName = key ? langManager.getText(key) : item.productName;
@@ -482,18 +509,19 @@
                 }
 
                 orderMessage += `Delivery Charge: ₹${shippingCost}\n`;
-
-                orderMessage += `\n*Total Amount: ₹${grandTotal}*\n\nPlease check my payment screenshot in your records.`;
+                orderMessage += `\n*Total Paid: ₹${grandTotal}*\n`;
 
                 const whatsappUrl = `https://wa.me/${whatsappBusinessNumber}?text=${encodeURIComponent(orderMessage)}`;
 
-                // Open WhatsApp
-                window.open(whatsappUrl, '_blank');
-
-                // Finalize
+                // Finalize UI
                 localStorage.removeItem('cart');
                 document.getElementById('successOverlay').classList.remove('hidden');
                 document.getElementById('successOverlay').classList.add('flex');
+
+                // Delayed redirect to WhatsApp
+                setTimeout(() => {
+                    window.open(whatsappUrl, '_blank');
+                }, 2000);
 
             } catch (error) {
                 console.error("Error:", error);
@@ -501,7 +529,7 @@
                 submitBtn.innerHTML = langManager.getText('btn_confirm');
                 submitBtn.disabled = false;
             }
-        });
+        }
 
         // Initialize
         window.addEventListener('load', loadCart);

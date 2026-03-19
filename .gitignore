@@ -1,0 +1,14 @@
+# Secrets and configs
+.env
+js/config.js
+
+# VS Code
+.vscode/
+
+# Build artifacts
+dist/
+node_modules/
+
+# OS files
+.DS_Store
+Thumbs.db
