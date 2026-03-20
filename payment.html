@@ -265,7 +265,7 @@
     </div>
 
     <script>
-        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxy1pkShkeisd4cJWB3EPFF1A4HZHvOQ7N_qMIUatmsOYUbqf64vQLGoHXGmdojunKl/exec';
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyV2f9NKsB4SpyLPg18KS1N_TJDguiI5txOlo_Cm8FRsBmPRXv60EuAqlees8Rgco7t/exec';
         const whatsappBusinessNumber = "919842535962";
 
         // MERCHANT UPI CONFIGURATION
@@ -352,8 +352,20 @@
             if (upiBtnAmount) upiBtnAmount.textContent = grandTotal;
         }
 
-        // Razorpay API Configuration
-        let RAZORPAY_KEY_ID = ''; // Will be populated from the order response for maximum security
+        // Razorpay API Configuration (Fetched dynamically for security)
+        let RAZORPAY_KEY_ID = '';
+
+        async function fetchSecureConfig() {
+            try {
+                const response = await fetch(GOOGLE_SCRIPT_URL);
+                const data = await response.json();
+                if (data && data.razorpay_key) {
+                    RAZORPAY_KEY_ID = data.razorpay_key;
+                }
+            } catch (err) {
+                console.error("Failed to load secure config:", err);
+            }
+        }
 
         // Handle Form Submit
         document.getElementById('paymentForm').addEventListener('submit', async (e) => {
@@ -362,58 +374,51 @@
             // UI Feedback
             const submitBtn = document.getElementById('submit-btn');
             const originalBtnText = submitBtn.innerHTML;
-            submitBtn.innerHTML = `<i class="fas fa-spinner fa-spin"></i> Securing Payment...`;
+            submitBtn.innerHTML = `<i class="fas fa-spinner fa-spin"></i> Loading Secure Payment...`;
             submitBtn.disabled = true;
 
-            try {
-                // 1. Create a Secure Order on the Server (Google Apps Script)
-                // This keeps your Secret Key hidden and prevents amount tampering
-                const orderResponse = await fetch(`${GOOGLE_SCRIPT_URL}?action=createOrder&amount=${grandTotal}`);
-                const orderData = await orderResponse.json();
-
-                if (!orderData || !orderData.id) {
-                    throw new Error("Failed to create secure order");
-                }
-
-                // 2. Trigger Razorpay Checkout with the Order ID
-                const options = {
-                    "key": orderData.key_id || RAZORPAY_KEY_ID, // Use key from server or fallback
-                    "amount": orderData.amount, // Exact amount from server
-                    "currency": "INR",
-                    "name": MERCHANT_NAME,
-                    "description": "Payment for Mugavari Thazhai Order",
-                    "image": "images/mugavari thazhai logo.jpg",
-                    "order_id": orderData.id, // THE SECURE WAY: Linked to the server-side order
-                    "handler": async function (response) {
-                        // This callback runs after successful payment
-                        await finalizeOrder(response.razorpay_payment_id);
-                    },
-                    "prefill": {
-                        "name": document.getElementById('name').value,
-                        "email": document.getElementById('email').value,
-                        "contact": document.getElementById('phone').value
-                    },
-                    "theme": {
-                        "color": "#0E2C18"
-                    }
-                };
-
-                const rzp1 = new Razorpay(options);
-                rzp1.on('payment.failed', function (response) {
-                    alert("Payment Failed: " + response.error.description);
-                });
-                rzp1.open();
-
-                // Restore btn text
-                submitBtn.innerHTML = originalBtnText;
-                submitBtn.disabled = false;
-
-            } catch (err) {
-                console.error("Checkout Error:", err);
-                alert("Security handshake failed. Please refresh and try again.");
-                submitBtn.innerHTML = originalBtnText;
-                submitBtn.disabled = false;
+            // Ensure key is loaded
+            if (!RAZORPAY_KEY_ID) {
+                await fetchSecureConfig();
             }
+
+            if (!RAZORPAY_KEY_ID) {
+                alert("Security handshake failed. Please refresh the page and try again.");
+                submitBtn.innerHTML = originalBtnText;
+                submitBtn.disabled = false;
+                return;
+            }
+
+            // Trigger Razorpay Checkout (Simple Amount-based)
+            const options = {
+                "key": RAZORPAY_KEY_ID,
+                "amount": grandTotal * 100, // Amount in paise
+                "currency": "INR",
+                "name": MERCHANT_NAME,
+                "description": "Payment for Mugavari Thazhai Order",
+                "image": "images/mugavari thazhai logo.jpg",
+                "handler": async function (response) {
+                    await finalizeOrder(response.razorpay_payment_id);
+                },
+                "prefill": {
+                    "name": document.getElementById('name').value,
+                    "email": document.getElementById('email').value,
+                    "contact": document.getElementById('phone').value
+                },
+                "theme": {
+                    "color": "#0E2C18"
+                }
+            };
+
+            const rzp1 = new Razorpay(options);
+            rzp1.on('payment.failed', function (response) {
+                alert("Payment Failed: " + response.error.description);
+            });
+            rzp1.open();
+
+            // Restore btn text
+            submitBtn.innerHTML = originalBtnText;
+            submitBtn.disabled = false;
         });
 
         async function finalizeOrder(paymentId) {
