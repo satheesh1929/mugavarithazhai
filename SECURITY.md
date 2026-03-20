@@ -16,9 +16,9 @@ We take security seriously. If you discover any vulnerability in our eCommerce p
 
 📩 How to Report
 
-Email us at: security@yourdomain.com
+Email us at: team.scode360@gmail.com
 
-Or submit via: [your website contact form / bug bounty page]
+Or submit via: www.scode360.in
 
 📝 What to Include
 
