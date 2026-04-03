@@ -348,21 +348,22 @@
 
             // Product Name Mapping for Translation
             const productKeyMap = {
-                "Pure Coconut Oil": "prod_pure_coco_oil",
-                "Groundnut Oil": "prod_groundnut_oil",
-                "Coconut Shell Handcrafts": "prod_handcrafts"
+                "coconut-oil": "prod_pure_coco_oil",
+                "groundnut-oil": "prod_groundnut_oil",
+                "handcraft": "prod_handcrafts"
             };
 
             cart.forEach((item, index) => {
                 subTotal += item.totalPrice;
 
                 // Check for Free Gift Condition
-                if (item.productName === "Pure Coconut Oil" && item.variant === "1000ml") {
+                // Check for Free Gift Condition
+                if (item.productId === "coconut-oil" && item.variant === "1 L Bottle") {
                     freeGiftQty += item.quantity;
                 }
 
                 // Translate Product Name
-                const key = productKeyMap[item.productName];
+                const key = productKeyMap[item.productId];
                 const translatedName = key ? langManager.getText(key) : item.productName;
 
                 const displayName = item.variant && item.variant !== 'customizable'

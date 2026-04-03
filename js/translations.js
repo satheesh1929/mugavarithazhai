@@ -214,7 +214,13 @@ const TRANSLATIONS = {
         "pay_upload": "Upload Payment Screenshot",
         "pay_confirm": "Confirm Order",
         "pay_success_title": "Order Placed Successfully! 🎉",
-        "pay_success_msg": "Thank you for your order. We have received your details on WhatsApp."
+        "pay_success_msg": "Thank you for your order. We have received your details on WhatsApp.",
+        "lbl_coupon_code": "Coupon Code",
+        "btn_apply": "Apply",
+        "coupon_applied": "Coupon Applied! Delivery Charge Free.",
+        "coupon_invalid": "Invalid Coupon Code",
+        "coupon_restriction": "*Only for store visit or near Pollachi region"
+
 
     },
     "ta": {
@@ -431,7 +437,13 @@ const TRANSLATIONS = {
         "pay_upload": "ஸ்கிரீன்ஷாட் அப்லோட் செய்யவும்",
         "pay_confirm": "ஆர்டரை உறுதி செய்",
         "pay_success_title": "ஆர்டர் வெற்றிகரமாக பதிவு செய்யப்பட்டது! 🎉",
-        "pay_success_msg": "நன்றி! உங்கள் ஆர்டர் விபரங்கள் வாட்ஸ்அப்பில் அனுப்பப்பட்டது."
+        "pay_success_msg": "நன்றி! உங்கள் ஆர்டர் விபரங்கள் வாட்ஸ்அப்பில் அனுப்பப்பட்டது.",
+        "lbl_coupon_code": "கூப்பன் குறியீடு",
+        "btn_apply": "சேர்க்கவும்",
+        "coupon_applied": "கூப்பன் சேர்க்கப்பட்டது! டெலிவரி கட்டணம் இலவசம்.",
+        "coupon_invalid": "தவறான கூப்பன் குறியீடு",
+        "coupon_restriction": "*பொள்ளாச்சி பகுதி அல்லது கடைக்கு நேரில் வருபவர்களுக்கு மட்டும்"
+
     }
 };
 

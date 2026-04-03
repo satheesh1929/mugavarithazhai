@@ -12,7 +12,7 @@ const PRODUCTS = {
             "images/coconut oil 2.jpeg"
         ],
         variants: [
-            { id: "1000ml", label: "1 L", price: 400, offer: "₹450" },
+            { id: "1000ml", label: "1 L", price: 380, offer: "₹450" },
             { id: "500ml", label: "500 ml", price: 210, offer: null },
             { id: "200ml", label: "200 ml", price: 90, offer: null }
         ],
@@ -64,7 +64,7 @@ const PRODUCTS = {
             "https://placehold.co/600x600/FDF3E7/8B6F47?text=Cooking+Fry"
         ],
         variants: [
-            { id: "1000ml", label: "1 L", price: 270, offer: null },
+            { id: "1000ml", label: "1 L", price: 300, offer: null },
             { id: "500ml", label: "500 ml", price: 140, offer: null },
             { id: "200ml", label: "200 ml", price: 60, offer: null }
         ],
