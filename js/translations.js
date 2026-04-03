@@ -215,10 +215,10 @@ const TRANSLATIONS = {
         "pay_confirm": "Confirm Order",
         "pay_success_title": "Order Placed Successfully! 🎉",
         "pay_success_msg": "Thank you for your order. We have received your details on WhatsApp.",
-        "lbl_coupon_code": "Coupon Code",
-        "btn_apply": "Apply",
-        "coupon_applied": "Coupon Applied! Delivery Charge Free.",
-        "coupon_invalid": "Invalid Coupon Code",
+        "lbl_local_delivery": "Local Delivery / Store Visit?",
+        "btn_local_delivery": "Apply Free Delivery",
+        "btn_local_delivery_applied": "Remove Free Delivery",
+        "coupon_applied": "Discount Applied! Delivery Charge Free.",
         "coupon_restriction": "*Only for store visit or near Pollachi region"
 
 
@@ -438,10 +438,10 @@ const TRANSLATIONS = {
         "pay_confirm": "ஆர்டரை உறுதி செய்",
         "pay_success_title": "ஆர்டர் வெற்றிகரமாக பதிவு செய்யப்பட்டது! 🎉",
         "pay_success_msg": "நன்றி! உங்கள் ஆர்டர் விபரங்கள் வாட்ஸ்அப்பில் அனுப்பப்பட்டது.",
-        "lbl_coupon_code": "கூப்பன் குறியீடு",
-        "btn_apply": "சேர்க்கவும்",
-        "coupon_applied": "கூப்பன் சேர்க்கப்பட்டது! டெலிவரி கட்டணம் இலவசம்.",
-        "coupon_invalid": "தவறான கூப்பன் குறியீடு",
+        "lbl_local_delivery": "உள்ளூர் டெலிவரி / கடைக்கு வருகை?",
+        "btn_local_delivery": "இலவச டெலிவரி பயன்படுத்தவும்",
+        "btn_local_delivery_applied": "இலவச டெலிவரியை நீக்கவும்",
+        "coupon_applied": "தள்ளுபடி செய்யப்பட்டது! டெலிவரி கட்டணம் இலவசம்.",
         "coupon_restriction": "*பொள்ளாச்சி பகுதி அல்லது கடைக்கு நேரில் வருபவர்களுக்கு மட்டும்"
 
     }

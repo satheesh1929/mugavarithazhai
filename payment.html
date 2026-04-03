@@ -103,17 +103,18 @@
                 </div>
 
                 <div class="mt-6 mb-6 p-4 bg-white/50 rounded-xl border border-dashed border-gray-300">
-                    <label class="block text-xs font-semibold text-gray-500 mb-2 uppercase" data-i18n="lbl_coupon_code">Coupon Code</label>
-                    <div class="flex gap-2">
-                        <input type="text" id="coupon-input" placeholder="Enter Code" 
-                            class="flex-1 px-4 py-2 text-sm bg-white border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none uppercase font-bold tracking-widest transition-all">
-                        <button type="button" onclick="applyCoupon()" 
-                            class="px-4 py-2 bg-primary text-white text-sm font-bold rounded-lg hover:bg-green-800 transition active:scale-95" 
-                            data-i18n="btn_apply">Apply</button>
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                        <div>
+                            <h4 class="text-xs font-bold text-gray-500 uppercase mb-1" data-i18n="lbl_local_delivery">Local Delivery / Store Visit?</h4>
+                            <p class="text-[10px] text-gray-400 italic leading-tight" data-i18n="coupon_restriction">*Only for store visit or near Pollachi region</p>
+                        </div>
+                        <button type="button" id="local-delivery-btn" onclick="toggleLocalDelivery()" 
+                            class="px-4 py-2.5 bg-white border-2 border-primary text-primary text-xs font-bold rounded-xl hover:bg-secondary transition active:scale-95 whitespace-nowrap shadow-sm min-w-[150px]" 
+                            data-i18n="btn_local_delivery">Apply Free Delivery</button>
                     </div>
-                    <p id="coupon-message" class="text-xs mt-2 hidden font-medium"></p>
-                    <p class="text-[10px] text-gray-500 mt-2 font-medium mb-1">Available code: <span class="bg-gray-200 text-primary px-1.5 py-0.5 rounded font-bold">MTD401</span></p>
-                    <p class="text-[10px] text-gray-400 italic" data-i18n="coupon_restriction">*Only for store visit or near Pollachi region</p>
+                    <p id="local-delivery-message" class="text-xs mt-3 hidden font-medium text-green-600 flex items-center gap-1.5 bg-green-50 p-2 rounded-lg border border-green-100">
+                        <i class="fas fa-check-circle"></i> <span data-i18n="coupon_applied">Discount Applied! Delivery Charge Free.</span>
+                    </p>
                 </div>
                 <div class="flex justify-between items-center pt-4 border-t border-gray-200">
                     <span class="text-gray-600 font-medium" data-i18n="checkout_total">Total Amount</span>
@@ -359,9 +360,10 @@
 
             // Add Discount Row if applied
             if (discountAmount > 0) {
+                const discountLabel = (appliedCoupon === "LOCAL_DELIVERY") ? "LOCAL DELIVERY" : `Coupon (${appliedCoupon})`;
                 itemsHtml += `
-                  <div class="flex justify-between text-sm text-green-600 font-medium pt-1">
-                    <span>Coupon Discount (${appliedCoupon})</span>
+                  <div class="flex justify-between text-sm text-green-600 font-bold pt-1">
+                    <span>${discountLabel}</span>
                     <span>-₹${discountAmount}</span>
                   </div>
                 `;
@@ -374,29 +376,40 @@
             if (upiBtnAmount) upiBtnAmount.textContent = grandTotal;
         }
 
-        function applyCoupon() {
-            const input = document.getElementById('coupon-input');
-            const messageEl = document.getElementById('coupon-message');
-            const code = input.value.trim().toUpperCase();
-
-            if (code === "MTD401") {
-                appliedCoupon = code;
-                discountAmount = shippingCost; // Free delivery
-                messageEl.textContent = langManager.getText('coupon_applied');
-                messageEl.className = "text-xs mt-2 font-medium text-green-600 block";
-                loadCart(); // Refresh summary
-            } else if (code === "") {
-                appliedCoupon = null;
-                discountAmount = 0;
-                messageEl.className = "text-xs mt-2 hidden";
-                loadCart();
+        function toggleLocalDelivery() {
+            const btn = document.getElementById('local-delivery-btn');
+            const messageEl = document.getElementById('local-delivery-message');
+            
+            if (!appliedCoupon) {
+                appliedCoupon = "LOCAL_DELIVERY"; // Mark it as local delivery
+                discountAmount = shippingCost;
+                
+                // Update Button UI
+                btn.classList.remove('bg-white', 'text-primary');
+                btn.classList.add('bg-primary', 'text-white');
+                btn.setAttribute('data-i18n', 'btn_local_delivery_applied');
             } else {
-                messageEl.textContent = langManager.getText('coupon_invalid');
-                messageEl.className = "text-xs mt-2 font-medium text-red-500 block";
                 appliedCoupon = null;
                 discountAmount = 0;
-                loadCart();
+                
+                // Update Button UI
+                btn.classList.add('bg-white', 'text-primary');
+                btn.classList.remove('bg-primary', 'text-white');
+                btn.setAttribute('data-i18n', 'btn_local_delivery');
             }
+            
+            // Toggle Message
+            if (appliedCoupon) {
+                messageEl.classList.remove('hidden');
+                messageEl.classList.add('flex');
+            } else {
+                messageEl.classList.add('hidden');
+                messageEl.classList.remove('flex');
+            }
+            
+            // Re-apply translations for the button text
+            langManager.applyLanguage(langManager.currentLang);
+            loadCart(); // Refresh summary
         }
 
         // Razorpay API Configuration (Fetched dynamically for security)
@@ -501,7 +514,8 @@
 
                 orderDetailsArray.push(`Delivery Charge: ₹${shippingCost}`);
                 if (appliedCoupon) {
-                    orderDetailsArray.push(`Coupon: ${appliedCoupon} (-₹${discountAmount})`);
+                    const couponLabel = (appliedCoupon === "LOCAL_DELIVERY") ? "Local Delivery" : `Coupon: ${appliedCoupon}`;
+                    orderDetailsArray.push(`${couponLabel} (-₹${discountAmount})`);
                 }
                 const orderDetailsString = orderDetailsArray.join(', ');
 
@@ -544,7 +558,8 @@
 
                 orderMessage += `Delivery Charge: ₹${shippingCost}\n`;
                 if (appliedCoupon) {
-                    orderMessage += `🎟️ Coupon Applied: ${appliedCoupon} (-₹${discountAmount})\n`;
+                    const couponLabel = (appliedCoupon === "LOCAL_DELIVERY") ? "Local Delivery" : `Coupon: ${appliedCoupon}`;
+                    orderMessage += `🎟️ ${couponLabel} Applied (-₹${discountAmount})\n`;
                 }
                 orderMessage += `\n*Total Paid: ₹${grandTotal}*\n`;
 
